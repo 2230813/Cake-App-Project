@@ -1,0 +1,158 @@
+/* # Base styles that are common across all pages */
+/* Base Styles */
+*{
+    margin: 1px 0px;
+}
+
+body, h1, h2, h3, p, form, input, button, a {
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+.form-container, .auth-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group, .form-control {
+    margin-bottom: 20px;
+}
+
+.form-group label, .form-control label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-group input, .form-control input[type="text"],
+.form-control input[type="email"],
+.form-control input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff6384;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 5px 0px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+form p {
+    text-align: center;
+}
+
+form a {
+    color: #ff6384;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------------------------------*/
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.submit-btn, .view-details-btn, .browse-all-btn {
+    padding: 10px 20px;
+    background-color: #ff6384;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* for anchor buttons */
+}
+
+.submit-btn:hover, .view-details-btn:hover, .browse-all-btn:hover {
+    background-color: #e5537d;
+}
+
+.featured-products {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.product {
+    margin: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.browse-all-btn {
+    display: block;
+    margin: 20px auto;
+    font-size: 18px;
+}
+
+/* ----------Checkout----------- */
+.cart-item, .order, .billing-info, .payment-info {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}

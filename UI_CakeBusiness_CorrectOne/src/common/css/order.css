@@ -1,0 +1,72 @@
+/* Order Page Specific Styles */
+.cart-item, .order, .billing-info, .payment-info {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.cart-item-image, .promotion img {
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+.cart-item-details h4, .order-summary {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.remove-item-btn, .view-order-btn, .submit-btn {
+    background-color: #ff6384;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-item-btn:hover, .view-order-btn:hover, .submit-btn:hover {
+    background-color: #e5537d;
+}
+
+.checkout-btn-container, .cart-total, .checkout-form {
+    text-align: center;
+}
+
+.checkout-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green for checkout */
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.checkout-btn:hover {
+    background-color: #45a049;
+}
+
+.cart-total strong {
+    font-size: 1.5em;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.submit-btn, .view-details-btn, .browse-all-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #ff6384;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* for anchor buttons */
+}
+
+.submit-btn:hover, .view-details-btn:hover, .browse-all-btn:hover {
+    background-color: #e5537d;
+}
+/* More order page styles as needed */
