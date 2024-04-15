@@ -1,8 +1,9 @@
-/* # Styles specific to user profile pages */
-/* Profile Specific Styles */
+/* Combined Profile Page Styles */
+
+/* Base styles for the profile container */
 .profile-container {
     text-align: center;
-    max-width: 800px;
+    max-width: 960px; /* Adjusted width for better accommodation */
     margin: auto;
     background-color: #fff;
     padding: 2rem;
@@ -10,21 +11,23 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Flexbox setup for layout */
 .profile-flex {
     display: flex;
+    justify-content: space-between; /* Ensures spacing between sidebar and main content */
+}
+
+/* Styling for sidebar and main content area */
+.profile-sidebar, .profile-main {
+    flex: 1; /* Ensures equal width for a balanced layout */
+    padding: 1rem;
 }
 
 .profile-sidebar {
-    flex-basis: 30%;
-    border-right: 2px solid #eee;
-    padding-right: 2rem;
+    border-right: 2px solid #eee; /* Retains a visual separation between sidebar and main content */
 }
 
-.profile-main {
-    flex-basis: 70%;
-    padding-left: 2rem;
-}
-
+/* Styles for profile picture */
 .profile-picture {
     width: 120px;
     height: 120px;
@@ -34,43 +37,65 @@
     margin-bottom: 1rem;
 }
 
-.profile-info p {
+/* Text styles for profile info and sections */
+.profile-info p, .billing-info p, .payment-info p {
     margin: 0.5rem 0;
     font-size: 1rem;
     text-align: left;
+    color: #666;
 }
 
-.profile-orders ul {
+.profile-info p strong, .billing-info p strong, .payment-info p strong {
+    color: #333; /* Enhances readability */
+}
+
+/* Section titles */
+h3 {
+    color: #ff6384; /* Brand color for titles */
+    margin-bottom: 1rem;
+}
+
+/* Styles for lists and links in orders and promotions */
+.profile-orders ul, .profile-promotions .promotion {
     list-style: none;
     padding: 0;
 }
 
-.profile-orders li {
+.profile-orders li, .profile-promotions .promotion {
     padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
+    margin: 1rem 0;
 }
 
 .profile-orders li span {
-    color: #2ecc71;
+    color: #2ecc71; /* Color for status highlights */
 }
 
-.profile-orders a {
+.profile-orders a, .profile-promotions a {
     text-decoration: none;
-    color: #ff6384;
+    color: #ff6384; /* Brand color for links */
 }
 
-.profile-orders a:hover {
+.profile-orders a:hover, .profile-promotions a:hover {
     text-decoration: underline;
 }
 
-.profile-promotions .promotion {
-    margin: 1rem 0;
-    background-color: #f9f9f9;
+/* Styling for billing and payment sections */
+.billing-info, .payment-info {
+    background: #f9f9f9;
     padding: 1rem;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
 }
 
-.profile-promotions .promotion img {
-    max-width: 100%;
-    border-radius: 8px;
+/* Enhancing mobile responsiveness */
+@media (max-width: 768px) {
+    .profile-flex {
+        flex-direction: column;
+    }
+    .profile-sidebar {
+        border-right: none; /* Remove border in mobile view */
+        padding-bottom: 2rem;
+    }
 }

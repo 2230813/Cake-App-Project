@@ -69,4 +69,130 @@
 .submit-btn:hover, .view-details-btn:hover, .browse-all-btn:hover {
     background-color: #e5537d;
 }
-/* More order page styles as needed */
+
+/* Custom Order Form Styles */
+.custom-order-form {
+    max-width: 500px;
+    margin: auto;
+}
+
+.custom-order-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.custom-order-form .form-group label {
+    display: block;
+    margin-bottom: .5rem;
+    color: #333;
+}
+
+.custom-order-form .form-group input[type="text"],
+.custom-order-form .form-group select,
+.custom-order-form .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.custom-order-form .form-group textarea {
+    height: 100px; /* Adjust the height as needed */
+}
+
+.custom-order-form .submit-btn {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Adjust the button color as needed */
+}
+
+/* Responsive adjustments can be made here */
+@media (max-width: 768px) {
+    .custom-order-form {
+        padding: 0 15px;
+    }
+}
+
+/* Styles for Ordered Items Section */
+.ordered-items h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ordered-items .order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.ordered-items .order-item .item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.ordered-items .order-item .item-quantity,
+.ordered-items .order-item .item-price {
+    color: #666;
+}
+
+.ordered-items .order-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ordered-items .order-total .total-title,
+.ordered-items .order-total .total-price {
+    color: #333;
+}
+
+.ordered-items .total-price {
+    color: #ff6384; /* Highlighting the total price */
+}
+
+/* Enhanced Styles for Centered Delivery Options */
+.ordered-items .delivery-options {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* Center aligning the options */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+.ordered-items .delivery-options label {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    margin: 10px 15px; /* Increased margin for spacing around each label */
+    padding: 8px 12px;
+    background-color: #ffffff;
+    border: 2px solid #ff6384;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ordered-items .delivery-options label:hover {
+    background-color: #ff6384;
+    color: #ffffff;
+}
+
+.ordered-items .delivery-options input[type="radio"] {
+    display: none;
+}
+
+.ordered-items .delivery-options input[type="radio"]:checked + label {
+    background-color: #ff6384;
+    color: #ffffff;
+}
+

@@ -2,5 +2,25 @@
 .contact-form-container {
     text-align: center;
 }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-/* More contact page styles as needed */
+.container {
+    padding: 20px;
+    margin: 0 auto; /* Centers the container */
+    max-width: 600px; /* or whatever maximum width you prefer */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    margin-right: 5px; /* Or you can increase this value as needed */
+}
+
+.btn {
+    margin: 5px 0; /* The same margin-right as inputs for alignment */
+}
+

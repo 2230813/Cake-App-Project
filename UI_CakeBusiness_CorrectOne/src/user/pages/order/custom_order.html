@@ -11,13 +11,58 @@
     <div class="container">
         <h2>Create Your Custom Cake</h2>
         <form class="custom-order-form">
-            <label for="cakeDesign">Describe your dream cake:</label>
-            <br>
-            <textarea id="cakeDesign" name="cakeDesign" placeholder="I would like a three-tier red velvet cake with cream cheese frosting and fresh strawberries on top..." required></textarea>
-            <br>
-            <label for="imageUpload">Upload an inspiration image (optional):</label>
-            <input type="file" id="imageUpload" name="imageUpload">
-            <br>
+            <div class="form-group">
+                <label for="cakeSize">Cake Size:</label>
+                <select id="cakeSize" name="cakeSize" required>
+                    <option value="">Select a size</option>
+                    <option value="6\">6" round</option>
+                    <option value="8\">8" round</option>
+                    <option value="10\">10" round</option>
+                    <!-- More sizes -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cakeShape">Cake Shape:</label>
+                <select id="cakeShape" name="cakeShape" required>
+                    <option value="">Select a shape</option>
+                    <option value="round">Round</option>
+                    <option value="square">Square</option>
+                    <option value="heart">Heart</option>
+                    <!-- More shapes -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cakeFlavor">Cake Flavor:</label>
+                <select id="cakeFlavor" name="cakeFlavor" required>
+                    <option value="">Select a flavor</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="red_velvet">Red Velvet</option>
+                    <!-- More flavors -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cakeFrosting">Frosting:</label>
+                <select id="cakeFrosting" name="cakeFrosting" required>
+                    <option value="">Select frosting</option>
+                    <option value="buttercream">Buttercream</option>
+                    <option value="cream_cheese">Cream Cheese</option>
+                    <option value="chocolate_ganache">Chocolate Ganache</option>
+                    <!-- More frosting types -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cakeDecorations">Decorations:</label>
+                <input type="text" id="cakeDecorations" name="cakeDecorations" placeholder="Describe any decorations">
+            </div>
+            <div class="form-group">
+                <label for="specialInstructions">Special Instructions:</label>
+                <textarea id="specialInstructions" name="specialInstructions" rows="4" placeholder="Any special instructions"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imageUpload">Upload an inspiration image (optional):</label>
+                <input type="file" id="imageUpload" name="imageUpload">
+            </div>
             <button type="submit" class="submit-btn">Place Custom Order</button>
         </form>
     </div>
