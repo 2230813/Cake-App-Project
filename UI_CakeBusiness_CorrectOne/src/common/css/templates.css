@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, h1, h2, h3, p, form, input, button, a {
+    font-family: 'Arial', sans-serif;
+}
+
+.page-header {
+    background-color: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2em;
+    margin-bottom: 10px; /* Spacing between title and filters */
+}
+
+.user-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.filters, .login-section {
+    font-size: 0.9em;
+}
+
+.content-wrapper {
+    display: flex;
+    padding-top: 10px; /* Spacing under header */
+}
+
+.navigation-sidebar {
+    width: 200px;
+    background-color: #f3f3f3;
+    overflow-y: auto;
+}
+
+.navbar a {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+}
+
+.cart-icon {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #ff6384;
+    color: #fff;
+    cursor: pointer;
+}
+
+.page-content {
+    flex-grow: 1; /* Fill available space */
+    padding: 20px;
+    min-height: 600px; /* Adjust as needed */
+}
+
+.ads-promotions {
+    width: 200px;
+    background-color: #f3f3f3;
+    overflow-y: auto;
+}
+
+.page-footer {
+    background-color: #f9f9f9;
+    padding: 10px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .user-controls {
+        flex-direction: column;
+    }
+
+    .navigation-sidebar, .ads-promotions {
+        width: 100px; /* Adjust for smaller screens */
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .page-content {
+        min-height: 400px; /* Adjust for smaller screen */
+    }
+}
