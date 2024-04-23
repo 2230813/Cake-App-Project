@@ -3,38 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Products</title>
+    <title>Manage Products | Admin</title>
     <link rel="stylesheet" href="css/admin_style.css">
 </head>
 <body>
     <header>
-        <h1>Manage Products</h1>
+        <h1>Product Management</h1>
     </header>
     <nav>
         <ul>
             <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="manage_products.html">Manage Products</a></li>
-            <li><a href="order_management.html">Order Management</a></li>
-            <li><a href="user_management.html">User Management</a></li>
+            <li><a href="manage_products.html" class="active">Manage Products</a></li>
+            <li><a href="order_management.html">Orders</a></li>
+            <li><a href="customer_management.html">Customers</a></li>
         </ul>
     </nav>
-    <main>
-        <section>
-            <h2>Products List</h2>
+    <main class="admin-main">
+        <aside class="product-form">
+            <h2>Add a New Product</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price">
+                </div>
+                <div class="form-group">
+                    <label for="details">Details:</label>
+                    <textarea id="details" name="details"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+                <input type="submit" value="Add Product">
+            </form>
+        </aside>
+        <section class="product-list">
+            <h2>Current Products</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Product ID</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Details</th>
+                        <th>Quantity</th>
+                        <th>Image</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Example product row -->
                     <tr>
                         <td>1</td>
                         <td>Chocolate Cake</td>
-                        <td>$25</td>
+                        <td>$25.00</td>
+                        <td>Rich and creamy dark chocolate cake.</td>
+                        <td>5</td>
+                        <td><img src="chocolate_cake.jpg" alt="Chocolate Cake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Another example product row -->
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
                         <td>
                             <button>Edit</button>
                             <button>Delete</button>
@@ -42,8 +88,119 @@
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Vanilla Cupcake</td>
-                        <td>$15</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Strawberry Cheesecake</td>
+                        <td>$30.00</td>
+                        <td>Fresh strawberries and smooth cheesecake.</td>
+                        <td>8</td>
+                        <td><img src="strawberry_cheesecake.jpg" alt="Strawberry Cheesecake" style="width: 50px;"></td>
                         <td>
                             <button>Edit</button>
                             <button>Delete</button>
@@ -51,16 +208,6 @@
                     </tr>
                 </tbody>
             </table>
-        </section>
-        <section>
-            <h2>Add New Product</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name"><br><br>
-                <label for="price">Price:</label>
-                <input type="text" id="price" name="price"><br><br>
-                <input type="submit" value="Add Product">
-            </form>
         </section>
     </main>
     <footer>

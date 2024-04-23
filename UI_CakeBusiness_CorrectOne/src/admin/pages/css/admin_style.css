@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -36,34 +40,31 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 main {
-    padding: 20px;
-}
-
-.dashboard-overview {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.dashboard-link {
-    display: block;
-    width: 150px;
+    justify-content: space-between;
     padding: 20px;
-    background-color: #007bff;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
+    height: calc(100vh - 160px); /* Adjust based on header and footer size */
+    box-sizing: border-box;
 }
 
-.dashboard-link:hover {
-    background-color: #0056b3;
+aside.product-form {
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    background: #f1f1f1;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-list {
+    width: 69%; /* Slightly less to account for margin */
+    overflow: auto;
+    padding: 0 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
 table, th, td {
@@ -90,4 +91,48 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group input[type="file"] {
+    width: calc(100% - 20px); /* Adjusting for padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allows vertical resizing of textarea */
+}
+
+input[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    aside.product-form, .product-list {
+        width: 100%;
+        height: auto;
+    }
 }
