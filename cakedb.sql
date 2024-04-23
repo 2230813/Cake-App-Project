@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2024 at 05:08 PM
+-- Generation Time: Apr 23, 2024 at 08:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,8 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `cakedb`
 --
-CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `cakedb`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Orders`
+--
+
+CREATE TABLE `Orders` (
+  `orderID` int(100) NOT NULL,
+  `userID` int(100) NOT NULL,
+  `date` date NOT NULL,
+  `status` enum('Pending','Completed') NOT NULL,
+  `totalAmount` decimal(65,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Products`
+--
+
+CREATE TABLE `Products` (
+  `productID` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(65,0) NOT NULL,
+  `imageURL` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -29,7 +55,6 @@ USE `cakedb`;
 -- Table structure for table `profile`
 --
 
-DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -46,16 +71,29 @@ CREATE TABLE `profile` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password_hash` varchar(60) NOT NULL
+  `password_hash` varchar(60) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `userType` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD PRIMARY KEY (`orderID`);
+
+--
+-- Indexes for table `Products`
+--
+ALTER TABLE `Products`
+  ADD PRIMARY KEY (`productID`);
 
 --
 -- Indexes for table `profile`
@@ -68,11 +106,24 @@ ALTER TABLE `profile`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `Orders`
+--
+ALTER TABLE `Orders`
+  MODIFY `orderID` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Products`
+--
+ALTER TABLE `Products`
+  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profile`
