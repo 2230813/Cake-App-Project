@@ -17,7 +17,7 @@ class User extends \app\core\Controller{
 				//remember that this is the user logging in...
 				$_SESSION['user_id'] = $user->user_id;
 
-				header('location:/Product/catalog');
+				header('location:/Cake/catalog');
 			}else{
 				header('location:/User/login');
 			}
@@ -33,14 +33,6 @@ class User extends \app\core\Controller{
 		session_destroy();
 
 		header('location:/User/login');
-	}
-
-	function securePlace(){
-		if(!isset($_SESSION['user_id'])){
-			header('location:/User/login');
-			return;
-		}
-		echo 'You are safe. You are in a secure location.';
 	}
 
 	function register(){
