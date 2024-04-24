@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 08:34 AM
+-- Generation Time: Apr 25, 2024 at 12:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,34 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `cakedb`
 --
+CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `cakedb`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Orders`
+-- Table structure for table `product`
 --
 
-CREATE TABLE `Orders` (
-  `orderID` int(100) NOT NULL,
-  `userID` int(100) NOT NULL,
-  `date` date NOT NULL,
-  `status` enum('Pending','Completed') NOT NULL,
-  `totalAmount` decimal(65,0) NOT NULL
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `details` text NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `Products`
+-- Dumping data for table `product`
 --
 
-CREATE TABLE `Products` (
-  `productID` int(10) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `price` decimal(65,0) NOT NULL,
-  `imageURL` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`, `image_path`) VALUES
+(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'Yiflsfjsdfsdkjg ygw fuiweg fiwdugf s\r\nwf uwyf gwygf wfg dgfw weyfg sdlgfuw e. gfwigflsdgfwueg fwegfwdgf.', 5, 'chocolate.png');
 
 -- --------------------------------------------------------
 
@@ -55,6 +53,7 @@ CREATE TABLE `Products` (
 -- Table structure for table `profile`
 --
 
+DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -71,59 +70,55 @@ CREATE TABLE `profile` (
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(60) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `userType` enum('0','1') NOT NULL
+  `email` varchar(50) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
+(1, 'jodel', '$2y$10$quRA/nfLMiQeFwjdv4bTS.ogLzDsaIMv6NysDrliCApddYjtATtum', 'jodel@gmail.com', 1),
+(2, 'manas', '$2y$10$DErYDX9tXBhPd.xAAlMgr.c5jp3SQR1gJLrn5qIdZrX7fHTg3Rcn.', 'manas@vanier.com', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `Orders`
+-- Indexes for table `product`
 --
-ALTER TABLE `Orders`
-  ADD PRIMARY KEY (`orderID`);
-
---
--- Indexes for table `Products`
---
-ALTER TABLE `Products`
-  ADD PRIMARY KEY (`productID`);
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profile_id`),
-  ADD KEY `PROFILE_USER_ID_FOREIGN_KEY` (`user_id`);
+  ADD KEY `PROFILE_USER_ID_FK` (`user_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `Orders`
+-- AUTO_INCREMENT for table `product`
 --
-ALTER TABLE `Orders`
-  MODIFY `orderID` int(100) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Products`
---
-ALTER TABLE `Products`
-  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `profile`
@@ -135,7 +130,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -145,7 +140,7 @@ ALTER TABLE `user`
 -- Constraints for table `profile`
 --
 ALTER TABLE `profile`
-  ADD CONSTRAINT `PROFILE_USER_ID_FOREIGN_KEY` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `PROFILE_USER_ID_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
