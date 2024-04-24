@@ -51,6 +51,7 @@ class User extends \app\core\Controller{
 			$user = new \app\models\User();
 			//populate the User
 			$user->username = $_POST['username'];
+            $user->email = $_POST['email'];
 			$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			//insert the user
 			$user->insert();
