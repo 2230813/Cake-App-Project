@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 08:34 AM
+-- Generation Time: Apr 25, 2024 at 12:22 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,29 +24,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Orders`
+-- Table structure for table `order`
 --
 
-CREATE TABLE `Orders` (
-  `orderID` int(100) NOT NULL,
-  `userID` int(100) NOT NULL,
+CREATE TABLE `order` (
+  `orderID` int(11) NOT NULL,
   `date` date NOT NULL,
   `status` enum('Pending','Completed') NOT NULL,
-  `totalAmount` decimal(65,0) NOT NULL
+  `totalAmount` decimal(10,2) NOT NULL,
+  `profile_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Products`
+-- Table structure for table `orderDetail`
 --
 
-CREATE TABLE `Products` (
-  `productID` int(10) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `price` decimal(65,0) NOT NULL,
-  `imageURL` varchar(1000) NOT NULL
+CREATE TABLE `orderDetail` (
+  `orderDetail_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `details` text NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -75,8 +91,7 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(60) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `userType` enum('0','1') NOT NULL
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -84,46 +99,60 @@ CREATE TABLE `user` (
 --
 
 --
--- Indexes for table `Orders`
+-- Indexes for table `order`
 --
-ALTER TABLE `Orders`
-  ADD PRIMARY KEY (`orderID`);
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`orderID`),
+  ADD KEY `order_profileID_FK` (`profile_id`);
 
 --
--- Indexes for table `Products`
+-- Indexes for table `orderDetail`
 --
-ALTER TABLE `Products`
-  ADD PRIMARY KEY (`productID`);
+ALTER TABLE `orderDetail`
+  ADD PRIMARY KEY (`orderDetail_id`),
+  ADD KEY `orderDetail_orderID_FK` (`order_id`),
+  ADD KEY `orderDetail_productID_FK` (`product_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profile_id`),
-  ADD KEY `PROFILE_USER_ID_FOREIGN_KEY` (`user_id`);
+  ADD KEY `PROFILE_USER_ID_FK` (`user_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `Orders`
+-- AUTO_INCREMENT for table `order`
 --
-ALTER TABLE `Orders`
-  MODIFY `orderID` int(100) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Products`
+-- AUTO_INCREMENT for table `orderDetail`
 --
-ALTER TABLE `Products`
-  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orderDetail`
+  MODIFY `orderDetail_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profile`
@@ -142,10 +171,23 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_profileID_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `orderDetail`
+--
+ALTER TABLE `orderDetail`
+  ADD CONSTRAINT `orderDetail_orderID_FK` FOREIGN KEY (`order_id`) REFERENCES `order` (`orderID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `orderDetail_productID_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `profile`
 --
 ALTER TABLE `profile`
-  ADD CONSTRAINT `PROFILE_USER_ID_FOREIGN_KEY` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `PROFILE_USER_ID_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
