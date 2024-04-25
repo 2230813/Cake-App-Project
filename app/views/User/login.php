@@ -12,13 +12,13 @@
         <form id="loginForm" method='post' action=''>
             <div class="form-control">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="username" required>
+                <input type="text" id="name" name="username" >
             </div>
             <div class="form-control">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" >
             </div>
-            <button type="submit" class="btn" name="action">Log In</button>
+            <input type="submit" class="btn" name="action" value="Log In"/>
             <p>Don't have an account? <a href="/User/register">Sign up</a></p>
         </form>
     </div>

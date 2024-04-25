@@ -9,8 +9,10 @@
 <body>
     <div class="container">
         <h2>Our Products</h2>
+        <a href="/Profile/create">Profile</a>
+        <form method='post' action=''>
         <div class="product-grid">
-            <div class="product">
+            <!-- <div class="product">
                 <img src="../../common/images/cake1.jpg" alt="Classic Chocolate Cake">
                 <div class="product-info">
                     <h3>Classic Chocolate Cake</h3>
@@ -36,9 +38,22 @@
                     <a href="product_details.html" class="add-to-cart-btn">View Details</a>
                 </div>
                 <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
+            </div> -->
             <!-- Repeat for more products -->
+            <?php foreach ($data as $product) { ?>
+                <div class="product">
+                    <img src=<?= $product->image_path ?>>
+                        <div class="product-info">
+                            <h3><?= $product->name ?></h3>
+                            <p class="product-price"><?= $product->price ?></p>
+                            <a href="/Product/details" class="add-to-cart-btn">View Details</a>
+                        </div>
+                    <button class="add-to-cart-btn" name="action">Add to Cart</button>
+                </div>
+            <?php } ?>   
+
         </div>
+        </form>
     </div>
 </body>
 </html>
