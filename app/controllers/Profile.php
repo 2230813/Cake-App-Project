@@ -35,22 +35,25 @@ class Profile extends \app\core\Controller{
 		}
 	}
 
-	public function modify(){
+	public function edit(){
 		$profile = new \app\models\Profile();
 		$profile = $profile->getForUser($_SESSION['user_id']);
 
 		if($_SERVER['REQUEST_METHOD'] === 'POST'){//data is submitted through method POST
 			//make a new profile object
 			//populate it
+			$profile->user_id = $_SESSION['user_id'];
 			$profile->first_name = $_POST['first_name'];
-			$profile->middle_name = $_POST['middle_name'];
 			$profile->last_name = $_POST['last_name'];
+            $profile->address = $_POST['address'];
+            $profile->phone_number = $_POST['phone'];
+            $profile->language_preference = $_POST['language'];
 			//update it
 			$profile->update();
 			//redirect
-			header('location:/Profile/profileView');
+			header('location:/Profile/index');
 		}else{
-			$this->view('Profile/profileEdit', $profile);
+			$this->view('Profile/edit', $profile);
 		}
 	}
 
@@ -67,7 +70,7 @@ class Profile extends \app\core\Controller{
 
 		if($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$profile->delete();
-			header('location:/Profile/profileView');
+			header('location:/Profile/index');
 		}else{
 			$this->view('Profile/delete',$profile);
 		}

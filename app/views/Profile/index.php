@@ -9,6 +9,8 @@
 <body>
     <div class="profile-container">
         <h2>User Profile</h2>
+        <a href="/Profile/edit">Edit</a>
+        <a href="/Profile/delete">Delete</a>
         <div class="profile-flex">
             <div class="profile-sidebar">
                 <div class="profile-info">

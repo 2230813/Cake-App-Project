@@ -64,7 +64,7 @@ class Profile extends \app\core\Model{
 	//update
 	//you can't change the user_id that's a business logic choice that gets implemented in the model
 	public function update(){
-		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name,address=:address,phone_number=:phone_number,last_name=:phone_number WHERE profile_id = :profile_id';
+		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name,address=:address,phone_number=:phone_number,language_preference=:language_preference WHERE profile_id = :profile_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['profile_id'=>$this->profile_id,
