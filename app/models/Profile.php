@@ -7,21 +7,26 @@ class Profile extends \app\core\Model{
 	public $profile_id;//PK
 	public $user_id;//FK
 	public $first_name;
-    public $middle_name;
 	public $last_name;
+    public $address;
+    public $phone_number;
+    public $language_preference;
 
 	//CRUD
 
 	//create
 	public function insert(){
-		$SQL = 'INSERT INTO profile(profile_id,user_id,first_name,middle_name,last_name) VALUE (:profile_id,:user_id,:first_name,:middle_name,:last_name)';
+		$SQL = 'INSERT INTO profile(profile_id,user_id,first_name,last_name,address,phone_number,language_preference) VALUE (:profile_id,:user_id,:first_name,:last_name,:address,:phone_number,:language_preference)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['profile_id'=>$this->profile_id,
 			'user_id'=>$this->user_id,
 			'first_name'=>$this->first_name,
-            'middle_name'=>$this->middle_name,
-			'last_name'=>$this->last_name]
+			'last_name'=>$this->last_name,
+            'address'=>$this->address,
+            'phone_number'=>$this->phone_number,
+            'language_preference'=>$this->language_preference
+            ]
 		);
 	}
 
@@ -59,13 +64,16 @@ class Profile extends \app\core\Model{
 	//update
 	//you can't change the user_id that's a business logic choice that gets implemented in the model
 	public function update(){
-		$SQL = 'UPDATE profile SET first_name=:first_name,middle_name=:middle_name,last_name=:last_name WHERE profile_id = :profile_id';
+		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name,address=:address,phone_number=:phone_number,last_name=:phone_number WHERE profile_id = :profile_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['profile_id'=>$this->profile_id,
 			'first_name'=>$this->first_name,
-			'middle_name'=>$this->middle_name,
-			'last_name'=>$this->last_name]
+			'last_name'=>$this->last_name,
+            'address'=>$this->address,
+            'phone_number'=>$this->phone_number,
+            'language_preference'=>$this->language_preference
+            ]
 		);
 	}
 

@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h2>Our Products</h2>
+        <a href="/Profile/create">Profile</a>
         <form method='post' action=''>
         <div class="product-grid">
             <!-- <div class="product">
