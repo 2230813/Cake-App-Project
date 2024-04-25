@@ -11,14 +11,14 @@
         <h2>User Profile</h2>
         <div class="profile-flex">
             <div class="profile-sidebar">
-                <img src="../../../common/images/profile-picture-placeholder.png" alt="Profile Picture" class="profile-picture">
                 <div class="profile-info">
-                    <p><strong>Name:</strong> John Doe</p>
-                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>First Name:</strong> <?= $data->first_name ?></p>
+                    <p><strong>Last Name:</strong> <?= $data->last_name ?></p>
+                    <p><strong>Language:</strong> <?= $data->language_preference ?></p>
                     <section class="billing-info">
                         <h3>Billing Information</h3>
-                        <p><strong>Address:</strong> 1234 Sweet Lane, Dessert City, CA 98765</p>
-                        <p><strong>Phone:</strong> (123) 456-7890</p>
+                        <p><strong>Address:</strong> <?= $data->address ?></p>
+                        <p><strong>Phone:</strong> <?= $data->phone_number ?></p>
                     </section>
                     <section class="payment-info">
                         <h3>Payment Information</h3>
@@ -36,22 +36,6 @@
                         <li>Order #1002 - <span>In Transit</span> - <a href="#">View</a></li>
                         <!-- More orders can be listed here -->
                     </ul>
-                </section>
-                <section class="profile-promotions">
-                    <h3>Special Promotions</h3>
-                    <div class="promotion">
-                        <img src="../../../common/images/promotion-cake.jpg" alt="Promotion Cake">
-                        <p>Try our new Red Velvet Dream Cake! Use code DREAM10 for a 10% discount!</p>
-                    </div>
-                    <div class="promotion">
-                        <img src="../../../common/images/promotion-cake.jpg" alt="Promotion Cake">
-                        <p>Try our new Chocolate Velvet Dream Cake! Use code DREAM10 for a 10% discount!</p>
-                    </div>
-                    <div class="promotion">
-                        <img src="../../../common/images/promotion-cake.jpg" alt="Promotion Cake">
-                        <p>Try our new Vanilla Velvet Dream Cake! Use code DREAM10 for a 10% discount!</p>
-                    </div>
-                    <!-- More promotions can be listed here -->
                 </section>
             </div>
         </div>
