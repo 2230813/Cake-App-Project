@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 12:31 AM
+-- Generation Time: Apr 25, 2024 at 02:09 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,6 +22,30 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cakedb`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cartDetails`
+--
+
+DROP TABLE IF EXISTS `cartDetails`;
+CREATE TABLE `cartDetails` (
+  `cart_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -85,11 +109,26 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
 (1, 'jodel', '$2y$10$quRA/nfLMiQeFwjdv4bTS.ogLzDsaIMv6NysDrliCApddYjtATtum', 'jodel@gmail.com', 1),
-(2, 'manas', '$2y$10$DErYDX9tXBhPd.xAAlMgr.c5jp3SQR1gJLrn5qIdZrX7fHTg3Rcn.', 'manas@vanier.com', 1);
+(2, 'manas', '$2y$10$DErYDX9tXBhPd.xAAlMgr.c5jp3SQR1gJLrn5qIdZrX7fHTg3Rcn.', 'manas@vanier.com', 1),
+(3, 'jodel', '$2y$10$EhkUc93s623B1oOf7r4Kc.5h7wCONjXTYeEs68fdZN7bREPdLscmO', 'jodel@gmail.com', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `CART_PROFILE_ID_FK` (`profile_id`);
+
+--
+-- Indexes for table `cartDetails`
+--
+ALTER TABLE `cartDetails`
+  ADD KEY `CARTDETAILS_CART_ID_FK` (`cart_id`),
+  ADD KEY `CARTDETAILS_PRODUCT_ID_FK` (`product_id`);
 
 --
 -- Indexes for table `product`
@@ -130,11 +169,23 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `CART_PROFILE_ID_FK` FOREIGN KEY (`profile_id`) REFERENCES `cart` (`cart_id`);
+
+--
+-- Constraints for table `cartDetails`
+--
+ALTER TABLE `cartDetails`
+  ADD CONSTRAINT `CARTDETAILS_PRODUCT_ID_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `profile`
