@@ -8,6 +8,7 @@ class Product extends \app\core\Model{
     public $name;
     public $price;
     public $details;
+    public $type;
     public $quantity;
     public $image_path;
 

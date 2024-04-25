@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h2>Our Products</h2>
-        <a href="/Profile/create">Profile</a>
+        <a href="/Profile/index">Profile</a>
         <form method='post' action=''>
         <div class="product-grid">
             <!-- <div class="product">
@@ -46,7 +46,7 @@
                         <div class="product-info">
                             <h3><?= $product->name ?></h3>
                             <p class="product-price"><?= $product->price ?></p>
-                            <a href="/Product/details" class="add-to-cart-btn">View Details</a>
+                            <a href="/Cake/details/<?= $product->product_id ?>" class="add-to-cart-btn">View Details</a>
                         </div>
                     <button class="add-to-cart-btn" name="action">Add to Cart</button>
                 </div>
