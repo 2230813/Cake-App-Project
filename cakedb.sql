@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 02:09 AM
+-- Generation Time: Apr 23, 2024 at 08:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -26,25 +26,29 @@ USE `cakedb`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Table structure for table `Orders`
 --
 
-DROP TABLE IF EXISTS `cart`;
-CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
-  `profile_id` int(11) NOT NULL
+CREATE TABLE `Orders` (
+  `orderID` int(100) NOT NULL,
+  `userID` int(100) NOT NULL,
+  `date` date NOT NULL,
+  `status` enum('Pending','Completed') NOT NULL,
+  `totalAmount` decimal(65,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cartDetails`
+-- Table structure for table `Products`
 --
 
-DROP TABLE IF EXISTS `cartDetails`;
-CREATE TABLE `cartDetails` (
-  `cart_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
+CREATE TABLE `Products` (
+  `productID` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(65,0) NOT NULL,
+  `imageURL` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -99,8 +103,8 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(60) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT 1
+  `email` varchar(255) NOT NULL,
+  `userType` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -117,21 +121,13 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) V
 --
 
 --
--- Indexes for table `cart`
+-- Indexes for table `Orders`
 --
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `CART_PROFILE_ID_FK` (`profile_id`);
+ALTER TABLE `Orders`
+  ADD PRIMARY KEY (`orderID`);
 
 --
--- Indexes for table `cartDetails`
---
-ALTER TABLE `cartDetails`
-  ADD KEY `CARTDETAILS_CART_ID_FK` (`cart_id`),
-  ADD KEY `CARTDETAILS_PRODUCT_ID_FK` (`product_id`);
-
---
--- Indexes for table `product`
+-- Indexes for table `Products`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
@@ -154,10 +150,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT for table `Orders`
 --
-ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `Orders`
+  MODIFY `orderID` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Products`
+--
+ALTER TABLE `Products`
+  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profile`
@@ -174,18 +176,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `CART_PROFILE_ID_FK` FOREIGN KEY (`profile_id`) REFERENCES `cart` (`cart_id`);
-
---
--- Constraints for table `cartDetails`
---
-ALTER TABLE `cartDetails`
-  ADD CONSTRAINT `CARTDETAILS_PRODUCT_ID_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `profile`
