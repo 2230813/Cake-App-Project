@@ -11,3 +11,5 @@ $this->addRoute('Profile/index','Profile,index');
 $this->addRoute('Profile/create','Profile,create');
 $this->addRoute('Profile/edit','Profile,edit');
 $this->addRoute('Profile/delete','Profile,delete');
+
+$this->addRoute('Profile/Order','Profile,getAllOrder');
