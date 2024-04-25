@@ -9,21 +9,21 @@ class Order extends \app\core\Controller {
 
     public function delete($order_id){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){ 
-			$publication = new \app\models\Order();
-			$publication = $publication->get($order_id);
-			$publication->remove();
-			//header('location:/Publication/seeUserPost/' . $publication->profile_id);
+			$order = new \app\models\Order();
+			$order = $order->get($order_id);
+			$order->remove();
+			//header('location:/order/seeUserPost/' . $order->profile_id);
 			
 		}
     }
 
     public function getAllOrder($profile_id){
-        $publication = new \app\models\Order();
-		$publication = $publication->getAll($profile_id);
+        $order = new \app\models\Order();
+		$order = $order->getAll($profile_id);
 		
-        //$this->view('Publication/main',$publication);
+        $this->view('Profile/Order',$order);
     }
 
-    
+
 
 }
