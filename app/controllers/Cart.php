@@ -17,7 +17,16 @@ class Cart extends \app\core\Controller {
         $cart->product_id = $productid;
     }
 
-    public function updateItemAmounts(){
-        
+    public function updateItemAmounts($productid, $newAmount){
+        $cart = new \app\models\CartDetails();
+        $cart = $cart->getCartItems();
+        $cart->update($productid, $newAmount);
+    }
+
+    public function viewCart(){
+        $cart = new \app\models\CartDetails();
+        $cart = $cart->getCartItems();
+        //Send to the proper view
+        $this->view('Cart/index', $cart);
     }
 }

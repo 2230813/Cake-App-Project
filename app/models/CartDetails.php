@@ -59,7 +59,7 @@ class CartDetails extends \app\core\Model{
 
     public function getCartItems() {
         // Define the SQL query to select cart items
-        $SQL = 'SELECT product.*, cart.quantity FROM product 
+        $SQL = 'SELECT product.*, product.quantity FROM product 
                 INNER JOIN cart ON product.product_id = cart.product_id 
                 WHERE cart.cart_id = :cart_id';
         // Prepare the statement

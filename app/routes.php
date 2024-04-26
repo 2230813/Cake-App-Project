@@ -13,3 +13,6 @@ $this->addRoute('Profile/edit','Profile,edit');
 $this->addRoute('Profile/delete','Profile,delete');
 
 $this->addRoute('Profile/Order','Profile,getAllOrder');
+
+//This is for the shopping cart
+$this->addRoute('Cart/index', 'Cart,viewCart');
