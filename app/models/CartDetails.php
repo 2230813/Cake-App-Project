@@ -58,10 +58,10 @@ class CartDetails extends \app\core\Model{
 
 
     public function getCartItems() {
-        // Define the SQL query to select cart items
-        $SQL = 'SELECT product.*, product.quantity FROM product 
-                INNER JOIN cart ON product.product_id = cart.product_id 
-                WHERE cart.cart_id = :cart_id';
+        // Defining the SQL query to select cart items along with product information
+        $SQL = 'SELECT product.*, cd.cart_id, cd.product_id FROM product 
+                INNER JOIN cartDetails cd ON product.product_id = cd.product_id 
+                WHERE cd.cart_id = :cart_id';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
@@ -69,4 +69,5 @@ class CartDetails extends \app\core\Model{
         // Fetch the data
         return $STMT->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 }
