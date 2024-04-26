@@ -9,7 +9,7 @@ class CartDetails extends \app\core\Model{
 
     public function insert(){
         // Define the SQL query to fetch data from cartDetails
-        $SQL = 'SELECT cart_id, product_id FROM cartDetails WHERE cart_id = :cart_id'; // Assuming you have a WHERE condition here
+        $SQL = 'SELECT cart_id, product_id FROM cartDetails WHERE cart_id = :cart_id';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
@@ -47,12 +47,11 @@ class CartDetails extends \app\core\Model{
 
 	//delete - this is a special delete to deactivate accounts
 	function delete($product_id){
-		$SQL = 'DELETE FROM cart WHERE cart_id = :cart_id AND product_id = :product_id';
+		$SQL = 'DELETE FROM cart WHERE product_id = :product_id';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
         $STMT->execute([
-            'cart_id' => $this->cart_id,
             'product_id' => $product_id
         ]);
 	}
