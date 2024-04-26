@@ -9,7 +9,7 @@ class CartDetails extends \app\core\Model{
 
     public function insert(){
         // Define the SQL query to fetch data from cartDetails
-        $SQL = 'SELECT cart_id, product_id FROM cartDetails WHERE cart_id = :cart_id'; // Assuming you have a WHERE condition here
+        $SQL = 'SELECT cart_id, product_id FROM cartDetails WHERE cart_id = :cart_id';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
