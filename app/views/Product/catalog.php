@@ -13,7 +13,7 @@
         <a href="/Cart/index">View Cart</a>
         <form method='post' action=''>
         <div class="product-grid">
-            <!-- <div class="product">
+            <<div class="product">
                 <img src="../../common/images/cake1.jpg" alt="Classic Chocolate Cake">
                 <div class="product-info">
                     <h3>Classic Chocolate Cake</h3>
@@ -39,7 +39,7 @@
                     <a href="product_details.html" class="add-to-cart-btn">View Details</a>
                 </div>
                 <button class="add-to-cart-btn">Add to Cart</button>
-            </div> -->
+            </div>
             <!-- Repeat for more products -->
             <?php foreach ($data as $product) { ?>
                 <div class="product">

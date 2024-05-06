@@ -4,29 +4,27 @@ namespace app\controllers;
 //applying the Login condition to the whole class
 #[\app\filters\Login]
 class Cart extends \app\core\Controller {
+    private $cartModel;
 
-    public function addToCart($productid){
-        $cart = new \app\models\CartDetails();
-        $cart->product_id = $productid;
-        $cart->insert();
+    public function __construct() {
+        $this->cartModel = new \app\models\CartDetails();
     }
 
-    public function removeFromCart($productid){
-        $cart = new \app\models\CartDetails();
-        $cart = $cart->getCartItems();
-        $cart->product_id = $productid;
+    public function addToCart($productId) {
+        $this->cartModel->product_id = $productId;
+        $this->cartModel->insert();
     }
 
-    public function updateItemAmounts($productid, $newAmount){
-        $cart = new \app\models\CartDetails();
-        $cart = $cart->getCartItems();
-        $cart->update($productid, $newAmount);
+    public function removeFromCart($productId) {
+        $this->cartModel->delete($productId);
     }
 
-    public function viewCart(){
-        $cart = new \app\models\CartDetails();
-        $cart = $cart->getCartItems();
-        //Send to the proper view
-        $this->view('Cart/index', $cart);
+    public function updateItemAmounts($productId, $newAmount) {
+        $this->cartModel->update($productId, $newAmount);
+    }
+
+    public function viewCart() {
+        $cartItems = $this->cartModel->getCartItems();
+        $this->view('Cart/index', $cartItems);
     }
 }

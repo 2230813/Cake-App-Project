@@ -40,7 +40,7 @@ class CartDetails extends \app\core\Model{
         $STMT->execute([
             'cart_id' => $this->cart_id,
             'product_id' => $product_id,
-            'new_quantity' => $new_quantity
+            //'new_quantity' => $new_quantity
         ]);
 	}
 
