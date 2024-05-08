@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 12:22 AM
+-- Generation Time: May 08, 2024 at 10:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,33 +20,54 @@ SET time_zone = "+00:00";
 --
 -- Database: `cakedb`
 --
+CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `cakedb`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Table structure for table `cart`
 --
 
-CREATE TABLE `order` (
-  `orderID` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `status` enum('Pending','Completed') NOT NULL,
-  `totalAmount` decimal(10,2) NOT NULL,
-  `profile_id` int(11) NOT NULL
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `total_price` decimal(4,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`) VALUES
+(1, 9, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cartDetails`
+--
+
+DROP TABLE IF EXISTS `cartDetails`;
+CREATE TABLE `cartDetails` (
+  `cart_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderDetail`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE `orderDetail` (
-  `orderDetail_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(100) NOT NULL,
-  `price` decimal(10,2) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `status` enum('Pending','Completed') NOT NULL,
+  `totalAmount` decimal(65,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -55,15 +76,22 @@ CREATE TABLE `orderDetail` (
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
+  `price` decimal(4,2) NOT NULL,
   `details` text NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `image_path` varchar(255) NOT NULL
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`) VALUES
+(1234, 'vanilla cake', 'vanilla', 12.50, 'usidfhdsbfusdufishdufhsubfjsd', 1);
 
 -- --------------------------------------------------------
 
@@ -71,6 +99,7 @@ CREATE TABLE `product` (
 -- Table structure for table `profile`
 --
 
+DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -81,37 +110,62 @@ CREATE TABLE `profile` (
   `language_preference` enum('EN','FR') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`, `phone_number`, `language_preference`) VALUES
+(1, 1, 'Jodel', 'Briones', '123Street', '123-456-7890', 'EN'),
+(3, 3, 'test', 'test', '123Street', '123-456-7890', 'EN'),
+(9, 2, 'Manas', 'Patel', '123Street', '123-456-7890', 'EN');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(60) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
+(1, 'jodel', '$2y$10$8hFqMbxYnJybMZvBXzg2mOVoo4CZkI7bkUqdk3anpw7TGDctSU/.C', 'jodel@vanier.com', 1),
+(2, 'manas', '$2y$10$ppySz7MfaoktGtwoZkEzsO6QxwSW8IZ/bgdD2gV47ZVqtagkawlvO', 'manas@vanier.com', 1),
+(3, 'test', '$2y$10$emrkimoovcCbUc4Vau7K4e8Rqk0OLm7.CgeJ6bJ8doy7jCz6c45g.', 'test@vanier.com', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `order`
+-- Indexes for table `cart`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`orderID`),
-  ADD KEY `order_profileID_FK` (`profile_id`);
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`);
 
 --
--- Indexes for table `orderDetail`
+-- Indexes for table `cartDetails`
 --
-ALTER TABLE `orderDetail`
-  ADD PRIMARY KEY (`orderDetail_id`),
-  ADD KEY `orderDetail_orderID_FK` (`order_id`),
-  ADD KEY `orderDetail_productID_FK` (`product_id`);
+ALTER TABLE `cartDetails`
+  ADD KEY `CARTDETAILS_CART_ID_FK` (`cart_id`),
+  ADD KEY `CARTDETAILS_PRODUCT_ID_FK` (`product_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `ORDERS_USER_ID_FK` (`user_id`);
 
 --
 -- Indexes for table `product`
@@ -137,57 +191,57 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `cart`
 --
-ALTER TABLE `order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `orderDetail`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `orderDetail`
-  MODIFY `orderDetail_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1235;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `order`
+-- Constraints for table `cartDetails`
 --
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_profileID_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `cartDetails`
+  ADD CONSTRAINT `CARTDETAILS_CART_ID_FK` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
+  ADD CONSTRAINT `CARTDETAILS_PRODUCT_ID_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `orderDetail`
+-- Constraints for table `orders`
 --
-ALTER TABLE `orderDetail`
-  ADD CONSTRAINT `orderDetail_orderID_FK` FOREIGN KEY (`order_id`) REFERENCES `order` (`orderID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orderDetail_productID_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `orders`
+  ADD CONSTRAINT `ORDERS_USER_ID_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `profile`
 --
 ALTER TABLE `profile`
-  ADD CONSTRAINT `PROFILE_USER_ID_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `PROFILE_USER_ID_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
