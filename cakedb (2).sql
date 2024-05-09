@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2024 at 10:37 PM
+-- Generation Time: May 09, 2024 at 05:51 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,15 +33,16 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
-  `total_price` decimal(4,2) DEFAULT NULL
+  `total_price` decimal(4,2) NOT NULL DEFAULT 0.00,
+  `status` enum('cart','ordered','ongoing','delivery','complete') NOT NULL DEFAULT 'cart'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`) VALUES
-(1, 9, NULL);
+INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
+(1, 3, 0.00, 'ongoing');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`) VALUES
-(1234, 'vanilla cake', 'vanilla', 12.50, 'usidfhdsbfusdufishdufhsubfjsd', 1);
+(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 5);
 
 -- --------------------------------------------------------
 
@@ -115,9 +116,9 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`, `phone_number`, `language_preference`) VALUES
-(1, 1, 'Jodel', 'Briones', '123Street', '123-456-7890', 'EN'),
-(3, 3, 'test', 'test', '123Street', '123-456-7890', 'EN'),
-(9, 2, 'Manas', 'Patel', '123Street', '123-456-7890', 'EN');
+(1, 1, 'Jodel', 'Briones', '123 Cake St', '514-111-1111', 'EN'),
+(2, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR'),
+(3, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR');
 
 -- --------------------------------------------------------
 
@@ -139,9 +140,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
-(1, 'jodel', '$2y$10$8hFqMbxYnJybMZvBXzg2mOVoo4CZkI7bkUqdk3anpw7TGDctSU/.C', 'jodel@vanier.com', 1),
-(2, 'manas', '$2y$10$ppySz7MfaoktGtwoZkEzsO6QxwSW8IZ/bgdD2gV47ZVqtagkawlvO', 'manas@vanier.com', 1),
-(3, 'test', '$2y$10$emrkimoovcCbUc4Vau7K4e8Rqk0OLm7.CgeJ6bJ8doy7jCz6c45g.', 'test@vanier.com', 1);
+(1, 'jodel', '$2y$10$bdMCJmTVBZIWbnw4r46VpuNOrqY15He79WUK2PVCwaZckNQ9IvXKK', 'jodel@gmail.com', 1),
+(2, 'manas', '$2y$10$WRQLtaB2Bq2B235A5k7MPOxVvkjth321DJ8sF3JFXPpftErHT0sRG', 'manas@vanier.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -206,19 +206,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1235;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

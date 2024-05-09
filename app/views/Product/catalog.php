@@ -21,8 +21,8 @@
                             <h3><?= $product->name ?></h3>
                             <p class="product-price"><?= $product->price ?></p>
                             <a href="/Cake/details/<?= $product->product_id ?>" class="add-to-cart-btn">View Details</a>
+                            <a href="/Cart/add/<?= $product->product_id ?>" class="add-to-cart-btn">Add to Cart</a>
                         </div>
-                    <button class="add-to-cart-btn" name="action">Add to Cart</button>
                 </div>
             <?php } ?>   
 

@@ -16,3 +16,4 @@ $this->addRoute('Profile/Order','Profile,getAllOrder');
 
 //This is for the shopping cart
 $this->addRoute('Cart/index', 'Cart,viewCart');
+$this->addRoute('Cart/add/{product_id}', 'Cart,addToCart');
