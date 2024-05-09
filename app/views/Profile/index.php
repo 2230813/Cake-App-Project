@@ -13,6 +13,7 @@
         <a href="/Profile/delete">Delete</a>
         <a href="/Cart/index">View Cart</a>
         <a href="/Cake/catalog">View cakes</a>
+        <a href="/Cake/catalog">View Catalog</a>
         <div class="profile-flex">
             <div class="profile-sidebar">
                 <div class="profile-info">

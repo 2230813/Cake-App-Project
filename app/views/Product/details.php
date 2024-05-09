@@ -9,6 +9,7 @@
 <body>
     <div class="container product-details">
         <h2><?= $data->name ?></h2>
+        <a href="/Cake/catalog">View Catalog</a>
         <div class="product-image">
             <img src="../../../common/images/deluxe-chocolate-cake.jpg" alt="Vanilla Bean Cake">
         </div>

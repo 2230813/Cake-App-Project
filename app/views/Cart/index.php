@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <h2>Our Products</h2>
+        <h2>Shopping Cart</h2>
         <a href="/Profile/index">Profile</a>
-        <a href="/Cart/index">View Cart</a>
+        <a href="/Cake/catalog">View Catalog</a>
         <form method='post' action='/Cart/addToCart'>
     <div class="product-grid">
         <?php foreach ($data as $product) { ?>

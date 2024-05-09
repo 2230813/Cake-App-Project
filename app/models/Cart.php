@@ -6,6 +6,7 @@ use PDO;
 class Cart extends \app\core\Model{
 	public $cart_id;
 	public $profile_id;
+	public $total_price;
 
 	
 	public function insert(){
