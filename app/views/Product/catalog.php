@@ -13,33 +13,6 @@
         <a href="/Cart/index">View Cart</a>
         <form method='post' action=''>
         <div class="product-grid">
-            <<div class="product">
-                <img src="../../common/images/cake1.jpg" alt="Classic Chocolate Cake">
-                <div class="product-info">
-                    <h3>Classic Chocolate Cake</h3>
-                    <p class="product-price">$15.00</p>
-                    <a href="product_details.html" class="add-to-cart-btn">View Details</a>
-                </div>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="../../common/images/cake2.jpg" alt="Vanilla Bean Cake">
-                <div class="product-info">
-                    <h3>Vanilla Bean Cake</h3>
-                    <p class="product-price">$18.00</p>
-                    <a href="product_details.html" class="add-to-cart-btn">View Details</a>
-                </div>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="../../common/images/cake3.jpg" alt="Red Velvet Cake">
-                <div class="product-info">
-                    <h3>Red Velvet Cake</h3>
-                    <p class="product-price">$20.00</p>
-                    <a href="product_details.html" class="add-to-cart-btn">View Details</a>
-                </div>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
             <!-- Repeat for more products -->
             <?php foreach ($data as $product) { ?>
                 <div class="product">
