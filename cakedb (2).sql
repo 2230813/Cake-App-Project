@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 09, 2024 at 05:51 PM
+-- Generation Time: May 10, 2024 at 08:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,7 +42,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
-(1, 3, 0.00, 'ongoing');
+(1, 3, 0.00, 'cart'),
+(2, 4, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -55,6 +56,14 @@ CREATE TABLE `cartDetails` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cartDetails`
+--
+
+INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
+(2, 1),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +127,8 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`, `phone_number`, `language_preference`) VALUES
 (1, 1, 'Jodel', 'Briones', '123 Cake St', '514-111-1111', 'EN'),
 (2, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR'),
-(3, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR');
+(3, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR'),
+(4, 3, 'Louisa', 'Lieu', '524 Cake dr', '514-111-4444', 'EN');
 
 -- --------------------------------------------------------
 
@@ -141,7 +151,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
 (1, 'jodel', '$2y$10$bdMCJmTVBZIWbnw4r46VpuNOrqY15He79WUK2PVCwaZckNQ9IvXKK', 'jodel@gmail.com', 1),
-(2, 'manas', '$2y$10$WRQLtaB2Bq2B235A5k7MPOxVvkjth321DJ8sF3JFXPpftErHT0sRG', 'manas@vanier.com', 1);
+(2, 'manas', '$2y$10$WRQLtaB2Bq2B235A5k7MPOxVvkjth321DJ8sF3JFXPpftErHT0sRG', 'manas@vanier.com', 1),
+(3, 'Louisa', '$2y$10$4TDP964JQyiKsYjb6wOHJOJfR7.r485D8RiC5ORbUmQUwBTeOYe6W', 'louisa@vanier.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -194,7 +205,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -212,13 +223,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

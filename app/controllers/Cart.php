@@ -5,19 +5,22 @@ namespace app\controllers;
 #[\app\filters\Login]
 #[\app\filters\HasProfile]
 class Cart extends \app\core\Controller {
-    private $cartModel;
 
     // public function __construct() {
     //     $this->cartModel = new \app\models\CartDetails();
     // }
 
-    public function addToCart($productId) {
+    public function addToCart($product_id) {
         $cart2 = new \app\models\Cart();
         $cart = new \app\models\CartDetails();
-        $cart2 = $cart2->getByProfileId($_SESSION['profile_id']);
+        $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
+
+        // echo $_SESSION['profile_id'];
+        // var_dump($cart2);
         
         $cart->cart_id = $cart2->cart_id;
-        $cart->product_id = $productId;
+        $cart->product_id = $product_id;
+        var_dump($cart);
         $cart->insert();
     }
 
@@ -29,8 +32,9 @@ class Cart extends \app\core\Controller {
     //     $this->cartModel->update($productId, $newAmount);
     // }
 
-    // public function viewCart() {
-    //     $cartItems = $this->cartModel->getCartItems();
-    //     $this->view('Cart/index', $cartItems);
-    // }
+    public function viewCart() {
+        $cartModel = new \app\models\CartDetails();
+        $cartItems = $cartModel->getCartItems();
+        $this->view('Cart/index', $cartItems);
+    }
 }
