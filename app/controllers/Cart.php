@@ -12,16 +12,18 @@ class Cart extends \app\core\Controller {
 
     public function addToCart($product_id) {
         $cart2 = new \app\models\Cart();
-        $cart = new \app\models\CartDetails();
         $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
-
+        $cart = new \app\models\CartDetails();
+        
         // echo $_SESSION['profile_id'];
         // var_dump($cart2);
         
         $cart->cart_id = $cart2->cart_id;
         $cart->product_id = $product_id;
-        var_dump($cart);
+        //var_dump($cart);
         $cart->insert();
+
+        header('location:/Cart/index');
     }
 
     // public function removeFromCart($productId) {
@@ -33,8 +35,12 @@ class Cart extends \app\core\Controller {
     // }
 
     public function viewCart() {
+        $cart2 = new \app\models\Cart();
+        $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
         $cartModel = new \app\models\CartDetails();
+        $cartModel->cart_id = $cart2->cart_id;
         $cartItems = $cartModel->getCartItems();
+        //var_dump($cartItems);
         $this->view('Cart/index', $cartItems);
     }
 }

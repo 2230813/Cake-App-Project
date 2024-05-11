@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Profile | Cake Shop</title>
     <link rel="stylesheet" href="\css\base.css">
-    <link rel="stylesheet" href="\css\product.css">
+    <link rel="stylesheet" href="\css\profile.css">
 </head>
 <body>
     <div class="profile-container">
@@ -12,7 +12,6 @@
         <a href="/Profile/edit">Edit</a>
         <a href="/Profile/delete">Delete</a>
         <a href="/Cart/index">View Cart</a>
-        <a href="/Cake/catalog">View cakes</a>
         <a href="/Cake/catalog">View Catalog</a>
         <div class="profile-flex">
             <div class="profile-sidebar">

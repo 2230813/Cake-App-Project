@@ -21,7 +21,6 @@
                     <p class="product-price"><?= $product->price ?></p>
                     <a href="/Cake/details/<?= $product->product_id ?>" class="add-to-cart-btn">View Details</a>
                 </div>
-                <button class="add-to-cart-btn" type="submit" name="productId" value="<?= $product->product_id ?>">Add to Cart</button>
             </div>
         <?php } ?>
     </div>

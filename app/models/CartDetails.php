@@ -48,7 +48,7 @@ class CartDetails extends \app\core\Model{
 
     public function getCartItems() {
         // Defining the SQL query to select cart items along with product information
-        $SQL = 'SELECT product.*, cd.cart_id, cd.product_id FROM product 
+        $SQL = 'SELECT * FROM product 
                 INNER JOIN cartDetails cd ON product.product_id = cd.product_id 
                 WHERE cd.cart_id = :cart_id';
         // Prepare the statement
