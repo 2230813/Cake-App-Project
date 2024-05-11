@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <h2>Our Products</h2>
-        <a href="/Profile/index">Profile</a>
-        <a href="/Cart/index">View Cart</a>
+        <a href="/Profile/index" class="add-to-cart-btn">Profile</a>
+        <a href="/Cart/index" class="add-to-cart-btn">View Cart</a>
         <form method='post' action=''>
         <div class="product-grid">
             <!-- Repeat for more products -->
             <?php foreach ($data as $product) { ?>
                 <div class="product">
-                    <img src=<?= $product->image_path ?>>
+                    <!-- <img src=<?= $product->image_path ?>> -->
                         <div class="product-info">
                             <h3><?= $product->name ?></h3>
                             <p class="product-price"><?= $product->price ?></p>

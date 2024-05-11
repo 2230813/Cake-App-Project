@@ -9,17 +9,19 @@
 <body>
     <div class="container">
         <h2>Shopping Cart</h2>
-        <a href="/Profile/index">Profile</a>
-        <a href="/Cake/catalog">View Catalog</a>
+        <a href="/Profile/index" class="add-to-cart-btn">Profile</a>
+        <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>
         <form method='post' action='/Cart/addToCart'>
     <div class="product-grid">
         <?php foreach ($data as $product) { ?>
             <div class="product">
-                <img src="<?= $product->image_path ?>" alt="<?= $product->name ?>">
+                <!-- <img src="image.png" alt="<?= $product->name ?>"> -->
                 <div class="product-info">
                     <h3><?= $product->name ?></h3>
                     <p class="product-price"><?= $product->price ?></p>
                     <a href="/Cake/details/<?= $product->product_id ?>" class="add-to-cart-btn">View Details</a>
+                    <!-- to implement below -->
+                    <a href="/Cart/delete/<?= $product->product_id ?>" class="add-to-cart-btn">Delete Item</a>
                 </div>
             </div>
         <?php } ?>
