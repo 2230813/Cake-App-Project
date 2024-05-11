@@ -20,7 +20,7 @@
                     <h3><?= $product->name ?></h3>
                     <p class="product-price"><?= $product->price ?></p>
                     <a href="/Cake/details/<?= $product->product_id ?>" class="add-to-cart-btn">View Details</a>
-                    <!-- to implement below -->
+                    <!-- to implement below, make route and contoller method -->
                     <a href="/Cart/delete/<?= $product->product_id ?>" class="add-to-cart-btn">Delete Item</a>
                 </div>
             </div>
