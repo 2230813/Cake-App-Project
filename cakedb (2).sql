@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 10, 2024 at 08:10 PM
+-- Generation Time: May 11, 2024 at 03:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,7 +63,9 @@ CREATE TABLE `cartDetails` (
 
 INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 (2, 1),
-(2, 1);
+(2, 1),
+(2, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`) VALUES
-(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 5);
+(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 5),
+(2, 'Chocolate Cake', 'Wedding Cake', 29.99, 'LG P GPIU GIUg iug I. iu ; hu dhgs:GH gh:Uhu;h ;h. IU u. g fJTY fiYT fiUYS fUSYK fOUY fgKUYSf SUf gs', 4);
 
 -- --------------------------------------------------------
 
@@ -217,7 +220,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `profile`
