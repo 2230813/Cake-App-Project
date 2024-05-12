@@ -1,33 +1,39 @@
 <?php
 namespace app\models;
+// models/Products.php
 
 use PDO;
 
 class Product extends \app\core\Model{
     public $product_id;
     public $name;
+    public $type;
     public $price;
     public $details;
-    public $type;
     public $quantity;
     public $image_path;
 
     // CRUD
 
     // Create
-    public function insert(){
-        $SQL = 'INSERT INTO product(name, price, details, quantity, image_path) 
-                        VALUES (:name, :price, :details, :quantity, :image_path)';
+    public function insert() {
+        $SQL = 'INSERT INTO product(name, type, price, details, quantity, image_path) 
+                VALUES (:name, :type, :price, :details, :quantity, :image_path)';
         $STMT = self::$_conn->prepare($SQL);
+        
+        $imagePath = $this->image_path ?? NULL; // Use NULL if $this->image_path is not set
+        
         $STMT->execute([
             'name' => $this->name,
+            'type' => $this->type,
             'price' => $this->price,
             'details' => $this->details,
             'quantity' => $this->quantity,
-            'image_path' => $this->image_path
+            'image_path' => $imagePath
         ]);
         $this->product_id = self::$_conn->lastInsertId(); // Get the last inserted ID if needed
     }
+    
 
     // Read single product
     public function get($product_id){
@@ -49,11 +55,12 @@ class Product extends \app\core\Model{
 
     // Update
     public function update(){
-        $SQL = 'UPDATE product SET name=:name, price=:price, details=:details, quantity=:quantity, image_path=:image_path WHERE product_id = :product_id';
+        $SQL = 'UPDATE product SET name=:name, type=:type, price=:price, details=:details, quantity=:quantity, image_path=:image_path WHERE product_id = :product_id';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
             'product_id' => $this->product_id,
             'name' => $this->name,
+            'type' => $this->type,
             'price' => $this->price,
             'details' => $this->details,
             'quantity' => $this->quantity,
@@ -67,4 +74,13 @@ class Product extends \app\core\Model{
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['product_id' => $this->product_id]);
     }
+
+    public function searchProducts($searchTerm) {
+        $SQL = "SELECT * FROM product WHERE name LIKE :searchTerm ORDER BY name";
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['searchTerm' => '%' . $searchTerm . '%']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
+        return $STMT->fetchAll();
+    }
+    
 }

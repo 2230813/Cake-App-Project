@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 11, 2024 at 03:41 AM
+-- Generation Time: May 12, 2024 at 05:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,14 +22,12 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cakedb`;
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
@@ -51,7 +49,6 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 -- Table structure for table `cartDetails`
 --
 
-DROP TABLE IF EXISTS `cartDetails`;
 CREATE TABLE `cartDetails` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -73,7 +70,6 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -88,23 +84,23 @@ CREATE TABLE `orders` (
 -- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `price` decimal(4,2) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `details` text NOT NULL,
-  `quantity` int(11) NOT NULL
+  `quantity` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`) VALUES
-(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 5),
-(2, 'Chocolate Cake', 'Wedding Cake', 29.99, 'LG P GPIU GIUg iug I. iu ; hu dhgs:GH gh:Uhu;h ;h. IU u. g fJTY fiYT fiUYS fUSYK fOUY fgKUYSf SUf gs', 4);
+INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`, `image_path`) VALUES
+(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 5, ''),
+(2, 'Chocolate Cake', 'Wedding Cake', 29.99, 'LG P GPIU GIUg iug I. iu ; hu dhgs:GH gh:Uhu;h ;h. IU u. g fJTY fiYT fiUYS fUSYK fOUY fgKUYSf SUf gs', 4, '');
 
 -- --------------------------------------------------------
 
@@ -112,7 +108,6 @@ INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quanti
 -- Table structure for table `profile`
 --
 
-DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -139,7 +134,6 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
