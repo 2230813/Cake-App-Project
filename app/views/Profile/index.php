@@ -39,8 +39,7 @@
                 <section class="profile-orders">
                     <h3>Your Orders</h3>
                     <ul class="order-list">
-                        <li>Order #1001 - <span>Delivered</span> - <a href="#">View</a></li>
-                        <li>Order #1002 - <span>In Transit</span> - <a href="#">View</a></li>
+                        <a href='/Order/order_list/<?php echo $data->user_id;?>'>View Order</a>
                         <!-- More orders can be listed here -->
                     </ul>
                 </section>

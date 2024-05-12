@@ -12,11 +12,13 @@ $this->addRoute('Profile/create','Profile,create');
 $this->addRoute('Profile/edit','Profile,edit');
 $this->addRoute('Profile/delete','Profile,delete');
 
-$this->addRoute('Profile/Order','Profile,getAllOrder');
+$this->addRoute('Order/order_list/{user_id}','Order,getAllOrder');
+$this->addRoute('Order/seeOrder/{order_id}','Order,seeOrder');
 
 //This is for the shopping cart
 $this->addRoute('Cart/index', 'Cart,viewCart');
 $this->addRoute('Cart/add/{product_id}', 'Cart,addToCart');
+$this->addRoute('Cart/delete/{product_id}', 'Cart,removeFromCart');
 
 // Product Management Routes------------------------------------------------------------------------Start
 $this->addRoute('Product/index', 'Product,index'); // User viewable product list
