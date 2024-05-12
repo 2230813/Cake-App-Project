@@ -29,4 +29,11 @@ $this->addRoute('Product/delete/{product_id}', 'Product,delete'); // Delete a pr
 $this->addRoute('Product/adminEdit/{product_id}', 'Product,adminEdit'); // Modify a product
 $this->addRoute('Product/modify/{product_id}', 'Product,modify'); // Modify a product
 $this->addRoute('Product/adminDelete', 'Product,adminDelete'); // Delete a product
+
+// -------------------------------------------------------------------------------------------------End
+
+// Admin--------------------------------------------------------------------------------------------Start
+
+$this->addRoute('Admin/dashboard', 'Admin,dashboard');
+
 // -------------------------------------------------------------------------------------------------End

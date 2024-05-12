@@ -95,7 +95,7 @@ class Profile extends \app\core\Model{
 
 	public function getProfileName($profile_id) {
 		$SQL = "SELECT first_name FROM profile WHERE profile_id = :profile_id";
-		$STMT = self::$_connection->prepare($SQL);
+		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(['profile_id' => $profile_id]);
 		$result = $STMT->fetch();
 	}

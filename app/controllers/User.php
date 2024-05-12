@@ -4,27 +4,31 @@ namespace app\controllers;
 class User extends \app\core\Controller{
 	
 	function login(){
-		//show the login form and log the user in
 		if($_SERVER['REQUEST_METHOD'] === 'POST'){
-			//log the user in... if the password is right
-			//get the user from the database
 			$username = $_POST['username'];
+			$password = $_POST['password'];
 			$user = new \app\models\User();
 			$user = $user->get($username);
-			//check the password against the hash
-			$password = $_POST['password'];
+	
 			if($user && $user->active && password_verify($password, $user->password_hash)){
-				//remember that this is the user logging in...
 				$_SESSION['user_id'] = $user->user_id;
-
-				header('location:/Profile/index');
+				$_SESSION['username'] = $user->username;  // Store username in session
+	
+				// Redirect to the admin dashboard if the user is 'Admin'
+				if(strtolower($username) === 'admin') {
+					header('location:/Admin/dashboard');
+				} else {
+					header('location:/Profile/index');
+				}
 			}else{
 				header('location:/User/login');
+				// Optionally add an error message to inform the user
 			}
 		}else{
 			$this->view('User/login');
 		}
 	}
+	
 
 	function logout(){
 		//session_destroy();
