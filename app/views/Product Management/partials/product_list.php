@@ -36,8 +36,8 @@
                     <?php endif; ?>
                 </td>
                 <td>
-                    <a href="/Product/adminEdit/<?= htmlspecialchars($product->product_id) ?>">Edit</a>
-                    <a href="/Product/delete/<?= htmlspecialchars($product->product_id) ?>" onclick="return confirm('Are you sure you want to delete: <?= htmlspecialchars($product->name) ?>?')">Delete</a>
+                    <a href="/Product/adminEdit/<?= htmlspecialchars($product->product_id) ?>" class="btn btn-primary">Edit</a>
+                    <a href="/Product/delete/<?= htmlspecialchars($product->product_id) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete: <?= htmlspecialchars($product->name) ?>?')">Delete</a>
                 </td>
             </tr>
             <?php endforeach; ?>
