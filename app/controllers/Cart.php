@@ -29,6 +29,12 @@ class Cart extends \app\core\Controller {
     // public function removeFromCart($productId) {
     //     $this->cartModel->delete($productId);
     // }
+    public function removeFromCart($productId) {
+        $cartModel = new \app\models\CartDetails();
+        $cartModel->delete($productId);
+        // Redirect back to the cart page after removing the product
+        header('location:/Cart/viewCart');
+    }
 
     // public function updateItemAmounts($productId, $newAmount) {
     //     $this->cartModel->update($productId, $newAmount);
