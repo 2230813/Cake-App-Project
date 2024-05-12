@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="\css\product.css">
 </head>
 <body>
+    <a href="/User/login" class="add-to-cart-btn">Login</a>
+    <a href="/User/logout" class="add-to-cart-btn">Logout</a>
     <div class="container">
         <h2>Our Products</h2>
         <a href="/Profile/index" class="add-to-cart-btn">Profile</a>
