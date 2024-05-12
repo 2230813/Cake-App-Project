@@ -17,11 +17,18 @@ class Order extends \app\core\Controller {
 		}
     }
 
-    public function getAllOrder($profile_id){
+    public function getAllOrder($user_id){
         $order = new \app\models\Order();
-		$order = $order->getAll($profile_id);
+		$order = $order->getAll($user_id);
 		
-        $this->view('Profile/Order',$order);
+        $this->view('Order/order_list',$order);
+    }
+
+    public function seeOrder($order_id){
+        $order = new \app\models\Order();
+        $order = $order->get($order_id);
+
+        $this->view('Order/seeOrder', $order);
     }
 
 
