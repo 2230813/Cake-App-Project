@@ -9,18 +9,29 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="h3">Publications</h1>
-    <p>========================================================</p>
-    <?php foreach ($data as $order) { ?>
-    <div class="order">
-    <h1> Order : 
-        <a href="/Profile/Order<?= urlencode($profile_id->profile_id) ?>">
-           NOOOOOOOOOOOOOOOOOOO<?= htmlspecialchars($order->order_id) ?>
-        </a>
-    </h1>
-        <p>========================================================</p>
-    </div>
-<?php } ?>
+<h1>Orders</h1>
+    <?php if (!empty($order)): ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Details</th>
+                    <!-- Add other fields as necessary -->
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($order as $ord): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($ord->id) ?></td>
+                        <td><?= htmlspecialchars($ord->details) ?></td>
+                        <!-- Output other fields as necessary -->
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>No orders found.</p>
+    <?php endif; ?>
 </div>
 </body>
 </html>
