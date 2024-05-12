@@ -3,15 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Profile | Cake Shop</title>
-    <link rel="stylesheet" href="../../../common/css/base.css">
-    <link rel="stylesheet" href="../../../common/css/profile.css">
+    <link rel="stylesheet" href="\css\base.css">
+    <link rel="stylesheet" href="\css\profile.css">
+    <link rel="stylesheet" href="\css\product.css">
 </head>
 <body>
+    <a href="/User/login" class="add-to-cart-btn">Login</a>
+    <a href="/User/logout" class="add-to-cart-btn">Logout</a>
     <div class="profile-container">
         <h2>User Profile</h2>
-        <a href="/Profile/edit">Edit</a>
-        <a href="/Profile/delete">Delete</a>
-        <a href="/Cart/index">View Cart</a>
+        <a href="/Profile/edit" class="add-to-cart-btn">Edit</a>
+        <a href="/Profile/delete" class="add-to-cart-btn">Delete</a>
+        <a href="/Cart/index" class="add-to-cart-btn">View Cart</a>
+        <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>
         <div class="profile-flex">
             <div class="profile-sidebar">
                 <div class="profile-info">

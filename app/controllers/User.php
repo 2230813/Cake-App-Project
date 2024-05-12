@@ -17,7 +17,7 @@ class User extends \app\core\Controller{
 				//remember that this is the user logging in...
 				$_SESSION['user_id'] = $user->user_id;
 
-				header('location:/Cake/catalog');
+				header('location:/Profile/index');
 			}else{
 				header('location:/User/login');
 			}

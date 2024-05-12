@@ -2,7 +2,7 @@
 <?php if (isset($products) && is_array($products) && !empty($products)): ?>
 <section class="product-list">
     <h2>Current Products</h2>
-    <form method="get" action="/Product/adminCreate">
+    <form method="get" action="/Product/adminEdit/<?= htmlspecialchars($product->product_id) ?>">
         <input type="text" name="search" placeholder="Search products by name..." />
         <button type="submit">Search</button>
     </form>

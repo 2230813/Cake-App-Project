@@ -3,6 +3,8 @@ namespace app\core;
 
 use PDO;
 
+use PDOException;
+
 class Model{
 	protected static $_conn = null;
 	//self is the keyword to access the class definition and

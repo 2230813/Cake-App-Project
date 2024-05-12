@@ -28,6 +28,13 @@ class Profile extends \app\core\Model{
             'language_preference'=>$this->language_preference
             ]
 		);
+		//This is to get the latest inserted profile_id
+		$this->profile_id = self::$_conn->lastInsertId();
+
+        //Creating a cart for the profile that was created
+        $cartSQL = 'INSERT INTO cart(profile_id) VALUE (:profile_id)';
+        $cartSTMT = self::$_conn->prepare($cartSQL);
+        $cartSTMT->execute(['profile_id' => $this->profile_id]);
 	}
 
 	//read

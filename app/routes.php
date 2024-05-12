@@ -16,3 +16,17 @@ $this->addRoute('Profile/Order','Profile,getAllOrder');
 
 //This is for the shopping cart
 $this->addRoute('Cart/index', 'Cart,viewCart');
+$this->addRoute('Cart/add/{product_id}', 'Cart,addToCart');
+
+// Product Management Routes------------------------------------------------------------------------Start
+$this->addRoute('Product/index', 'Product,index'); // User viewable product list
+$this->addRoute('Product/adminCreate', 'Product,adminCreate'); // Admin view for creating and listing products
+$this->addRoute('Product/adminCreate', 'Product,adminCreate'); // Admin view for creating and listing products
+$this->addRoute('Product/create', 'Product,create'); // Actual product creation action
+$this->addRoute('Product/delete/{product_id}', 'Product,delete'); // Delete a product
+
+// Test
+$this->addRoute('Product/adminEdit/{product_id}', 'Product,adminEdit'); // Modify a product
+$this->addRoute('Product/modify/{product_id}', 'Product,modify'); // Modify a product
+$this->addRoute('Product/adminDelete', 'Product,adminDelete'); // Delete a product
+// -------------------------------------------------------------------------------------------------End

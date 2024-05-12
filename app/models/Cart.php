@@ -6,6 +6,8 @@ use PDO;
 class Cart extends \app\core\Model{
 	public $cart_id;
 	public $profile_id;
+	public $total_price;
+	public $status;
 
 	
 	public function insert(){
@@ -18,26 +20,36 @@ class Cart extends \app\core\Model{
 				'profile_id' => $this->profile_id];
 		$STMT->execute($data);
 	}
+
+	public function getByProfileId($profile_id){
+		$SQL = 'SELECT * FROM cart WHERE profile_id = :profile_id AND status = :status';
+		//prepare the statement
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['profile_id' => $profile_id,
+						'status' => 'cart']);//run
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Cart');//choose the type of return from fetch
+		return $STMT->fetch();//fetch
+	}
     
 
 	//get
-    /*
-	public function get($username){
-		$SQL = 'SELECT * FROM user WHERE username = :username';//define the SQL
-		$STMT = self::$_conn->prepare($SQL);//prepare
-		$STMT->execute(['username' => $username]);//run
-		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');//choose the type of return from fetch
-		return $STMT->fetch();//fetch
-	}
+    
+	// public function get($username){
+	// 	$SQL = 'SELECT * FROM user WHERE username = :username';//define the SQL
+	// 	$STMT = self::$_conn->prepare($SQL);//prepare
+	// 	$STMT->execute(['username' => $username]);//run
+	// 	$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');//choose the type of return from fetch
+	// 	return $STMT->fetch();//fetch
+	// }
 
-	public function getById($user_id){
-		$SQL = 'SELECT * FROM user WHERE user_id = :user_id';//define the SQL
-		$STMT = self::$_conn->prepare($SQL);//prepare
-		$STMT->execute(['user_id' => $user_id]);//run
-		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');//choose the type of return from fetch
-		return $STMT->fetch();//fetch
-	}
-    */
+	// public function getById($user_id){
+	// 	$SQL = 'SELECT * FROM user WHERE user_id = :user_id';//define the SQL
+	// 	$STMT = self::$_conn->prepare($SQL);//prepare
+	// 	$STMT->execute(['user_id' => $user_id]);//run
+	// 	$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');//choose the type of return from fetch
+	// 	return $STMT->fetch();//fetch
+	// }
+    
 
     /*
 	//update

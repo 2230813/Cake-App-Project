@@ -3,30 +3,44 @@ namespace app\controllers;
 
 //applying the Login condition to the whole class
 #[\app\filters\Login]
+#[\app\filters\HasProfile]
 class Cart extends \app\core\Controller {
 
-    public function addToCart($productid){
+    // public function __construct() {
+    //     $this->cartModel = new \app\models\CartDetails();
+    // }
+
+    public function addToCart($product_id) {
+        $cart2 = new \app\models\Cart();
+        $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
         $cart = new \app\models\CartDetails();
-        $cart->product_id = $productid;
+        
+        // echo $_SESSION['profile_id'];
+        // var_dump($cart2);
+        
+        $cart->cart_id = $cart2->cart_id;
+        $cart->product_id = $product_id;
+        //var_dump($cart);
         $cart->insert();
+
+        header('location:/Cart/index');
     }
 
-    public function removeFromCart($productid){
-        $cart = new \app\models\CartDetails();
-        $cart = $cart->getCartItems();
-        $cart->product_id = $productid;
-    }
+    // public function removeFromCart($productId) {
+    //     $this->cartModel->delete($productId);
+    // }
 
-    public function updateItemAmounts($productid, $newAmount){
-        $cart = new \app\models\CartDetails();
-        $cart = $cart->getCartItems();
-        $cart->update($productid, $newAmount);
-    }
+    // public function updateItemAmounts($productId, $newAmount) {
+    //     $this->cartModel->update($productId, $newAmount);
+    // }
 
-    public function viewCart(){
-        $cart = new \app\models\CartDetails();
-        $cart = $cart->getCartItems();
-        //Send to the proper view
-        $this->view('Cart/index', $cart);
+    public function viewCart() {
+        $cart2 = new \app\models\Cart();
+        $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
+        $cartModel = new \app\models\CartDetails();
+        $cartModel->cart_id = $cart2->cart_id;
+        $cartItems = $cartModel->getCartItems();
+        //var_dump($cartItems);
+        $this->view('Cart/index', $cartItems);
     }
 }
