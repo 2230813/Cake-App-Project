@@ -26,7 +26,7 @@
                             <a href="/Cart/add/<?= $product->product_id ?>" class="add-to-cart-btn">Add to Cart</a>
                         </div>
                 </div>
-            <?php } ?>   
+            <?php } ?>
 
         </div>
         </form>

@@ -3,7 +3,7 @@ namespace app\controllers;
 // controllers/Product.php
 
 // Apply the Login condition to the whole class
-// #[\app\filters\Login]
+#[\app\filters\Login]
 class Product extends \app\core\Controller {
 
     // Display all products

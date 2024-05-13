@@ -34,14 +34,22 @@ class CartDetails extends \app\core\Model{
 	}
 
 
-	//delete - this is a special delete to deactivate accounts
+	//delete product from cart
 	function delete($product_id){
-		$SQL = 'DELETE FROM cart WHERE product_id = :product_id';
+		$SQL = '
+        WITH CartItems AS (
+            SELECT cart_id 
+            FROM cartDetails 
+            WHERE product_id = :product_id
+        )
+        DELETE FROM cart 
+        WHERE cart_id IN (SELECT cart_id FROM CartItems)
+    ';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
         $STMT->execute([
-            'product_id' => $product_id
+            'product_id' => $this->product_id
         ]);
 	}
 
