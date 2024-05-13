@@ -29,11 +29,14 @@ class Cart extends \app\core\Controller {
     // public function removeFromCart($productId) {
     //     $this->cartModel->delete($productId);
     // }
-    public function removeFromCart($productId) {
+    public function removeFromCart($product_id) {
+        $cart2 = new \app\models\Cart();
+        $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
         $cartModel = new \app\models\CartDetails();
-        $cartModel->delete($productId);
+        $cartModel->cart_id = $cart2->cart_id;
+        $cartModel->delete($product_id);
         // Redirect back to the cart page after removing the product
-        header('location:/Cart/viewCart');
+        header('location:/Cart/index');
     }
 
     // public function updateItemAmounts($productId, $newAmount) {
