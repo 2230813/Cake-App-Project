@@ -14,6 +14,7 @@ $this->addRoute('Profile/delete','Profile,delete');
 
 $this->addRoute('Order/order_list/{user_id}','Order,getAllOrder');
 $this->addRoute('Order/seeOrder/{order_id}','Order,seeOrder');
+$this->addRoute('Order/delete/{order_id}','Order,delete');
 
 //This is for the shopping cart
 $this->addRoute('Cart/index', 'Cart,viewCart');

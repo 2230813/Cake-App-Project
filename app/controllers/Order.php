@@ -11,8 +11,8 @@ class Order extends \app\core\Controller {
         if($_SERVER['REQUEST_METHOD'] === 'POST'){ 
 			$order = new \app\models\Order();
 			$order = $order->get($order_id);
-			$order->remove();
-			//header('location:/order/seeUserPost/' . $order->profile_id);
+			$order->cancelOrder($order_id);
+			header('location:/Order/order_list/' . $order->order_id);
 			
 		}
     }

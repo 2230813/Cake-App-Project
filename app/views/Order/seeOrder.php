@@ -19,7 +19,7 @@
             <p class="price"><?= $data->totalAmount ?></p>
             <p class="date"><?= $data->date ?></p>
             <h3> Status : <?= $data->status ?></h3>
-            <a href="/Order/cancelOrder" class="add-to-cart-btn">Cancel My Order</a>
+            <a href="/Order/cancelOrder/<?= htmlspecialchars($data->orderID) ?>" class="add-to-cart-btn">Cancel My Order</a>
         </div>
     </div>
 </body>
