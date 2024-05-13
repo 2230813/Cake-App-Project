@@ -49,7 +49,7 @@ class CartDetails extends \app\core\Model{
         $STMT = self::$_conn->prepare($SQL);
         // Execute
         $STMT->execute([
-            'product_id' => $product_id
+            'product_id' => $this->product_id
         ]);
 	}
 
