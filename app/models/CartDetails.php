@@ -36,20 +36,13 @@ class CartDetails extends \app\core\Model{
 
 	//delete product from cart
 	function delete($product_id){
-		$SQL = '
-        WITH CartItems AS (
-            SELECT cart_id 
-            FROM cartDetails 
-            WHERE product_id = :product_id
-        )
-        DELETE FROM cart 
-        WHERE cart_id IN (SELECT cart_id FROM CartItems)
-    ';
+		$SQL = 'DELETE FROM cartDetails WHERE product_id = :product_id AND cart_id = :cart_id';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
         $STMT->execute([
-            'product_id' => $this->product_id
+            'product_id' =>$product_id,
+            'cart_id'=>$this->cart_id
         ]);
 	}
 

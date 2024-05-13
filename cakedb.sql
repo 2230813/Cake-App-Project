@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 12, 2024 at 05:25 AM
+-- Generation Time: May 13, 2024 at 04:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,12 +22,14 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cakedb`;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cart`
 --
 
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
@@ -41,7 +43,9 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (1, 3, 0.00, 'cart'),
-(2, 4, 0.00, 'cart');
+(2, 4, 0.00, 'cart'),
+(3, 5, 0.00, 'cart'),
+(4, 6, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -49,6 +53,7 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 -- Table structure for table `cartDetails`
 --
 
+DROP TABLE IF EXISTS `cartDetails`;
 CREATE TABLE `cartDetails` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -62,7 +67,14 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 (2, 1),
 (2, 1),
 (2, 1),
-(2, 2);
+(2, 2),
+(3, 1),
+(3, 2),
+(3, 3),
+(3, 3),
+(3, 3),
+(3, 1),
+(3, 6);
 
 -- --------------------------------------------------------
 
@@ -70,6 +82,7 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 -- Table structure for table `orders`
 --
 
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -84,6 +97,7 @@ CREATE TABLE `orders` (
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -99,8 +113,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quantity`, `image_path`) VALUES
-(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 5, ''),
-(2, 'Chocolate Cake', 'Wedding Cake', 29.99, 'LG P GPIU GIUg iug I. iu ; hu dhgs:GH gh:Uhu;h ;h. IU u. g fJTY fiYT fiUYS fUSYK fOUY fgKUYSf SUf gs', 4, '');
+(1, 'Vanilla Cake', 'Birthday Cake', 18.99, 'lFG YLGIYSG SIG SI GASI G aiog ies gisg iug aiug alugl glyayg giyg iw gawi gwaig', 52343, 'uploads/cake_test.png'),
+(2, 'Chocolate Cake', 'Wedding Cake', 29.99, 'LG P GPIU GIUg iug I. iu ; hu dhgs:GH gh:Uhu;h ;h. IU u. g fJTY fiYT fiUYS fUSYK fOUY fgKUYSf SUf gs', 4, 'uploads/cake_chocolate.png'),
+(3, 'Final Testing 2', 'Wedding Cake', 567.00, '34234', 1233442, 'uploads/Final Testing 2_1715484370.png'),
+(6, 'Test For Cart', 'Custom Cake', 1234.00, 'Cart Testing', 123245, 'uploads/Test For Cart_1715567741.png');
 
 -- --------------------------------------------------------
 
@@ -108,6 +124,7 @@ INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quanti
 -- Table structure for table `profile`
 --
 
+DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -126,7 +143,9 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 (1, 1, 'Jodel', 'Briones', '123 Cake St', '514-111-1111', 'EN'),
 (2, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR'),
 (3, 2, 'manas', 'patel', '321 Cake Street', '514-222-1111', 'FR'),
-(4, 3, 'Louisa', 'Lieu', '524 Cake dr', '514-111-4444', 'EN');
+(4, 3, 'Louisa', 'Lieu', '524 Cake dr', '514-111-4444', 'EN'),
+(5, 4, 'Johann', 'Culla-ag', '1234 Street, San Andreas, GTA', '514-123-4567', 'FR'),
+(6, 5, 'THE', 'Admin', '1234 Street, San Andreas, GTA', '514-123-4567', 'EN');
 
 -- --------------------------------------------------------
 
@@ -134,6 +153,7 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -149,7 +169,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
 (1, 'jodel', '$2y$10$bdMCJmTVBZIWbnw4r46VpuNOrqY15He79WUK2PVCwaZckNQ9IvXKK', 'jodel@gmail.com', 1),
 (2, 'manas', '$2y$10$WRQLtaB2Bq2B235A5k7MPOxVvkjth321DJ8sF3JFXPpftErHT0sRG', 'manas@vanier.com', 1),
-(3, 'Louisa', '$2y$10$4TDP964JQyiKsYjb6wOHJOJfR7.r485D8RiC5ORbUmQUwBTeOYe6W', 'louisa@vanier.com', 1);
+(3, 'Louisa', '$2y$10$4TDP964JQyiKsYjb6wOHJOJfR7.r485D8RiC5ORbUmQUwBTeOYe6W', 'louisa@vanier.com', 1),
+(4, 'Johann Culla-ag', '$2y$10$6X1COHrRyJ.PII/RIUCSt.zGawvGMfTcEQYblnutQOBSBloYveOHq', 'johanncullaag@gmail.com', 1),
+(5, 'Admin', '$2y$10$7es7MLdObSx.OBVtGE.5CO1AYuDbAp3YFTMafFNjgeuJHF8m0mAPq', 'Admin@email.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -202,7 +224,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -214,19 +236,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

@@ -24,7 +24,6 @@ $this->addRoute('Cart/delete/{product_id}', 'Cart,removeFromCart');
 // Product Management Routes------------------------------------------------------------------------Start
 $this->addRoute('Product/index', 'Product,index'); // User viewable product list
 $this->addRoute('Product/adminCreate', 'Product,adminCreate'); // Admin view for creating and listing products
-$this->addRoute('Product/adminCreate', 'Product,adminCreate'); // Admin view for creating and listing products
 $this->addRoute('Product/create', 'Product,create'); // Actual product creation action
 $this->addRoute('Product/delete/{product_id}', 'Product,delete'); // Delete a product
 
