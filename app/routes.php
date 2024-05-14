@@ -1,6 +1,9 @@
 <?php
 //defined a few routes "url"=>"controller,method"
 //User
+$this->addRoute('','User,login');
+
+
 $this->addRoute('User/register','User,register');
 $this->addRoute('User/login','User,login');
 $this->addRoute('User/logout','User,logout');
@@ -43,3 +46,7 @@ $this->addRoute('Product/adminDelete', 'Product,adminDelete'); // Delete a produ
 $this->addRoute('Admin/dashboard', 'Admin,dashboard');
 
 // -------------------------------------------------------------------------------------------------End
+
+// Review routes
+$this->addRoute('Review/save', 'Review,save'); // Combined create and modify
+$this->addRoute('Review/delete', 'Review,delete'); // Delete review
