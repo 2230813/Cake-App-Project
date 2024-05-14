@@ -1,0 +1,2 @@
+msgid "Password:"
+msgstr "Password:"

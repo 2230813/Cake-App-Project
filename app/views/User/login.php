@@ -16,7 +16,7 @@
                 <input type="text" id="name" name="username" >
             </div>
             <div class="form-control">
-                <label for="password">Password:</label>
+                <label for="password"><?= __('Password:') ?></label>
                 <input type="password" id="password" name="password" >
             </div>
             <input type="submit" class="btn" name="action" value="Log In"/>

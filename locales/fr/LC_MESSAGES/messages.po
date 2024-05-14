@@ -1,0 +1,2 @@
+msgid "Password:"
+msgstr "Mot de passe:"
