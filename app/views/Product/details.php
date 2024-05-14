@@ -20,7 +20,7 @@
             <p class="description"><?= $data->type ?></p>
             <p class="price"><?= $data->price ?></p>
             <p class="description"><?= $data->quantity ?></p>
-            <button class="add-to-cart-btn">Add to Cart</button>
+            <a href="/Cart/add/<?= $data->product_id ?>" class="add-to-cart-btn">Add to Cart</a>
         </div>
     </div>
 </body>

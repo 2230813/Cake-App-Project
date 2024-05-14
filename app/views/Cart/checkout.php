@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="/css/order.css">
 </head>
 <body>
+    <a href="/User/login" class="remove-item-btn">Login</a>
+    <a href="/User/logout" class="remove-item-btn">Logout</a>
     <div class="container">
         <h2>Checkout</h2>
-
+        <a href="/Cart/index" class="remove-item-btn">View Cart</a>
+        <a href="/Cake/catalog" class="remove-item-btn">View Catalog</a>
         <div class="ordered-items">
             <h3>Your Order</h3>
-            <?php foreach ($data as $product) { ?>
+            <?php foreach ($cartItems as $product) { ?>
             <div class="order-item">
                 <div class="item-name"><?= $product->name ?></div>
                 <div class="item-quantity">Quantity: 1</div>
@@ -32,10 +35,10 @@
             <div class="billing-info">
                 <h4>Billing Information</h4>
                 <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="fullName" placeholder="Jane Dough" required>
+                <input type="text" id="fullName" name="fullName" placeholder="Jane Dough" value="<?= $profile->first_name ?> <?= $profile->last_name ?>" required>
                 <br>
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" placeholder="123 Cake Street" required>
+                <input type="text" id="address" name="address" placeholder="123 Cake Street" value="<?= $profile->address ?>" required>
                 
                 <!-- Add more billing fields if necessary -->
             </div>

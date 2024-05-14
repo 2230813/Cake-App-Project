@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="/css/order.css">
 </head>
 <body>
+    <a href="/User/login" class="remove-item-btn">Login</a>
+    <a href="/User/logout" class="remove-item-btn">Logout</a>
     <div class="container">
         <h2>Your Shopping Cart</h2>
+        <a href="/Cake/catalog" class="remove-item-btn">View Catalog</a>
         <div class="cart">
         <?php foreach ($data as $product) { ?>
             <div class="cart-item">

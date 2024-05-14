@@ -60,6 +60,12 @@ class Cart extends \app\core\Controller {
         $cartModel->cart_id = $cart2->cart_id;
         $cartItems = $cartModel->getCartItems();
 
-        $this->view('Cart/checkout', $cartItems);
+        $profile = new \app\models\Profile();
+        $profile = $profile->getForUser($_SESSION['user_id']);
+
+        $this->view('Cart/checkout', [
+            'cartItems' => $cartItems,
+            'profile' => $profile
+        ]);
     }
 }
