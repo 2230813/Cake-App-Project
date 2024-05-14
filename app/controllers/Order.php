@@ -31,6 +31,8 @@ class Order extends \app\core\Controller {
         $this->view('Order/seeOrder', $order);
     }
 
-
+    public function placeOrder(){
+        
+    }
 
 }

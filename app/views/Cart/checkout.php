@@ -31,7 +31,7 @@
             </div>            
         </div>        
         <br>
-        <form class="checkout-form">
+        <form class="checkout-form" method='post' action=''>
             <div class="billing-info">
                 <h4>Billing Information</h4>
                 <label for="fullName">Full Name:</label>
@@ -57,7 +57,8 @@
                 <!-- Add more payment fields if necessary -->
             </div>
             
-            <button type="submit" class="submit-btn">Confirm Payment</button>
+            <!-- <button type="submit" class="submit-btn" name="action">Confirm Payment</button> -->
+                <a href="/Order/index" class="submit-btn">Confirm Payment</a>
         </form>
     </div>
 </body>

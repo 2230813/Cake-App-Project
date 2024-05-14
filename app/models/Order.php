@@ -4,11 +4,10 @@ namespace app\models;
 use PDO;
 
 Class Order extends \app\core\Model{
-    public $orderID;//PK
+    public $order_id;//PK
+    public $cart_id;//FK
     public $date;
     public $status;
-    public $totalAmount;
-    public $user_id;//FK
 
 
     public function get($order_id) {
