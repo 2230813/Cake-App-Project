@@ -52,4 +52,14 @@ class Cart extends \app\core\Controller {
         //var_dump($cartItems);
         $this->view('Cart/index', $cartItems);
     }
+
+    public function checkout(){
+        $cart2 = new \app\models\Cart();
+        $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
+        $cartModel = new \app\models\CartDetails();
+        $cartModel->cart_id = $cart2->cart_id;
+        $cartItems = $cartModel->getCartItems();
+
+        $this->view('Cart/checkout', $cartItems);
+    }
 }

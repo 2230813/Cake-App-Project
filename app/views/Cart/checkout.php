@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,25 +12,14 @@
 
         <div class="ordered-items">
             <h3>Your Order</h3>
+            <?php foreach ($data as $product) { ?>
             <div class="order-item">
-                <div class="item-name">Classic Vanilla Cake</div>
+                <div class="item-name"><?= $product->name ?></div>
                 <div class="item-quantity">Quantity: 1</div>
-                <div class="item-price">$15.00</div>
+                <div class="item-price"><?= $product->price ?></div>
             </div>
-            <div class="order-item">
-                <div class="item-name">Chocolate Mousse Cake</div>
-                <div class="item-quantity">Quantity: 2</div>
-                <div class="item-price">$30.00</div>
-            </div>
-            <div class="order-item">
-                <div class="item-name">Custom Red Velvet Cake</div>
-                <div class="item-quantity">Quantity: 1</div>
-                <div class="item-price">$45.00</div>
-            </div>
-            <div class="order-total">
-                <div class="total-title">Total:</div>
-                <div class="total-price">$90.00</div>
-            </div>
+            <?php } ?>
+            
             <div class="delivery-options">
                 <input type="radio" id="pickup" name="delivery" value="pickup" checked>
                 <label for="pickup">Pick Up</label>

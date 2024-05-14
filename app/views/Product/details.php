@@ -13,7 +13,7 @@
         <h2><?= $data->name ?></h2>
         <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>
         <div class="product-image">
-            <img src="../../../common/images/deluxe-chocolate-cake.jpg" alt="Vanilla Bean Cake">
+        <img src=<?= $data->image_path ?> enctype="multipart/form-data">
         </div>
         <div class="product-info">
             <p class="description"><?= $data->details ?></p>
