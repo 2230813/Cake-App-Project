@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2024 at 03:59 AM
+-- Generation Time: May 14, 2024 at 05:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,7 +46,9 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (2, 4, 0.00, 'cart'),
 (3, 5, 0.00, 'cart'),
 (4, 6, 0.00, 'cart'),
-(5, 7, 48.98, 'cart');
+(5, 7, 48.98, 'ordered'),
+(6, 7, 48.98, 'ordered'),
+(7, 7, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -74,7 +76,9 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 (3, 1),
 (3, 6),
 (5, 1),
-(5, 2);
+(5, 2),
+(6, 1),
+(6, 2);
 
 -- --------------------------------------------------------
 
@@ -86,9 +90,17 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
   `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`) VALUES
+(3, 6, 7, '2024-05-14', 'ordered');
 
 -- --------------------------------------------------------
 
@@ -196,7 +208,8 @@ ALTER TABLE `cartDetails`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `ORDER_CART_ID_FK` (`cart_id`);
+  ADD KEY `ORDER_CART_ID_FK` (`cart_id`),
+  ADD KEY `ORDER_PROFILE_ID_FK` (`profile_id`);
 
 --
 -- Indexes for table `product`
@@ -225,13 +238,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -266,7 +279,8 @@ ALTER TABLE `cartDetails`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `ORDER_CART_ID_FK` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `ORDER_CART_ID_FK` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `ORDER_PROFILE_ID_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `profile`

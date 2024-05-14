@@ -19,13 +19,13 @@
         <div class="profile-flex">
             <div class="profile-sidebar">
                 <div class="profile-info">
-                    <p><strong>First Name:</strong> <?= $data->first_name ?></p>
-                    <p><strong>Last Name:</strong> <?= $data->last_name ?></p>
-                    <p><strong>Language:</strong> <?= $data->language_preference ?></p>
+                    <p><strong>First Name:</strong> <?= $profile->first_name ?></p>
+                    <p><strong>Last Name:</strong> <?= $profile->last_name ?></p>
+                    <p><strong>Language:</strong> <?= $profile->language_preference ?></p>
                     <section class="billing-info">
                         <h3>Billing Information</h3>
-                        <p><strong>Address:</strong> <?= $data->address ?></p>
-                        <p><strong>Phone:</strong> <?= $data->phone_number ?></p>
+                        <p><strong>Address:</strong> <?= $profile->address ?></p>
+                        <p><strong>Phone:</strong> <?= $profile->phone_number ?></p>
                     </section>
                     <section class="payment-info">
                         <h3>Payment Information</h3>
@@ -39,8 +39,9 @@
                 <section class="profile-orders">
                     <h3>Your Orders</h3>
                     <ul class="order-list">
-                        <a href='/Order/order_list/<?php echo $data->user_id;?>'>View Order</a>
-                        <!-- More orders can be listed here -->
+                        <?php foreach ($orders as $order) {?>
+                        <li>Order #10<?=$order->order_id ?> - <span><?= $order->status ?></span> - <a href="/Order/seeOrder/<?= $order->cart_id ?>">View</a></li>
+                        <?php } ?>
                     </ul>
                 </section>
             </div>

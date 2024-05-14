@@ -10,8 +10,15 @@ class Profile extends \app\core\Controller{
 		$profile = new \app\models\Profile();
 		$profile = $profile->getForUser($_SESSION['user_id']);
 		$_SESSION['profile_id'] = $profile->profile_id;
+
+        $orders = new \app\models\Order();
+        $orders = $orders->get($_SESSION['profile_id']);
+
 		//redirect a user that has no profile to the profile creation URL
-		$this->view('Profile/index',$profile);
+		$this->view('Profile/index',[
+            'orders' => $orders,
+            'profile' => $profile
+        ]);
 	}
 
 	public function create(){

@@ -6,16 +6,18 @@ use PDO;
 Class Order extends \app\core\Model{
     public $order_id;//PK
     public $cart_id;//FK
+    public $profile_id;
     public $date;
     public $status;
 
     public function insert($profile_id){
         //define the SQL query
-		$SQL = 'INSERT INTO orders (cart_id) VALUES (:cart_id)';
+		$SQL = 'INSERT INTO orders (cart_id, profile_id) VALUES (:cart_id, :profile_id)';
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
-		$data = ['cart_id' => $this->cart_id,];
+		$data = ['cart_id' => $this->cart_id,
+                 'profile_id'=> $this->profile_id];
 		$STMT->execute($data);
 
         //updating cart status and making new cart for user
@@ -32,20 +34,20 @@ Class Order extends \app\core\Model{
 
     }
 
-    public function get($order_id) {
-        $SQL = "SELECT * FROM orders WHERE orderID = :orderID";
+    public function get($profile_id) {
+        $SQL = "SELECT * FROM orders WHERE profile_id = :profile_id";
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['orderID'=>$order_id]);
+        $STMT->execute(['profile_id'=>$profile_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\models\Order');
-        return $STMT->fetch();
+        return $STMT->fetchAll();
     }
 
-    public function getAll($user_id){
-        $SQL = "SELECT * FROM orders WHERE user_id = :user_id";
-            $STMT = self::$_conn->prepare($SQL);
-            $STMT->execute(['user_id'=>$user_id]);
-            $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\models\Order');
-            return $STMT->fetchAll();
+    public function getOrder($cart_id) {
+        $SQL = "SELECT * FROM orders WHERE cart_id = :cart_id";
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['cart_id'=>$cart_id]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\models\Order');
+        return $STMT->fetch();
     }
 
     public function cancelOrder($order_id){

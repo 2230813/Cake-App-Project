@@ -24,11 +24,18 @@ class Order extends \app\core\Controller {
         $this->view('Order/order_list',$order);
     }
 
-    public function seeOrder($order_id){
+    public function seeOrder($cart_id){
         $order = new \app\models\Order();
-        $order = $order->get($order_id);
+        $order = $order->getOrder($cart_id);
 
-        $this->view('Order/seeOrder', $order);
+        $cartDetails = new \app\models\CartDetails();
+        $cartDetails->cart_id = $order->cart_id;
+        $cartDetails = $cartDetails->getCartItems();
+
+        $this->view('Order/seeOrder', [
+            'order' => $order,
+            'cartDetails' => $cartDetails
+        ]);
     }
 
     public function placeOrder(){
@@ -37,9 +44,10 @@ class Order extends \app\core\Controller {
         $cart = $cart->getByProfileId(($_SESSION['profile_id']));
 
         $order->cart_id = $cart->cart_id;
+        $order->profile_id = $_SESSION['profile_id'];
         $order->insert($_SESSION['profile_id']);
 
-
+        header('location:/Profile/index');
     }
 
 }
