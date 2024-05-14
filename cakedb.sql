@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2024 at 06:25 AM
+-- Generation Time: May 14, 2024 at 07:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `cakedb`
 --
+CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `cakedb`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `cart`
 --
 
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
@@ -46,7 +49,8 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (5, 7, 48.98, 'ordered'),
 (6, 7, 48.98, 'ordered'),
 (7, 7, 0.00, 'ordered'),
-(8, 7, 0.00, 'cart');
+(8, 7, 0.00, 'cart'),
+(9, 8, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -54,6 +58,7 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 -- Table structure for table `cartDetails`
 --
 
+DROP TABLE IF EXISTS `cartDetails`;
 CREATE TABLE `cartDetails` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -83,6 +88,7 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 -- Table structure for table `orders`
 --
 
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
@@ -105,13 +111,21 @@ INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`) VAL
 -- Table structure for table `payment`
 --
 
+DROP TABLE IF EXISTS `payment`;
 CREATE TABLE `payment` (
   `payment_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `card_number` int(30) NOT NULL,
+  `card_number` varchar(30) NOT NULL,
   `expire_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `profile_id`, `name`, `card_number`, `expire_date`) VALUES
+(1, 8, 'Ayush Patel', '123456789012', '2031-05-16');
 
 -- --------------------------------------------------------
 
@@ -119,6 +133,7 @@ CREATE TABLE `payment` (
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -145,6 +160,7 @@ INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quanti
 -- Table structure for table `profile`
 --
 
+DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -166,7 +182,8 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 (4, 3, 'Louisa', 'Lieu', '524 Cake dr', '514-111-4444', 'EN'),
 (5, 4, 'Johann', 'Culla-ag', '1234 Street, San Andreas, GTA', '514-123-4567', 'FR'),
 (6, 5, 'THE', 'Admin', '1234 Street, San Andreas, GTA', '514-123-4567', 'EN'),
-(7, 6, 'Tester123', '123Testing', '311 Cake St', '514-111-2222', 'EN');
+(7, 6, 'Tester123', '123Testing', '311 Cake St', '514-111-2222', 'EN'),
+(8, 7, 'Ayush', 'Patel', '8910', '5145492540', 'EN');
 
 -- --------------------------------------------------------
 
@@ -174,6 +191,7 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -192,7 +210,8 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) V
 (3, 'Louisa', '$2y$10$4TDP964JQyiKsYjb6wOHJOJfR7.r485D8RiC5ORbUmQUwBTeOYe6W', 'louisa@vanier.com', 1),
 (4, 'Johann Culla-ag', '$2y$10$6X1COHrRyJ.PII/RIUCSt.zGawvGMfTcEQYblnutQOBSBloYveOHq', 'johanncullaag@gmail.com', 1),
 (5, 'Admin', '$2y$10$7es7MLdObSx.OBVtGE.5CO1AYuDbAp3YFTMafFNjgeuJHF8m0mAPq', 'Admin@email.com', 1),
-(6, 'Tester', '$2y$10$inB5qgWPCMDS7DAvK3TVNelehXuJk7U8evrmqy/X0VBS/Akj5PYje', 'tester@vanier.com', 1);
+(6, 'Tester', '$2y$10$inB5qgWPCMDS7DAvK3TVNelehXuJk7U8evrmqy/X0VBS/Akj5PYje', 'tester@vanier.com', 1),
+(7, 'ayush', '$2y$10$a8gEYdDRtis4g/rPW0kLuezZqbtdneZHkc7vbGa7tTAd8t/4xatV6', 'ayushp05@hotmail.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -253,7 +272,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -265,7 +284,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -277,13 +296,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

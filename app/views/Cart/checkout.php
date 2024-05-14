@@ -45,15 +45,16 @@
             
             <div class="payment-info">
                 <h4>Payment Information</h4>
+                <?php foreach ($payments as $payment) { ?>
                 <label for="cardNumber">Card Number:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="•••• •••• •••• 1234" required>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="•••• •••• •••• 1234" value="<?= $payment->card_number ?>" required>
                 <br>
                 <label for="cardExpiry">Expiry Date:</label>
-                <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" required>
+                <input type="text" id="cardExpiry" name="cardExpiry" placeholder="YYYY-MM-DD" value="<?= $payment->expire_date ?>" required>
                 <br>
-                <label for="cardCVC">CVC:</label>
-                <input type="text" id="cardCVC" name="cardCVC" placeholder="123" required>
-                
+                <label for="cardCVC">Name:</label>
+                <input type="text" id="cardCVC" name="cardCVC" placeholder="Name" value="<?= $payment->name ?>" required>
+                <?php } ?>
                 <!-- Add more payment fields if necessary -->
             </div>
             

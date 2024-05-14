@@ -56,10 +56,12 @@ class Cart extends \app\core\Controller {
     public function viewCart() {
         $cart = new \app\models\Cart();
         $cart = $cart->getByProfileId(($_SESSION['profile_id']));
+        
         $cartModel = new \app\models\CartDetails();
         $cartModel->cart_id = $cart->cart_id;
         $cartItems = $cartModel->getCartItems();
         //var_dump($cartItems);
+        
         $this->view('Cart/index', [
             'cartItems' => $cartItems,
             'cart' => $cart
@@ -69,16 +71,21 @@ class Cart extends \app\core\Controller {
     public function checkout(){
         $cart2 = new \app\models\Cart();
         $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
+        
         $cartModel = new \app\models\CartDetails();
         $cartModel->cart_id = $cart2->cart_id;
         $cartItems = $cartModel->getCartItems();
+
+        $payments = new \app\models\Payment();
+		$payments = $payments->get($_SESSION['profile_id']);
 
         $profile = new \app\models\Profile();
         $profile = $profile->getForUser($_SESSION['user_id']);
 
         $this->view('Cart/checkout', [
             'cartItems' => $cartItems,
-            'profile' => $profile
+            'profile' => $profile,
+            'payments' => $payments
         ]);
     }
 }

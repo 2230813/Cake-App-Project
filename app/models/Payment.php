@@ -30,4 +30,16 @@ Class Payment extends \app\core\Model{
             ]
 		);
     }
+
+    public function insert() {
+        $SQL = 'INSERT INTO payment (profile_id, name, card_number, expire_date) VALUES (:profile_id, :name, :card_number, :expire_date)';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'profile_id' => $this->profile_id,
+            'name' => $this->name,
+            'card_number' => $this->card_number,
+            'expire_date' => $this->expire_date
+        ]);
+        $this->payment_id = self::$_conn->lastInsertId();
+    }
 }

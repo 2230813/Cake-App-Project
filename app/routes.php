@@ -20,6 +20,9 @@ $this->addRoute('Order/seeOrder/{cart_id}','Order,seeOrder');
 $this->addRoute('Order/delete/{order_id}','Order,delete');
 $this->addRoute('Order/index','Order,placeOrder');
 
+$this->addRoute('Profile/add_payment','Payment,add');
+$this->addRoute('Profile/edit_payment','Payment,edit');
+
 //Cart
 $this->addRoute('Cart/index', 'Cart,viewCart');
 $this->addRoute('Cart/add/{product_id}', 'Cart,addToCart');

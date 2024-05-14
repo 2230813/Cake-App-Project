@@ -29,9 +29,21 @@
                     </section>
                     <section class="payment-info">
                         <h3>Payment Information</h3>
-                        <p><strong>Card Holder:</strong> John Doe</p>
-                        <p><strong>Card Number:</strong> **** **** **** 1234</p>
-                        <p><strong>Expiry:</strong> 12/25</p>
+                        <?php if (empty($payments)) { ?>
+                            <p><strong>Card Holder:</strong> Empty</p>
+                                <p><strong>Card Number:</strong> Empty</p>
+                                <p><strong>Expiry:</strong> Empty</p>
+                                <p>======================================</p>
+                                <a href="/Profile/add_payment" class="add-to-cart-btn">Add Payment</a>
+                        <?php } else { ?>
+                            <?php foreach ($payments as $payment) { ?>
+                                <p><strong>Card Holder:</strong> <?= htmlspecialchars($payment->name) ?></p>
+                                <p><strong>Card Number:</strong> <?= htmlspecialchars($payment->card_number) ?></p>
+                                <p><strong>Expiry:</strong> <?= htmlspecialchars($payment->expire_date) ?></p>
+                                <p>======================================</p>
+                                <a href="/Profile/edit_payment" class="add-to-cart-btn">Modify Payment</a>
+                            <?php } ?>
+                        <?php } ?>
                     </section>
                 </div>
             </div>
