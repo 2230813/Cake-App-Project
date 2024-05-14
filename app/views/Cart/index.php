@@ -13,7 +13,7 @@
         <h2>Your Shopping Cart</h2>
         <a href="/Cake/catalog" class="remove-item-btn">View Catalog</a>
         <div class="cart">
-        <?php foreach ($data as $product) { ?>
+        <?php foreach ($cartItems as $product) { ?>
             <div class="cart-item">
                 <img src="../../../common/images/cake-thumbnail.jpg" alt="Chocolate Cake" class="cart-item-image">
                 <div class="cart-item-details">
@@ -25,7 +25,7 @@
             </div>
             <?php } ?>
             <div class="cart-total">
-                <strong>Total: $32.00</strong>
+                <strong>Total: $<?= $cart->total_price ?></strong>
             </div>
             <div class="checkout-btn-container">
             <a href="/Cart/checkout" class="checkout-btn">Proceed to Checkout</a>

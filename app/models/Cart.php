@@ -51,31 +51,30 @@ class Cart extends \app\core\Model{
 	// }
     
 
-    /*
+    
 	//update
-	public function update($product_id, $new_quantity){
-        $SQL = 'UPDATE cart SET quantity = :new_quantity WHERE cart_id = :cart_id AND product_id = :product_id';
+	public function update(){
+        $SQL = 'UPDATE cart SET total_price = :total_price WHERE cart_id = :cart_id';
         // Prepare the statement
         $STMT = self::$_conn->prepare($SQL);
         // Execute
         $STMT->execute([
             'cart_id' => $this->cart_id,
-            'product_id' => $product_id,
-            'new_quantity' => $new_quantity
+            'total_price' => $this->total_price
         ]);
 	}
 
 
-	//delete - this is a special delete to deactivate accounts
-	function delete($product_id){
-		$SQL = 'DELETE FROM cart WHERE cart_id = :cart_id AND product_id = :product_id';
-        // Prepare the statement
-        $STMT = self::$_conn->prepare($SQL);
-        // Execute
-        $STMT->execute([
-            'cart_id' => $this->cart_id,
-            'product_id' => $product_id
-        ]);
-	}
-    */
+	// //delete - this is a special delete to deactivate accounts
+	// function delete($product_id){
+	// 	$SQL = 'DELETE FROM cart WHERE cart_id = :cart_id AND product_id = :product_id';
+    //     // Prepare the statement
+    //     $STMT = self::$_conn->prepare($SQL);
+    //     // Execute
+    //     $STMT->execute([
+    //         'cart_id' => $this->cart_id,
+    //         'product_id' => $product_id
+    //     ]);
+	// }
+    
 }
