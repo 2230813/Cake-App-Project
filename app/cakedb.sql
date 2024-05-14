@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2024 at 05:47 AM
+-- Generation Time: May 14, 2024 at 06:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `cakedb`
 --
-CREATE DATABASE IF NOT EXISTS `cakedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `cakedb`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `cakedb`;
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
@@ -48,7 +45,8 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (4, 6, 0.00, 'cart'),
 (5, 7, 48.98, 'ordered'),
 (6, 7, 48.98, 'ordered'),
-(7, 7, 0.00, 'cart');
+(7, 7, 0.00, 'ordered'),
+(8, 7, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -56,7 +54,6 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 -- Table structure for table `cartDetails`
 --
 
-DROP TABLE IF EXISTS `cartDetails`;
 CREATE TABLE `cartDetails` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -86,7 +83,6 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
@@ -100,7 +96,22 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`) VALUES
-(3, 6, 7, '2024-05-14', 'ordered');
+(3, 6, 7, '2024-05-14', 'ordered'),
+(4, 7, 7, '2024-05-14', 'ordered');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `payment_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `card_number` int(30) NOT NULL,
+  `expire_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -108,7 +119,6 @@ INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`) VAL
 -- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -135,7 +145,6 @@ INSERT INTO `product` (`product_id`, `name`, `type`, `price`, `details`, `quanti
 -- Table structure for table `profile`
 --
 
-DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -165,7 +174,6 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -212,6 +220,13 @@ ALTER TABLE `orders`
   ADD KEY `ORDER_PROFILE_ID_FK` (`profile_id`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `payment_profile_id_FK` (`profile_id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -238,13 +253,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -281,6 +302,12 @@ ALTER TABLE `cartDetails`
 ALTER TABLE `orders`
   ADD CONSTRAINT `ORDER_CART_ID_FK` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `ORDER_PROFILE_ID_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `payment_profile_id_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `profile`

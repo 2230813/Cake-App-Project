@@ -14,10 +14,14 @@ class Profile extends \app\core\Controller{
         $orders = new \app\models\Order();
         $orders = $orders->get($_SESSION['profile_id']);
 
+		$payments = new \app\models\Payment();
+		$payments = $payments->get($_SESSION['profile_id']);
+
 		//redirect a user that has no profile to the profile creation URL
 		$this->view('Profile/index',[
             'orders' => $orders,
-            'profile' => $profile
+            'profile' => $profile,
+			'payments' => $payments
         ]);
 	}
 
