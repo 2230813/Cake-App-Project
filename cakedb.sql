@@ -109,7 +109,7 @@ CREATE TABLE `payment` (
   `payment_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `card_number` int(16) NOT NULL,
+  `card_number` int(30) NOT NULL,
   `expire_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
