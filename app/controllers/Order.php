@@ -32,7 +32,14 @@ class Order extends \app\core\Controller {
     }
 
     public function placeOrder(){
-        
+        $order = new \app\models\Order();
+        $cart = new \app\models\Cart();
+        $cart = $cart->getByProfileId(($_SESSION['profile_id']));
+
+        $order->cart_id = $cart->cart_id;
+        $order->insert($_SESSION['profile_id']);
+
+
     }
 
 }

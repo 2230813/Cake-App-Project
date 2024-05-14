@@ -9,6 +9,28 @@ Class Order extends \app\core\Model{
     public $date;
     public $status;
 
+    public function insert($profile_id){
+        //define the SQL query
+		$SQL = 'INSERT INTO orders (cart_id) VALUES (:cart_id)';
+		//prepare the statement
+		$STMT = self::$_conn->prepare($SQL);
+		//execute
+		$data = ['cart_id' => $this->cart_id,];
+		$STMT->execute($data);
+
+        //updating cart status and making new cart for user
+        $statusSQL = 'UPDATE cart SET status=:status WHERE cart_id = :cart_id';
+        $statusSTMT = self::$_conn->prepare($statusSQL);
+		$statusSTMT->execute(
+			['cart_id'=>$this->cart_id,
+             'status'=>'ordered']
+		);
+
+        $cartSQL = 'INSERT INTO cart(profile_id) VALUE (:profile_id)';
+        $cartSTMT = self::$_conn->prepare($cartSQL);
+        $cartSTMT->execute(['profile_id' => $profile_id]);
+
+    }
 
     public function get($order_id) {
         $SQL = "SELECT * FROM orders WHERE orderID = :orderID";
