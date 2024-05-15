@@ -36,6 +36,10 @@
                 <div class="item-price"><?= $product->price ?></div>
             </div>
             <?php } ?>
+            <div class="order-total">
+                <div class="total-title">Total:</div>
+                <div class="total-price">$<?= $cart->total_price ?></div>
+            </div>
             <form action="" method="post">
                 <div class="delivery-options">
                 <input type="radio" id="pickup" name="delivery" value="pickup" checked>

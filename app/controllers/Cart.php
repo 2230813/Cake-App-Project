@@ -85,7 +85,8 @@ class Cart extends \app\core\Controller {
         $this->view('Cart/checkout', [
             'cartItems' => $cartItems,
             'profile' => $profile,
-            'payments' => $payments
+            'payments' => $payments,
+            'cart' => $cart2
         ]);
         
     }
