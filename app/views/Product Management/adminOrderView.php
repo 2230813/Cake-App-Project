@@ -8,6 +8,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/admin_style.css">
+
     </style>
 </head>
 <body>
@@ -24,10 +25,20 @@
         </ul>
     </nav>
     <main class="admin-main">
-        <!-- Product Form -->
-        <?php include('partials/edit.php'); ?>
-        <!-- Product List -->
-        <?php include('partials/product_list_Edit.php'); ?>
+    <div>
+        <h2>Order #10<?= $order->order_id ?></h2>
+        <div>
+            <div>
+                <div>Date: <?= $order->date ?></div>
+                <?php foreach ($cartItems as $product) { ?>
+                <div><?= $product->name ?> - <strong><?= $product->price ?></strong></div>
+                <?php } ?>
+                <div>Type: <?= $order->options ?></div>
+            </div>
+        </div>
+        <div>Status: <?= $order->status ?></div>
+        <a href="/Order/adminEdit/<?= $order->cart_id ?>">Update Status</a>
+    </div>
     </main>
     <footer>
         <p>&copy; <?= date('Y') ?> Cake Shop. All rights reserved.</p>

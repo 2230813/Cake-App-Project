@@ -50,7 +50,7 @@
                 <td><?= htmlspecialchars($order->status) ?></td>
                 <td><?= htmlspecialchars($order->options) ?></td>
                 <td>
-                    <a href="/Order/adminView/<?= htmlspecialchars($order->order_id) ?>" class="btn btn-primary">View</a>
+                    <a href="/Order/adminView/<?= htmlspecialchars($order->cart_id) ?>" class="btn btn-primary">View</a>
                     <a href="/Order/adminDelete/<?= htmlspecialchars($order->order_id) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                 </td>
             </tr>

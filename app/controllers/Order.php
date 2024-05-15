@@ -52,8 +52,39 @@ class Order extends \app\core\Controller {
         $this->view('Product Management/adminOrder', $orders);
     }
 
-    public function adminview($order_id){
+    public function adminView($cart_id){
+        $cartItems = new \app\models\CartDetails();
+        $cartItems->cart_id = $cart_id;
+        $cartItems = $cartItems->getCartItems();
 
+        $order = new \app\models\Order();
+        $order = $order->getOrder($cart_id);
+
+        $this->view('Product Management/adminOrderView', [
+            'order' => $order,
+            'cartItems' => $cartItems
+        ]);
+    }
+
+    public function adminEdit($cart_id){
+        $cartItems = new \app\models\CartDetails();
+        $cartItems->cart_id = $cart_id;
+        $cartItems = $cartItems->getCartItems();
+
+        $order = new \app\models\Order();
+        $order = $order->getOrder($cart_id);
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $order->status = $_POST['status'];
+            $order->updateStatus();
+
+        }else{
+            $this->view('Product Management/adminOrderEdit', [
+            'order' => $order,
+            'cartItems' => $cartItems
+        ]);
+        }
+        
     }
 
     public function adminDelete($order_id){

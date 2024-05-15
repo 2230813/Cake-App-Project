@@ -68,4 +68,14 @@ Class Order extends \app\core\Model{
 		);
 	}
 
+    public function updateStatus(){
+        $SQL = 'UPDATE orders SET status=:status WHERE order_id= :order_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['status'=>$this->status,
+			'order_id'=>$this->order_id
+            ]
+		);
+    }
+
 }
