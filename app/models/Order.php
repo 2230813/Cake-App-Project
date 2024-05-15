@@ -13,13 +13,13 @@ Class Order extends \app\core\Model{
 
     public function insert($profile_id){
         //define the SQL query
-		$SQL = 'INSERT INTO orders (cart_id, profile_id/*, options*/) VALUES (:cart_id, :profile_id/*, :options*/)';
+		$SQL = 'INSERT INTO orders (cart_id, profile_id, options) VALUES (:cart_id, :profile_id, :options)';
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
 		$data = ['cart_id' => $this->cart_id,
-                 'profile_id'=> $this->profile_id/*,
-    'options'=> $this->options*/];
+                 'profile_id'=> $this->profile_id,
+                 'options'=> $this->options];
 		$STMT->execute($data);
 
         //updating cart status and making new cart for user

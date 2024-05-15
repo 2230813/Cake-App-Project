@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
-<<<<<<< HEAD
--- Generation Time: May 14, 2024 at 07:36 AM
-=======
--- Generation Time: May 14, 2024 at 08:41 AM
->>>>>>> 2703f5909f55ecdefd2b194f6ef81c6e8e9520c0
+-- Generation Time: May 16, 2024 at 12:12 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,14 +43,17 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (1, 3, 0.00, 'cart'),
-(2, 4, 0.00, 'cart'),
+(2, 4, -29.99, 'cart'),
 (3, 5, 0.00, 'cart'),
 (4, 6, 0.00, 'cart'),
 (5, 7, 48.98, 'ordered'),
 (6, 7, 48.98, 'ordered'),
 (7, 7, 0.00, 'ordered'),
-(8, 7, 0.00, 'cart'),
-(9, 8, 0.00, 'cart');
+(8, 7, 18.99, 'ordered'),
+(9, 8, 0.00, 'cart'),
+(10, 7, 18.99, 'ordered'),
+(11, 7, 48.98, 'ordered'),
+(12, 7, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -73,7 +72,6 @@ CREATE TABLE `cartDetails` (
 --
 
 INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
-(2, 2),
 (3, 1),
 (3, 2),
 (3, 1),
@@ -81,7 +79,10 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 (5, 1),
 (5, 2),
 (6, 1),
-(6, 2);
+(6, 2),
+(10, 1),
+(11, 1),
+(11, 2);
 
 -- --------------------------------------------------------
 
@@ -95,16 +96,17 @@ CREATE TABLE `orders` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered'
+  `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered',
+  `options` enum('pickup','delivery') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`) VALUES
-(3, 6, 7, '2024-05-14', 'ordered'),
-(4, 7, 7, '2024-05-14', 'ordered');
+INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`, `options`) VALUES
+(6, 10, 7, '2024-05-15', 'completed', 'pickup'),
+(7, 11, 7, '2024-05-15', 'pending', 'delivery');
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,9 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `profile_id`, `name`, `card_number`, `expire_date`) VALUES
-(1, 8, 'Ayush Patel', '123456789012', '2031-05-16');
+(1, 8, 'Ayush Patel', '123456789012', '2031-05-16'),
+(12, 4, 'Louisa', '4520340056781456', '2024-09-12'),
+(13, 7, 'Testing', '1234123412340000', '2050-12-01');
 
 -- --------------------------------------------------------
 
@@ -306,19 +310,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -367,19 +371,6 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `payment`
   ADD CONSTRAINT `payment_profile_id_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `profile`
---
-ALTER TABLE `profile`
-  ADD CONSTRAINT `PROFILE_USER_ID_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_to_product_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  ADD CONSTRAINT `review_to_user_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -38,17 +38,9 @@
                 <div class="total-title">Total:</div>
                 <div class="total-price">$<?= $cart->total_price ?></div>
             </div>
-            <form action="" method="post">
-                <div class="delivery-options">
-                <input type="radio" id="pickup" name="delivery" value="pickup" checked>
-                <label for="pickup">Pick Up</label>
-                <input type="radio" id="delivery" name="delivery" value="delivery">
-                <label for="delivery">Delivery</label>
-            </div>
-            </form>           
-        </div>        
-        <br>
-        <form class="checkout-form" method='post' action=''>
+                      
+        </div>  
+              <form class="checkout-form" >
             <div class="billing-info">
                 <h4>Billing Information</h4>
                 <label for="fullName">Full Name:</label>
@@ -82,10 +74,24 @@
                         <input type="text" id="cardName" name="cardName" placeholder="Name" value="<?= htmlspecialchars($payment->name, ENT_QUOTES, 'UTF-8') ?>" required>
                     <?php } ?>
                 <?php } ?>
+                </form>
             </div>
-            
-                <a href="/Order/index" class="submit-btn" name="action">Confirm Payment</a>
-        </form>
+            <form action="" method="post">
+                <div class="delivery-options">
+                <input type="radio" id="pickup" name="delivery" value="pickup" checked>
+                <label for="pickup">Pick Up</label>
+                <input type="radio" id="delivery" name="delivery" value="delivery">
+                <label for="delivery">Delivery</label>
+                </div>
+                <div class="ordered-items">
+                    <button type="submit" name="action" class="submit-btn">Confirm Payment</button>
+                </div>
+                
+            </form> 
+                
+        
+        <br>
+        
     </div>
 </body>
 </html>
