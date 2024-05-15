@@ -8,6 +8,7 @@ $this->addRoute('User/register','User,register');
 $this->addRoute('User/login','User,login');
 $this->addRoute('User/logout','User,logout');
 
+// Cake
 $this->addRoute('Cake/catalog','Cake,catalog');
 $this->addRoute('Cake/details/{product_id}','Cake,details');
 
@@ -46,7 +47,7 @@ $this->addRoute('Product/adminDelete', 'Product,adminDelete'); // Delete a produ
 $this->addRoute('Product/adminDelete', 'Product,adminDelete');
 
 // Admin--------------------------------------------------------------------------------------------Start
-
+// Admin Index
 $this->addRoute('Admin/dashboard', 'Admin,dashboard');
 
 // -------------------------------------------------------------------------------------------------End
