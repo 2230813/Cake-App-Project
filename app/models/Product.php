@@ -92,5 +92,13 @@ class Product extends \app\core\Model{
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
         return $STMT->fetchAll();
     }
+
+    public function getByType($type) {
+        $SQL = 'SELECT * FROM product WHERE type = :type';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['type' => $type]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
+        return $STMT->fetchAll();
+    }
     
 }
