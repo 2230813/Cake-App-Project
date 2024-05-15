@@ -3,13 +3,6 @@ namespace app\controllers;
 
 class Cake extends \app\core\Controller {
 
-    // public function details($product_id) {
-    //     $productModel = new \app\models\Product();
-    //     $product = $productModel->get($product_id);
-
-    //     $this->view('Product/details', $product);
-    // }
-
     public function details($product_id) {
         $productModel = new \app\models\Product();
         $product = $productModel->get($product_id);
@@ -30,28 +23,32 @@ class Cake extends \app\core\Controller {
 
     // // Display all products with filtering by type
     // public function catalog() {
-    //     $product = new \app\models\Product();
+    //     $productModel = new \app\models\Product();
     //     $type = isset($_GET['type']) ? $_GET['type'] : '';
     //     if ($type) {
-    //         $products = $product->getByType($type);
+    //         $products = $productModel->getByTypeWithRatings($type);
     //     } else {
-    //         $products = $product->getAll();
+    //         $products = $productModel->getAllWithRatings();
     //     }
     //     $this->view('Product/catalog', ['products' => $products, 'type' => $type]);
     // }
-    
-    // Display all products with filtering by type
+
+    // Display all products with filtering by type and search
     public function catalog() {
         $productModel = new \app\models\Product();
         $type = isset($_GET['type']) ? $_GET['type'] : '';
+        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
         if ($type) {
-            $products = $productModel->getByTypeWithRatings($type);
+            $products = $productModel->getByTypeWithRatingsAndSearch($type, $searchTerm);
+        } else if ($searchTerm) {
+            $products = $productModel->searchProductsWithRatings($searchTerm);
         } else {
             $products = $productModel->getAllWithRatings();
         }
-        $this->view('Product/catalog', ['products' => $products, 'type' => $type]);
-    }
 
+        $this->view('Product/catalog', ['products' => $products, 'type' => $type, 'searchTerm' => $searchTerm]);
+    }
 
     
 }

@@ -22,6 +22,8 @@
                 <option value="Wedding Cake" <?= isset($type) && $type == 'Wedding Cake' ? 'selected' : '' ?>>Wedding Cake</option>
                 <option value="Custom Cake" <?= isset($type) && $type == 'Custom Cake' ? 'selected' : '' ?>>Custom Cake</option>
             </select>
+            <label for="search">Search:</label>
+            <input type="text" name="search" id="search" placeholder="Search products by name..." value="<?= htmlspecialchars($searchTerm ?? '') ?>">
             <button type="submit">Filter</button>
         </form>
 
