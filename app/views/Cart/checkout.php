@@ -45,15 +45,26 @@
             
             <div class="payment-info">
                 <h4>Payment Information</h4>
-                <?php foreach ($payments as $payment) { ?>
-                <label for="cardNumber">Card Number:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="•••• •••• •••• 1234" value="<?= $payment->card_number ?>" required>
-                <br>
-                <label for="cardExpiry">Expiry Date:</label>
-                <input type="text" id="cardExpiry" name="cardExpiry" placeholder="YYYY-MM-DD" value="<?= $payment->expire_date ?>" required>
-                <br>
-                <label for="cardCVC">Name:</label>
-                <input type="text" id="cardCVC" name="cardCVC" placeholder="Name" value="<?= $payment->name ?>" required>
+                <?php if (empty($payments)) { ?>
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="•••• •••• •••• 1234" required>
+                    <br>
+                    <label for="cardExpiry">Expiry Date:</label>
+                    <input type="text" id="cardExpiry" name="cardExpiry" placeholder="YYYY-MM-DD" required>
+                    <br>
+                    <label for="cardName">Name:</label>
+                    <input type="text" id="cardName" name="cardName" placeholder="Name" required>
+                <?php } else { ?>
+                    <?php foreach ($payments as $payment) { ?>
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="•••• •••• •••• 1234" value="<?= htmlspecialchars($payment->card_number, ENT_QUOTES, 'UTF-8') ?>" required>
+                        <br>
+                        <label for="cardExpiry">Expiry Date:</label>
+                        <input type="text" id="cardExpiry" name="cardExpiry" placeholder="YYYY-MM-DD" value="<?= htmlspecialchars($payment->expire_date, ENT_QUOTES, 'UTF-8') ?>" required>
+                        <br>
+                        <label for="cardName">Name:</label>
+                        <input type="text" id="cardName" name="cardName" placeholder="Name" value="<?= htmlspecialchars($payment->name, ENT_QUOTES, 'UTF-8') ?>" required>
+                    <?php } ?>
                 <?php } ?>
                 <!-- Add more payment fields if necessary -->
             </div>
