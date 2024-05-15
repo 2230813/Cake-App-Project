@@ -36,13 +36,14 @@
                 <div class="item-price"><?= $product->price ?></div>
             </div>
             <?php } ?>
-            
-            <div class="delivery-options">
+            <form action="" method="post">
+                <div class="delivery-options">
                 <input type="radio" id="pickup" name="delivery" value="pickup" checked>
                 <label for="pickup">Pick Up</label>
                 <input type="radio" id="delivery" name="delivery" value="delivery">
                 <label for="delivery">Delivery</label>
-            </div>            
+            </div>
+            </form>           
         </div>        
         <br>
         <form class="checkout-form" method='post' action=''>
@@ -54,7 +55,6 @@
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address" placeholder="123 Cake Street" value="<?= $profile->address ?>" required>
                 
-                <!-- Add more billing fields if necessary -->
             </div>
             
             <div class="payment-info">
@@ -80,11 +80,9 @@
                         <input type="text" id="cardName" name="cardName" placeholder="Name" value="<?= htmlspecialchars($payment->name, ENT_QUOTES, 'UTF-8') ?>" required>
                     <?php } ?>
                 <?php } ?>
-                <!-- Add more payment fields if necessary -->
             </div>
             
-            <!-- <button type="submit" class="submit-btn" name="action">Confirm Payment</button> -->
-                <a href="/Order/index" class="submit-btn">Confirm Payment</a>
+                <a href="/Order/index" class="submit-btn" name="action">Confirm Payment</a>
         </form>
     </div>
 </body>

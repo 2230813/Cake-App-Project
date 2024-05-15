@@ -31,29 +31,29 @@
         <div class="profile-flex">
             <div class="profile-sidebar">
                 <div class="profile-info">
-                    <p><strong>First Name:</strong> <?= $profile->first_name ?></p>
-                    <p><strong>Last Name:</strong> <?= $profile->last_name ?></p>
-                    <p><strong>Language:</strong> <?= $profile->language_preference ?></p>
+                    <p><strong><?= __('First Name:')?></strong> <?= $profile->first_name ?></p>
+                    <p><strong><?= __('Last Name:')?></strong> <?= $profile->last_name ?></p>
+                    <p><strong><?= __('Language:')?></strong> <?= $profile->language_preference ?></p>
                     <section class="billing-info">
-                        <h3>Billing Information</h3>
-                        <p><strong>Address:</strong> <?= $profile->address ?></p>
-                        <p><strong>Phone:</strong> <?= $profile->phone_number ?></p>
+                        <h3><?= __('Billing Information')?></h3>
+                        <p><strong><?= __('Address:')?></strong> <?= $profile->address ?></p>
+                        <p><strong><?= __('Phone Number:')?></strong> <?= $profile->phone_number ?></p>
                     </section>
                     <section class="payment-info">
-                        <h3>Payment Information</h3>
+                        <h3><?= __('Payment Information')?></h3>
                         <?php if (empty($payments)) { ?>
-                            <p><strong>Card Holder:</strong> Empty</p>
-                                <p><strong>Card Number:</strong> Empty</p>
+                            <p><strong><?= __('Card Holder:')?></strong> Empty</p>
+                                <p><strong><?= __('Card Number:')?></strong> Empty</p>
                                 <p><strong>Expiry:</strong> Empty</p>
                                 <p>======================================</p>
-                                <a href="/Profile/add_payment" class="add-to-cart-btn">Add Payment</a>
+                                <a href="/Profile/add_payment" class="add-to-cart-btn"><?= __('Add Payment')?></a>
                         <?php } else { ?>
                             <?php foreach ($payments as $payment) { ?>
-                                <p><strong>Card Holder:</strong> <?= htmlspecialchars($payment->name) ?></p>
-                                <p><strong>Card Number:</strong> <?= htmlspecialchars($payment->card_number) ?></p>
+                                <p><strong><?= __('Card Holder:')?></strong> <?= htmlspecialchars($payment->name) ?></p>
+                                <p><strong><?= __('Card Number:')?></strong> <?= htmlspecialchars($payment->card_number) ?></p>
                                 <p><strong>Expiry:</strong> <?= htmlspecialchars($payment->expire_date) ?></p>
                                 <p>======================================</p>
-                                <a href="/Profile/edit_payment" class="add-to-cart-btn">Modify Payment</a>
+                                <a href="/Profile/edit_payment" class="add-to-cart-btn"><?= __('Modify Payment')?></a>
                             <?php } ?>
                         <?php } ?>
                     </section>

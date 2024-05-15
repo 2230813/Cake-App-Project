@@ -9,15 +9,17 @@ Class Order extends \app\core\Model{
     public $profile_id;
     public $date;
     public $status;
+    public $options;
 
     public function insert($profile_id){
         //define the SQL query
-		$SQL = 'INSERT INTO orders (cart_id, profile_id) VALUES (:cart_id, :profile_id)';
+		$SQL = 'INSERT INTO orders (cart_id, profile_id/*, options*/) VALUES (:cart_id, :profile_id/*, :options*/)';
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
 		$data = ['cart_id' => $this->cart_id,
-                 'profile_id'=> $this->profile_id];
+                 'profile_id'=> $this->profile_id/*,
+    'options'=> $this->options*/];
 		$STMT->execute($data);
 
         //updating cart status and making new cart for user
@@ -48,6 +50,14 @@ Class Order extends \app\core\Model{
         $STMT->execute(['cart_id'=>$cart_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\models\Order');
         return $STMT->fetch();
+    }
+
+    public function getAll() {
+        $SQL = "SELECT * FROM orders";
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\models\Order');
+        return $STMT->fetchAll();
     }
 
     public function delete(){

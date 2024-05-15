@@ -82,13 +82,43 @@ class Product extends \app\core\Model{
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
         return $STMT->fetchAll();
     }
-    
-    public function getAllWithRatings(){
+// -----------------------------------------------------------------
+    public function getAllWithRatings() {
         $SQL = 'SELECT p.*, COALESCE(AVG(r.rating), 0) as average_rating FROM product p
                 LEFT JOIN review r ON p.product_id = r.product_id
                 GROUP BY p.product_id';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
+        return $STMT->fetchAll();
+    }
+
+    public function getByTypeWithRatingsAndSearch($type, $searchTerm) {
+        $SQL = 'SELECT p.*, COALESCE(AVG(r.rating), 0) as average_rating FROM product p
+                LEFT JOIN review r ON p.product_id = r.product_id
+                WHERE p.type = :type AND p.name LIKE :searchTerm
+                GROUP BY p.product_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['type' => $type, 'searchTerm' => '%' . $searchTerm . '%']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
+        return $STMT->fetchAll();
+    }
+
+    public function searchProductsWithRatings($searchTerm) {
+        $SQL = 'SELECT p.*, COALESCE(AVG(r.rating), 0) as average_rating FROM product p
+                LEFT JOIN review r ON p.product_id = r.product_id
+                WHERE p.name LIKE :searchTerm
+                GROUP BY p.product_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['searchTerm' => '%' . $searchTerm . '%']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
+        return $STMT->fetchAll();
+    }
+// ------------------------------------------------------------------------------
+    public function getByType($type) {
+        $SQL = 'SELECT * FROM product WHERE type = :type';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['type' => $type]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Product');
         return $STMT->fetchAll();
     }

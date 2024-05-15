@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <style>
+    <style>
         /* Modal Styles */
         .modal {
             display: none;
@@ -61,22 +60,22 @@
     <a href="/User/login" class="add-to-cart-btn">Login</a>
     <a href="/User/logout" class="add-to-cart-btn">Logout</a>
     <div class="container product-details">
-        <h2><?= htmlspecialchars($data->name) ?></h2>
+        <h2><?= htmlspecialchars($data['product']->name) ?></h2>
         <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>
         <div class="product-image">
-            <img src="<?= htmlspecialchars($data->image_path) ?>" enctype="multipart/form-data">
+            <img src="<?= htmlspecialchars($data['product']->image_path) ?>" enctype="multipart/form-data">
         </div>
         <div class="product-info">
-            <p class="description"><?= htmlspecialchars($data->details) ?></p>
-            <p class="description"><?= htmlspecialchars($data->type) ?></p>
-            <p class="price"><?= htmlspecialchars($data->price) ?></p>
-            <p class="description"><?= htmlspecialchars($data->quantity) ?></p>
-            <a href="/Cart/add/<?= $data->product_id ?>" class="add-to-cart-btn">Add to Cart</a>
+            <p class="description"><?= htmlspecialchars($data['product']->details) ?></p>
+            <p class="description"><?= htmlspecialchars($data['product']->type) ?></p>
+            <p class="price"><?= htmlspecialchars($data['product']->price) ?></p>
+            <p class="description"><?= htmlspecialchars($data['product']->quantity) ?></p>
+            <a href="/Cart/add/<?= $data['product']->product_id ?>" class="add-to-cart-btn">Add to Cart</a>
         </div>
         <div class="reviews">
             <h3>Reviews</h3>
-            <?php if (isset($data->reviews) && count($data->reviews) > 0) { ?>
-                <?php foreach ($data->reviews as $review) { ?>
+            <?php if (isset($data['product']->reviews) && count($data['product']->reviews) > 0) { ?>
+                <?php foreach ($data['product']->reviews as $review) { ?>
                     <div class="review">
                         <strong>User: <?= htmlspecialchars($review['username']) ?></strong>
                         <div class="rating">
@@ -92,7 +91,7 @@
             <?php } else { ?>
                 <p>No reviews yet. Be the first to review!</p>
             <?php } ?>
-            <button class="add-review-btn" data-product-id="<?= $data->product_id ?>">Write a Review</button>
+            <button class="add-review-btn" data-product-id="<?= $data['product']->product_id ?>">Write a Review</button>
         </div>
     </div>
 
@@ -103,7 +102,7 @@
             <h2 id="modalTitle">Write a Review</h2>
             <form id="reviewForm">
                 <input type="hidden" id="review_id" name="review_id">
-                <input type="hidden" id="product_id" name="product_id" value="<?= $data->product_id ?>">
+                <input type="hidden" id="product_id" name="product_id" value="<?= $data['product']->product_id ?>">
                 <label for="rating">Rating:</label>
                 <select name="rating" id="rating" required>
                     <option value="1">1</option>

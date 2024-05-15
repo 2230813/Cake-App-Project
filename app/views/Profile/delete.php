@@ -22,10 +22,10 @@
         </div>
     </div>
     <div class="form-container">
-        <h2>Delete Profile</h2>
-        <p>Are you sure you want to delete your profile? This action cannot be undone.</p>
+        <h2><?= __('Delete Profile')?></h2>
+        <p><?= __('Are you sure you want to delete your profile? This action cannot be undone.')?></p>
         <form id="deleteProfileForm" method='post' action=''>
-            <button type="submit" class="btn btn-danger" name="action">Delete Profile</button>
+            <button type="submit" class="btn btn-danger" name="action"><?= __('Delete Profile')?></button>
         </form>
     </div>
 </body>
