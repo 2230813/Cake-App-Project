@@ -57,8 +57,6 @@
             </div>
         </div>
     </div>
-    <a href="/User/login" class="add-to-cart-btn">Login</a>
-    <a href="/User/logout" class="add-to-cart-btn">Logout</a>
     <div class="container product-details">
         <h2><?= htmlspecialchars($data['product']->name) ?></h2>
         <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>

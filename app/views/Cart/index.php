@@ -21,8 +21,6 @@
             </div>
         </div>
     </div>
-    <a href="/User/login" class="remove-item-btn">Login</a>
-    <a href="/User/logout" class="remove-item-btn">Logout</a>
     <div class="container">
         <h2>Your Shopping Cart</h2>
         <a href="/Cake/catalog" class="remove-item-btn">View Catalog</a>

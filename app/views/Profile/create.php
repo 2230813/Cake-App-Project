@@ -7,20 +7,7 @@
     <link rel="stylesheet" href="\css\profile.css">
 </head>
 <body>
-<div class="nav-bar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="" class="nav-logo-link">Cake Shop</a>
-            </div>
-            <div class="nav-links">
-                <a href="/User/login">Login</a>
-                <a href="/User/logout">Logout</a>
-                <a href="/Cart/index">View Cart</a>
-                <a href="/Cake/catalog">View Catalog</a>
-                <a href="/Profile/index">View Profile</a>
-            </div>
-        </div>
-    </div>
+
     <div class="form-container">
         <h2><?= __('Create Profile')?></h2>
         <form id="createProfileForm" method='post' action=''>
