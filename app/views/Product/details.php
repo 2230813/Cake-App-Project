@@ -59,7 +59,6 @@
     </div>
     <div class="container product-details">
         <h2><?= htmlspecialchars($data['product']->name) ?></h2>
-        <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>
         <div class="product-image">
             <img src="<?= htmlspecialchars($data['product']->image_path) ?>" enctype="multipart/form-data">
         </div>

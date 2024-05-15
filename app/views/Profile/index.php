@@ -26,8 +26,6 @@
         <h2>User Profile</h2>
         <a href="/Profile/edit" class="add-to-cart-btn">Edit</a>
         <a href="/Profile/delete" class="add-to-cart-btn">Delete</a>
-        <a href="/Cart/index" class="add-to-cart-btn">View Cart</a>
-        <a href="/Cake/catalog" class="add-to-cart-btn">View Catalog</a>
         <div class="profile-flex">
             <div class="profile-sidebar">
                 <div class="profile-info">

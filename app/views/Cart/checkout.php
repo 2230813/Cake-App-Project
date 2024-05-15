@@ -23,8 +23,6 @@
     </div>
     <div class="container">
         <h2>Checkout</h2>
-        <a href="/Cart/index" class="remove-item-btn">View Cart</a>
-        <a href="/Cake/catalog" class="remove-item-btn">View Catalog</a>
         <div class="ordered-items">
             <h3>Your Order</h3>
             <?php foreach ($cartItems as $product) { ?>

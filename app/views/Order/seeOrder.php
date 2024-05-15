@@ -23,7 +23,6 @@
     </div>
     <div class="container">
         <h2>Your Order </h2>
-        <a href="/Profile/index" class="remove-item-btn">Profile</a>
         <div class="orders">
             <div class="order">
                 <div class="order-date">Date: <?= $order->date ?></div>
@@ -32,10 +31,10 @@
                 <?php } ?>
                 <div class="order-summary">Status: <?= $order->status ?></div>
                 <div class="order-summary">Type: <?= $order->options ?></div>
-                <a href="/Order/delete/<?= $order->cart_id ?>" class="remove-item-btn">Cancel</a>
+                
             </div>
         </div>
-       
+       <a href="/Order/delete/<?= $order->cart_id ?>" class="remove-item-btn">Cancel</a>
     </div>
 </body>
 </html>

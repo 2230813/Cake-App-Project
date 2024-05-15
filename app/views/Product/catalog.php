@@ -23,8 +23,6 @@
     </div>
     <div class="container">
         <h2>Our Products</h2>
-        <a href="/Profile/index" class="add-to-cart-btn">Profile</a>
-        <a href="/Cart/index" class="add-to-cart-btn">View Cart</a>
         
         <form method="get" action="/Cake/catalog">
             <label for="type">Filter by type:</label>
