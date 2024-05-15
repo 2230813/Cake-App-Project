@@ -8,22 +8,22 @@
 </head>
 <body>
     <div class="auth-container">
-        <h2>Join Our Cake Community</h2>
+        <h2><?= __('Join Our Cake Community')?></h2>
         <form id="registrationForm" method='post' action=''>
             <div class="form-control">
-                <label for="name">Name:</label>
+                <label for="name"><?= __('Name:')?></label>
                 <input type="text" id="name" name="username" required>
             </div>
             <div class="form-control">
-                <label for="email">Email:</label>
+                <label for="email"><?= __('Email:')?></label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-control">
-                <label for="password">Password:</label>
+                <label for="password"><?= __('Password:')?></label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn" name="action">Sign Up</button>
-            <p>Already have an account? <a href="/User/login">Log in</a></p>
+            <button type="submit" class="btn" name="action"><?= __('Sign Up')?></button>
+            <p><?= __('Already have an account?')?> <a href="/User/login"><?= __('Log In')?></a></p>
         </form>
     </div>
 </body>

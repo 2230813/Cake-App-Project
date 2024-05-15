@@ -1,4 +1,4 @@
-# This is for the login page
+# This is for the login and registration page
 msgid "Password:"
 msgstr "Mot de passe:"
 msgid "Name:"
@@ -11,4 +11,10 @@ msgid "Sign up"
 msgstr "S'enregistrer"
 msgid "Log In"
 msgstr "Se Connecter"
-#The above is for the login page
+msgid "Email:"
+msgstr "Courriel:"
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte?"
+msgid "Join Our Cake Community"
+msgstr "Rejoignez notre communauté de gâteaux"
+#The above is for the login and registration page
