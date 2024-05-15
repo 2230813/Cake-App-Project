@@ -9,18 +9,18 @@
 </head>
 <body>
     <div class="auth-container">
-        <h2>Welcome Back!</h2>
+        <h2><?=__('Welcome Back!') ?></h2>
         <form id="loginForm" method='post' action=''>
             <div class="form-control">
-                <label for="name">Name:</label>
+                <label for="name"><?= __('Name:') ?></label>
                 <input type="text" id="name" name="username" >
             </div>
             <div class="form-control">
                 <label for="password"><?= __('Password:') ?></label>
                 <input type="password" id="password" name="password" >
             </div>
-            <input type="submit" class="btn" name="action" value="Log In"/>
-            <p>Don't have an account? <a href="/User/register">Sign up</a></p>
+            <input type="submit" class="btn" name="action" value="<?= __('Log In')?>"/>
+            <p><?= __("Don't have an account?")?> <a href="/User/register"><?= __('Sign up')?></a></p>
         </form>
     </div>
 </body>

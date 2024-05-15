@@ -1,2 +1,14 @@
+# This is for the login page
 msgid "Password:"
 msgstr "Password:"
+msgid "Name:"
+msgstr "Name:"
+msgid "Welcome Back!"
+msgstr "Welcome Back!"
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+msgid "Sign up"
+msgstr "Sign up"
+msgid "Log In"
+msgstr "Log In"
+#The above is for the login page
