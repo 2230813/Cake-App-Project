@@ -82,12 +82,25 @@ class Cart extends \app\core\Controller {
         $profile = new \app\models\Profile();
         $profile = $profile->getForUser($_SESSION['user_id']);
 
-        $this->view('Cart/checkout', [
-            'cartItems' => $cartItems,
-            'profile' => $profile,
-            'payments' => $payments,
-            'cart' => $cart2
-        ]);
+        $order = new \app\models\Order();
+        $order->cart_id = $cart2->cart_id;
+        $order->profile_id = $_SESSION['profile_id'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $order->options = $_POST['delivery'];
+            $order->insert($_SESSION['profile_id']);
+            header('location:/Profile/index');
+        }
+        else{
+            $this->view('Cart/checkout', [
+                        'cartItems' => $cartItems,
+                        'profile' => $profile,
+                        'payments' => $payments,
+                        'cart' => $cart2
+                        ]);
+        }
+
+            
         
     }
 }
