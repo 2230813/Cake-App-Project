@@ -83,6 +83,7 @@
     </style>
 </head>
 <body>
+<div class="container">
     <h2>Edit Payment Information</h2>
     <form method="post" action="/Profile/edit_payment">
         <label for="name">Card Holder Name:</label>
@@ -97,5 +98,6 @@
         <button type="submit">Update Payment</button>
     </form>
     <a href="/Profile/index" class="add-to-cart-btn">Cancel</a>
+    </div>
 </body>
 </html>

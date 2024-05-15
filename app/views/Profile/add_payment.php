@@ -85,6 +85,7 @@
     </style>
 </head>
 <body>
+    <div class="container">
     <h2>Add Payment Information</h2>
     <form method="post" action="/Profile/add_payment">
         <label for="name">Card Holder Name:</label>
@@ -99,5 +100,6 @@
         <button type="submit" href="/Profile/index" >Add Payment</button>
     </form>
     <a href="/Profile/index" class="add-to-cart-btn">Cancel</a>
+    </div>
 </body>
 </html>
