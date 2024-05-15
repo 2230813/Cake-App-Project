@@ -50,4 +50,12 @@ Class Order extends \app\core\Model{
         return $STMT->fetch();
     }
 
+    public function delete(){
+		$SQL = 'DELETE FROM orders WHERE order_id = :order_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['order_id'=>$this->order_id]
+		);
+	}
+
 }

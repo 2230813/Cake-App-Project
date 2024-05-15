@@ -17,6 +17,7 @@
                 <div class="order-summary"><?= $product->name ?> - <strong><?= $product->price ?></strong></div>
                 <?php } ?>
                 <div class="order-summary">Status: <?= $order->status ?></div>
+                <a href="/Order/delete/<?= $order->cart_id ?>" class="remove-item-btn">Cancel</a>
             </div>
         </div>
        

@@ -2,20 +2,16 @@
 namespace app\controllers;
 
 // Apply the Login condition to the whole class
-//#[\app\filters\Login]
+#[\app\filters\Login]
+#[\app\filters\HasProfile]
 class Order extends \app\core\Controller {
 
-    //#[\app\filters\Login]
-
-    //public function delete($order_id){
-        //if($_SERVER['REQUEST_METHOD'] === 'POST'){ 
-			//$order = new \app\models\Order();
-			//$order = $order->get($order_id);
-			//$order->cancelOrder($order_id);
-			//header('location:/Order/order_list/' . $order->order_id);
-			
-		//}
-    //}
+    public function delete($cart_id){
+			$order = new \app\models\Order();
+			$order = $order->getOrder($cart_id);
+			$order->delete();
+			header('location:/Profile/index');
+    }
 
 
     public function seeOrder($cart_id){
