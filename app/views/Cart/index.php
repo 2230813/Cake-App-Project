@@ -32,8 +32,9 @@
                     <p>Quantity: 1</p>
                     <p><?= $product->price ?></p>
                 </div>
-                    <a href="/Cart/delete/<?= $product->product_id ?>" class="remove-item-btn">Remove</a>
+                    
             </div>
+            <a href="/Cart/delete/<?= $product->product_id ?>" class="remove-item-btn">Remove</a>
             <?php } ?>
             <div class="cart-total">
                 <strong>Total: $<?= $cart->total_price ?></strong>
