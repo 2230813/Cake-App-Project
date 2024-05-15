@@ -21,11 +21,7 @@
         </ul>
     </nav>
     <main>
-        <div class="dashboard-overview">
-            <a href="manage_products.html" class="dashboard-link">Manage Products</a>
-            <a href="order_management.html" class="dashboard-link">View Orders</a>
-            <a href="user_management.html" class="dashboard-link">User Accounts</a>
-        </div>
+       
     </main>
     <footer>
         <p>&copy; 2024 Cake Shop. All rights reserved.</p>
