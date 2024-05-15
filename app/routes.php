@@ -43,7 +43,7 @@ $this->addRoute('Product/modify/{product_id}', 'Product,modify'); // Modify a pr
 $this->addRoute('Product/adminDelete', 'Product,adminDelete'); // Delete a product
 
 // Admin--------------------------------------------------------------------------------------------Start
-
+// Admin Index
 $this->addRoute('Admin/dashboard', 'Admin,dashboard');
 
 // -------------------------------------------------------------------------------------------------End
