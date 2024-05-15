@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="\css\base.css">
     <link rel="stylesheet" href="\css\profile.css">
     <link rel="stylesheet" href="\css\product.css">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
