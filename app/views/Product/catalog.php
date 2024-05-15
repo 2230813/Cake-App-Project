@@ -32,6 +32,12 @@
                         <div class="product-info">
                             <h3><?= htmlspecialchars($product->name) ?></h3>
                             <p class="product-price"><?= htmlspecialchars($product->price) ?></p>
+                            <div class="product-rating">
+                                <p>Rating: <?= htmlspecialchars(number_format($product->average_rating, 1)) ?></p>
+                                <div class="rating-stars">
+                                    <?= str_repeat("★", round($product->average_rating)) . str_repeat("☆", 5 - round($product->average_rating)) ?>
+                                </div>
+                            </div>
                             <a href="/Cake/details/<?= $product->product_id ?>" class="add-to-cart-btn">View Details</a>
                             <a href="/Cart/add/<?= $product->product_id ?>" class="add-to-cart-btn">Add to Cart</a>
                         </div>

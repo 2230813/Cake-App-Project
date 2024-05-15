@@ -28,17 +28,30 @@ class Cake extends \app\core\Controller {
         }
     }
 
+    // // Display all products with filtering by type
+    // public function catalog() {
+    //     $product = new \app\models\Product();
+    //     $type = isset($_GET['type']) ? $_GET['type'] : '';
+    //     if ($type) {
+    //         $products = $product->getByType($type);
+    //     } else {
+    //         $products = $product->getAll();
+    //     }
+    //     $this->view('Product/catalog', ['products' => $products, 'type' => $type]);
+    // }
+    
     // Display all products with filtering by type
     public function catalog() {
-        $product = new \app\models\Product();
+        $productModel = new \app\models\Product();
         $type = isset($_GET['type']) ? $_GET['type'] : '';
         if ($type) {
-            $products = $product->getByType($type);
+            $products = $productModel->getByTypeWithRatings($type);
         } else {
-            $products = $product->getAll();
+            $products = $productModel->getAllWithRatings();
         }
         $this->view('Product/catalog', ['products' => $products, 'type' => $type]);
     }
+
 
     
 }
