@@ -29,15 +29,37 @@ class Order extends \app\core\Controller {
     }
 
     public function placeOrder(){
-        $order = new \app\models\Order();
-        $cart = new \app\models\Cart();
-        $cart = $cart->getByProfileId(($_SESSION['profile_id']));
+       // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $order = new \app\models\Order();
+            $cart = new \app\models\Cart();
+            $cart = $cart->getByProfileId(($_SESSION['profile_id']));
 
-        $order->cart_id = $cart->cart_id;
-        $order->profile_id = $_SESSION['profile_id'];
-        $order->insert($_SESSION['profile_id']);
+            $order->cart_id = $cart->cart_id;
+            $order->profile_id = $_SESSION['profile_id'];
+           // $order->options = $_POST['delivery'];
+            var_dump($order);
+            $order->insert($_SESSION['profile_id']);
 
-        header('location:/Profile/index');
+            header('location:/Profile/index');
+        //}
+        
+    }
+
+    public function manage(){
+        $orders = new \app\models\Order();
+        $orders = $orders->getAll();
+
+        $this->view('Product Management/adminOrder', $orders);
+    }
+
+    public function adminview($order_id){
+
+    }
+
+    public function adminDelete($order_id){
+        // $order = new \app\models\Order();
+		// $order = $order->getOrder($order_id);
+		// $order->delete();
     }
 
 }

@@ -17,7 +17,7 @@
         <ul>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/product/index">Manage Products</a></li>
-            <li><a href="/order/index">Order Management</a></li>
+            <li><a href="/Order/manage">Order Management</a></li>
             <li><a href="/user/index">User Management</a></li>
         </ul>
     </nav>

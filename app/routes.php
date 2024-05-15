@@ -22,6 +22,9 @@ $this->addRoute('Order/order_list/{user_id}','Order,getAllOrder');
 $this->addRoute('Order/seeOrder/{cart_id}','Order,seeOrder');
 $this->addRoute('Order/delete/{cart_id}','Order,delete');
 $this->addRoute('Order/index','Order,placeOrder');
+$this->addRoute('Order/manage','Order,manage');
+$this->addRoute('Order/adminView/{order_id}','Order,adminView');
+$this->addRoute('Order/adminDelete/{order_id}','Order,adminDelete');
 
 $this->addRoute('Profile/add_payment','Payment,add');
 $this->addRoute('Profile/edit_payment','Payment,edit');
@@ -40,6 +43,7 @@ $this->addRoute('Product/delete/{product_id}', 'Product,delete'); // Delete a pr
 $this->addRoute('Product/adminEdit/{product_id}', 'Product,adminEdit'); // Modify a product
 $this->addRoute('Product/modify/{product_id}', 'Product,modify'); // Modify a product
 $this->addRoute('Product/adminDelete', 'Product,adminDelete'); // Delete a product
+$this->addRoute('Product/adminDelete', 'Product,adminDelete');
 
 // Admin--------------------------------------------------------------------------------------------Start
 

@@ -87,5 +87,6 @@ class Cart extends \app\core\Controller {
             'profile' => $profile,
             'payments' => $payments
         ]);
+        
     }
 }
