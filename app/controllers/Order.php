@@ -78,6 +78,8 @@ class Order extends \app\core\Controller {
             $order->status = $_POST['status'];
             $order->updateStatus();
 
+            header('location:/Order/manage');
+
         }else{
             $this->view('Product Management/adminOrderEdit', [
             'order' => $order,
