@@ -99,3 +99,95 @@ h3 {
         padding-bottom: 2rem;
     }
 }
+
+/* Profile container styles */
+.profile-container {
+    text-align: center;
+    max-width: 960px;
+    margin: 100px auto 0; /* Adjusted margin for the fixed navbar */
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-sidebar, .profile-main {
+    flex: 1;
+    padding: 1rem;
+}
+
+.profile-sidebar {
+    border-right: 2px solid #eee;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff6384;
+    margin-bottom: 1rem;
+}
+
+.profile-info p, .billing-info p, .payment-info p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    text-align: left;
+    color: #666;
+}
+
+.profile-info p strong, .billing-info p strong, .payment-info p strong {
+    color: #333;
+}
+
+h3 {
+    color: #ff6384;
+    margin-bottom: 1rem;
+}
+
+.profile-orders ul, .profile-promotions .promotion {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-orders li, .profile-promotions .promotion {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    margin: 1rem 0;
+}
+
+.profile-orders li span {
+    color: #2ecc71;
+}
+
+.profile-orders a, .profile-promotions a {
+    text-decoration: none;
+    color: #ff6384;
+}
+
+.profile-orders a:hover, .profile-promotions a:hover {
+    text-decoration: underline;
+}
+
+.billing-info, .payment-info {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .profile-flex {
+        flex-direction: column;
+    }
+    .profile-sidebar {
+        border-right: none;
+        padding-bottom: 2rem;
+    }
+}
