@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2024 at 12:12 AM
+-- Generation Time: May 16, 2024 at 12:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,17 +43,18 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (1, 3, 0.00, 'cart'),
-(2, 4, -29.99, 'cart'),
+(2, 4, 0.00, 'cart'),
 (3, 5, 0.00, 'cart'),
 (4, 6, 0.00, 'cart'),
 (5, 7, 48.98, 'ordered'),
 (6, 7, 48.98, 'ordered'),
 (7, 7, 0.00, 'ordered'),
-(8, 7, 18.99, 'ordered'),
-(9, 8, 0.00, 'cart'),
-(10, 7, 18.99, 'ordered'),
-(11, 7, 48.98, 'ordered'),
-(12, 7, 0.00, 'cart');
+(8, 7, 0.00, 'cart'),
+(9, 8, 48.98, 'ordered'),
+(10, 8, 29.99, 'ordered'),
+(11, 8, 29.99, 'cart'),
+(12, 9, 0.00, 'cart'),
+(13, 10, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -72,6 +73,7 @@ CREATE TABLE `cartDetails` (
 --
 
 INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
+(2, 2),
 (3, 1),
 (3, 2),
 (3, 1),
@@ -80,8 +82,8 @@ INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
 (5, 2),
 (6, 1),
 (6, 2),
-(10, 1),
-(11, 1),
+(9, 2),
+(9, 1),
 (11, 2);
 
 -- --------------------------------------------------------
@@ -96,17 +98,16 @@ CREATE TABLE `orders` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered',
-  `options` enum('pickup','delivery') NOT NULL
+  `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`, `options`) VALUES
-(6, 10, 7, '2024-05-15', 'completed', 'pickup'),
-(7, 11, 7, '2024-05-15', 'pending', 'delivery');
+INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`) VALUES
+(3, 6, 7, '2024-05-14', 'ordered'),
+(4, 7, 7, '2024-05-14', 'ordered');
 
 -- --------------------------------------------------------
 
@@ -122,15 +123,6 @@ CREATE TABLE `payment` (
   `card_number` varchar(30) NOT NULL,
   `expire_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`payment_id`, `profile_id`, `name`, `card_number`, `expire_date`) VALUES
-(1, 8, 'Ayush Patel', '123456789012', '2031-05-16'),
-(12, 4, 'Louisa', '4520340056781456', '2024-09-12'),
-(13, 7, 'Testing', '1234123412340000', '2050-12-01');
 
 -- --------------------------------------------------------
 
@@ -188,7 +180,8 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 (5, 4, 'Johann', 'Culla-ag', '1234 Street, San Andreas, GTA', '514-123-4567', 'FR'),
 (6, 5, 'THE', 'Admin', '1234 Street, San Andreas, GTA', '514-123-4567', 'EN'),
 (7, 6, 'Tester123', '123Testing', '311 Cake St', '514-111-2222', 'EN'),
-(8, 7, 'Ayush', 'Patel', '8910', '5145492540', 'EN');
+(8, 7, 'Ayush', 'Patel', '8910', '5145492540', 'EN'),
+(10, 8, 'Ayush', 'Patel', '8910', '5145492540', 'EN');
 
 -- --------------------------------------------------------
 
@@ -241,7 +234,8 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) V
 (4, 'Johann Culla-ag', '$2y$10$6X1COHrRyJ.PII/RIUCSt.zGawvGMfTcEQYblnutQOBSBloYveOHq', 'johanncullaag@gmail.com', 1),
 (5, 'Admin', '$2y$10$7es7MLdObSx.OBVtGE.5CO1AYuDbAp3YFTMafFNjgeuJHF8m0mAPq', 'Admin@email.com', 1),
 (6, 'Tester', '$2y$10$inB5qgWPCMDS7DAvK3TVNelehXuJk7U8evrmqy/X0VBS/Akj5PYje', 'tester@vanier.com', 1),
-(7, 'ayush', '$2y$10$a8gEYdDRtis4g/rPW0kLuezZqbtdneZHkc7vbGa7tTAd8t/4xatV6', 'ayushp05@hotmail.com', 1);
+(7, 'ayush', '$2y$10$a8gEYdDRtis4g/rPW0kLuezZqbtdneZHkc7vbGa7tTAd8t/4xatV6', 'ayushp05@hotmail.com', 1),
+(8, '2', '$2y$10$CdhjqCwMM87JjSnk9umW..GDp3BKTSaicZRn5Oyp2oX9k2FOITVGm', 'ayushp05@hotmail.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -310,19 +304,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -334,7 +328,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -346,7 +340,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -370,7 +364,7 @@ ALTER TABLE `orders`
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_profile_id_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `payment_profile_id_FK` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
