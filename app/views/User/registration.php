@@ -10,7 +10,7 @@
 <div class="nav-bar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="" class="nav-logo-link">Cake Shop</a>
+                <a href="" class="nav-logo-link"><?__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
                 <a href="/User/register?lang=en">EN</a>

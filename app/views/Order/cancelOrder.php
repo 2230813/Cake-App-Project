@@ -15,21 +15,13 @@
                 <a href="" class="nav-logo-link"><?__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
-<<<<<<< HEAD
             <a href="/User/login"><?__('Login')?></a>
                 <a href="/User/logout"><?__('Logout')?></a>
                 <a href="/Cart/index"><?__('View Cart')?></a>
                 <a href="/Cake/catalog"><?__('View Catalog')?></a>
                 <a href="/Profile/index"><?__('View Profile')?></a>
-=======
-                <a href="/User/login">Login</a>
-                <a href="/User/logout">Logout</a>
-                <a href="/Cart/index">View Cart</a>
-                <a href="/Cake/catalog">View Catalog</a>
-                <a href="/Profile/index">View Profile</a>
                 <a href="/Order/delete/<?= $order->cart_id ?>?lang=en">EN</a>
                 <a href="/Order/delete/<?= $order->cart_id ?>?lang=fr">FR</a>
->>>>>>> f215a5fd0bc5b324a3e0805c753a3960ed896f5a
             </div>
         </div>
     </div>

@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title><?__('Edit Payment Information')?> | <?__('Cake Shop')?></title>
-=======
-    <title>Edit Payment Information | Cake Shop</title>
     <link rel="stylesheet" href="\css\base.css">
->>>>>>> f215a5fd0bc5b324a3e0805c753a3960ed896f5a
     
     <style>
         body {
@@ -91,14 +87,14 @@
 <div class="nav-bar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="" class="nav-logo-link">Cake Shop</a>
+                <a href="" class="nav-logo-link"><?__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
-                <a href="/User/login">Login</a>
-                <a href="/User/logout">Logout</a>
-                <a href="/Cart/index">View Cart</a>
-                <a href="/Cake/catalog">View Catalog</a>
-                <a href="/Profile/index">View Profile</a>
+            <a href="/User/login"><?__('Login')?></a>
+                <a href="/User/logout"><?__('Logout')?></a>
+                <a href="/Cart/index"><?__('View Cart')?></a>
+                <a href="/Cake/catalog"><?__('View Catalog')?></a>
+                <a href="/Profile/index"><?__('View Profile')?></a>
                 <a href="/Profile/edit_payment?lang=en">EN</a>
                 <a href="/Profile/edit_payment?lang=fr">FR</a>
             </div>
