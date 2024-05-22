@@ -18,6 +18,8 @@
                 <a href="/Cart/index">View Cart</a>
                 <a href="/Cake/catalog">View Catalog</a>
                 <a href="/Profile/index">View Profile</a>
+                <a href="/Profile/edit?lang=en">EN</a>
+                <a href="/Profile/edit?lang=fr">FR</a>
             </div>
         </div>
     </div>

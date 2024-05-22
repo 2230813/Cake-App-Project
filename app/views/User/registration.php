@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="\css\authentication.css">
 </head>
 <body>
+<div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="" class="nav-logo-link">Cake Shop</a>
+            </div>
+            <div class="nav-links">
+                <a href="/User/register?lang=en">EN</a>
+                <a href="/User/register?lang=fr">FR</a>
+            </div>
+        </div>
+    </div>
     <div class="auth-container">
         <h2><?= __('Join Our Cake Community')?></h2>
         <form id="registrationForm" method='post' action=''>

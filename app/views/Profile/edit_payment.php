@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Payment Information | Cake Shop</title>
+    <link rel="stylesheet" href="\css\base.css">
     
     <style>
         body {
@@ -83,6 +84,22 @@
     </style>
 </head>
 <body>
+<div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="" class="nav-logo-link">Cake Shop</a>
+            </div>
+            <div class="nav-links">
+                <a href="/User/login">Login</a>
+                <a href="/User/logout">Logout</a>
+                <a href="/Cart/index">View Cart</a>
+                <a href="/Cake/catalog">View Catalog</a>
+                <a href="/Profile/index">View Profile</a>
+                <a href="/Profile/edit_payment?lang=en">EN</a>
+                <a href="/Profile/edit_payment?lang=fr">FR</a>
+            </div>
+        </div>
+    </div>
 <div class="container">
     <h2>Edit Payment Information</h2>
     <form method="post" action="/Profile/edit_payment">

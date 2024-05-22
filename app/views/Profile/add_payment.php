@@ -85,6 +85,22 @@
     </style>
 </head>
 <body>
+<div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="" class="nav-logo-link">Cake Shop</a>
+            </div>
+            <div class="nav-links">
+                <a href="/User/login">Login</a>
+                <a href="/User/logout">Logout</a>
+                <a href="/Cart/index">View Cart</a>
+                <a href="/Cake/catalog">View Catalog</a>
+                <a href="/Profile/index">View Profile</a>
+                <a href="/Profile/add_payment?lang=en">EN</a>
+                <a href="/Profile/add_payment?lang=fr">FR</a>
+            </div>
+        </div>
+    </div>
     <div class="container">
     <h2>Add Payment Information</h2>
     <form method="post" action="/Profile/add_payment">
