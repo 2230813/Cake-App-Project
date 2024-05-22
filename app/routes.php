@@ -2,8 +2,6 @@
 //defined a few routes "url"=>"controller,method"
 //User
 $this->addRoute('','User,login');
-
-
 $this->addRoute('User/register','User,register');
 $this->addRoute('User/login','User,login');
 $this->addRoute('User/logout','User,logout');
@@ -21,14 +19,13 @@ $this->addRoute('Profile/add_payment','Payment,add');
 $this->addRoute('Profile/edit_payment','Payment,edit');
 
 //Orders
-$this->addRoute('Order/order_list/{user_id}','Order,getAllOrder');
 $this->addRoute('Order/seeOrder/{cart_id}','Order,seeOrder');
 $this->addRoute('Order/delete/{cart_id}','Order,delete');
-$this->addRoute('Order/index','Order,placeOrder');
+
 //Orders in the admin
 $this->addRoute('Order/manage','Order,manage');
 $this->addRoute('Order/adminView/{cart_id}','Order,adminView');
-$this->addRoute('Order/adminDelete/{order_id}','Order,adminDelete');
+$this->addRoute('Order/adminDelete/{cart_id}','Order,adminDelete');
 $this->addRoute('Order/adminEdit/{cart_id}','Order,adminEdit');
 
 //Cart

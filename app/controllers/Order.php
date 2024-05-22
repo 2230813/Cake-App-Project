@@ -89,10 +89,11 @@ class Order extends \app\core\Controller {
         
     }
 
-    public function adminDelete($order_id){
-        // $order = new \app\models\Order();
-		// $order = $order->getOrder($order_id);
-		// $order->delete();
+    public function adminDelete($cart_id){
+        $order = new \app\models\Order();
+		$order = $order->getOrder($cart_id);
+		$order->delete();
+		header('location:/Order/manage');
     }
 
 }
