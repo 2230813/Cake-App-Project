@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?__('Product Details')?> | <?__('Cake Shop')?></title>
+    <title><?=__('Product Details')?> | <?=__('Cake Shop')?></title>
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -46,14 +46,14 @@
 <div class="nav-bar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="" class="nav-logo-link"><?__('Cake Shop')?></a>
+                <a href="" class="nav-logo-link"><?=__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
-            <a href="/User/login"><?__('Login')?></a>
-                <a href="/User/logout"><?__('Logout')?></a>
-                <a href="/Cart/index"><?__('View Cart')?></a>
-                <a href="/Cake/catalog"><?__('View Catalog')?></a>
-                <a href="/Profile/index"><?__('View Profile')?></a>
+            <a href="/User/login"><?=__('Login')?></a>
+                <a href="/User/logout"><?=__('Logout')?></a>
+                <a href="/Cart/index"><?=__('View Cart')?></a>
+                <a href="/Cake/catalog"><?=__('View Catalog')?></a>
+                <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Cake/details/<?= $product->product_id ?>?lang=en">EN</a>
                 <a href="/Cake/details/<?= $product->product_id ?>?lang=fr">FR</a>
             </div>
@@ -69,7 +69,7 @@
             <p class="description"><?= htmlspecialchars($data['product']->type) ?></p>
             <p class="price"><?= htmlspecialchars($data['product']->price) ?></p>
             <p class="description"><?= htmlspecialchars($data['product']->quantity) ?></p>
-            <a href="/Cart/add/<?= $data['product']->product_id ?>" class="add-to-cart-btn"><?__('Add to Cart')?></a>
+            <a href="/Cart/add/<?= $data['product']->product_id ?>" class="add-to-cart-btn"><?=__('Add to Cart')?></a>
         </div>
         <div class="reviews">
             <h3>Reviews</h3>
@@ -83,14 +83,14 @@
                         <p><?= htmlspecialchars($review['comment']) ?></p>
                         <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']) { ?>
                             <button class="edit-review-btn" data-review-id="<?= $review['review_id'] ?>" data-rating="<?= $review['rating'] ?>" data-comment="<?= htmlspecialchars($review['comment']) ?>">Edit</button>
-                            <button class="delete-review-btn" data-review-id="<?= $review['review_id'] ?>"><?__('Delete')?></button>
+                            <button class="delete-review-btn" data-review-id="<?= $review['review_id'] ?>"><?=__('Delete')?></button>
                         <?php } ?>
                     </div>
                 <?php } ?>
             <?php } else { ?>
-                <p><?__('No reviews yet. Be the first to review!')?></p>
+                <p><?=__('No reviews yet. Be the first to review!')?></p>
             <?php } ?>
-            <button class="add-review-btn" data-product-id="<?= $data['product']->product_id ?>"><?__('Write a Review')?></button>
+            <button class="add-review-btn" data-product-id="<?= $data['product']->product_id ?>"><?=__('Write a Review')?></button>
         </div>
     </div>
 
@@ -98,11 +98,11 @@
     <div id="reviewModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 id="modalTitle"><?__('Write a Review')?></h2>
+            <h2 id="modalTitle"><?=__('Write a Review')?></h2>
             <form id="reviewForm">
                 <input type="hidden" id="review_id" name="review_id">
                 <input type="hidden" id="product_id" name="product_id" value="<?= $data['product']->product_id ?>">
-                <label for="rating"><?__('Rating:')?></label>
+                <label for="rating"><?=__('Rating:')?></label>
                 <select name="rating" id="rating" required>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -110,9 +110,9 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <label for="comment"><?__('Comment:')?></label>
+                <label for="comment"><?=__('Comment:')?></label>
                 <textarea name="comment" id="comment" required></textarea>
-                <button type="submit"><?__('Submit')?></button>
+                <button type="submit"><?=__('Submit')?></button>
             </form>
         </div>
     </div>
@@ -120,12 +120,12 @@
     <div id="deleteModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2><?__('Delete Review')?></h2>
-            <p><?__('Are you sure you want to delete this review?')?></p>
+            <h2><?=__('Delete Review')?></h2>
+            <p><?=__('Are you sure you want to delete this review?')?></p>
             <form id="deleteForm">
                 <input type="hidden" id="delete_review_id" name="review_id">
-                <button type="submit"><?__('Yes, Delete')?></button>
-                <button type="button" class="cancel-btn"><?__('Cancel')?></button>
+                <button type="submit"><?=__('Yes, Delete')?></button>
+                <button type="button" class="cancel-btn"><?=__('Cancel')?></button>
             </form>
         </div>
     </div>

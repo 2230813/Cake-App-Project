@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?__('Add Payment Information')?> | <?__('Cake Shop')?></title>
+    <title><?=__('Add Payment Information')?> | <?=__('Cake Shop')?></title>
     <link rel="stylesheet" href="\css\base.css">
     <link rel="stylesheet" href="\css\profile.css">
     <link rel="stylesheet" href="\css\product.css">
@@ -88,34 +88,34 @@
 <div class="nav-bar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="" class="nav-logo-link"><?__('Cake Shop')?></a>
+                <a href="" class="nav-logo-link"><?=__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
-            <a href="/User/login"><?__('Login')?></a>
-                <a href="/User/logout"><?__('Logout')?></a>
-                <a href="/Cart/index"><?__('View Cart')?></a>
-                <a href="/Cake/catalog"><?__('View Catalog')?></a>
-                <a href="/Profile/index"><?__('View Profile')?></a>
+            <a href="/User/login"><?=__('Login')?></a>
+                <a href="/User/logout"><?=__('Logout')?></a>
+                <a href="/Cart/index"><?=__('View Cart')?></a>
+                <a href="/Cake/catalog"><?=__('View Catalog')?></a>
+                <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Profile/add_payment?lang=en">EN</a>
                 <a href="/Profile/add_payment?lang=fr">FR</a>
             </div>
         </div>
     </div>
     <div class="container">
-    <h2><?__('Add Payment Information')?></h2>
+    <h2><?=__('Add Payment Information')?></h2>
     <form method="post" action="/Profile/add_payment">
-        <label for="name"><?__('Card Holder Name:')?></label>
+        <label for="name"><?=__('Card Holder Name:')?></label>
         <input type="text" id="name" placeholder="Name"  name="name" required>
         <br>
-        <label for="card_number"><?__('Card Number:')?></label>
+        <label for="card_number"><?=__('Card Number:')?></label>
         <input type="text" id="card_number" placeholder="•••• •••• •••• 1234" name="card_number" required>
         <br>
-        <label for="expire_date"><?__('Expiry Date:')?></label>
+        <label for="expire_date"><?=__('Expiry Date:')?></label>
         <input type="text" id="expire_date" placeholder="YYYY-MM-DD" name="expire_date" required>
         <br>
-        <button type="submit" href="/Profile/index" ><?__('Add Payment')?></button>
+        <button type="submit" href="/Profile/index" ><?=__('Add Payment')?></button>
     </form>
-    <a href="/Profile/index" class="add-to-cart-btn"><?__('Cancel')?></a>
+    <a href="/Profile/index" class="add-to-cart-btn"><?=__('Cancel')?></a>
     </div>
 </body>
 </html>
