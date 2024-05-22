@@ -1,72 +1,410 @@
-# This is for the login and registration page
-msgid "Password:"
-msgstr "Password:"
-msgid "Name:"
-msgstr "Name:"
-msgid "Welcome Back!"
-msgstr "Welcome Back!"
-msgid "Don't have an account?"
-msgstr "Don't have an account?"
-msgid "Sign up"
-msgstr "Sign up"
-msgid "Log In"
-msgstr "Log In"
-msgid "Email:"
-msgstr "Email:"
-msgid "Already have an account?"
-msgstr "Already have an account?"
-msgid "Join Our Cake Community"
-msgstr "Join Our Cake Community"
-#The above is for the login and registration page
+# English translations for PACKAGE package.
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# root <root@dfed3712890f>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-22 02:04+0000\n"
+"PO-Revision-Date: 2024-05-22 02:06+0000\n"
+"Last-Translator: root <root@dfed3712890f>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: app/views/Cart/checkout.php:5 app/views/Cart/checkout.php:27
+msgid "Checkout"
+msgstr "Checkout"
 
-#This is for the profile view
-msgid "Add Payment Information"
-msgstr "Add Payment Information"
-msgid "Card Holder Name:"
-msgstr "Card Holder Name:"
-msgid "Card Number:"
-msgstr "Card Number:"
-msgid "Expiry Date:"
-msgstr "Expiry Date:"
-msgid "Add Payment"
-msgstr "Add Payment"
-msgid "Cancel"
-msgstr "Cancel"
-msgid "Create Profile"
-msgstr "Create Profile"
-msgid "First Name:"
-msgstr "First Name:"
-msgid "Last Name:"
-msgstr "Last Name:"
-msgid "Address:"
-msgstr "Address:"
-msgid "Phone Number:"
-msgstr "Phone Number:"
-msgid "Language Preference:"
-msgstr "Language Preference:"
-msgid "English"
-msgstr "English"
-msgid "French"
-msgstr "French"
-msgid "Delete Profile"
-msgstr "Delete Profile"
-msgid "Are you sure you want to delete your profile? This action cannot be undone."
-msgstr "Are you sure you want to delete your profile? This action cannot be undone."
-msgid "Edit Payment Information"
-msgstr "Edit Payment Information"
-msgid "Update Payment"
-msgstr "Update Payment"
-msgid "Update Profile"
-msgstr "Update Profile"
-msgid "Language:"
-msgstr "Language:"
+#: app/views/Cart/checkout.php:5 app/views/Cart/checkout.php:13
+#: app/views/Cart/index.php:5 app/views/Cart/index.php:13
+#: app/views/Order/cancelOrder.php:6 app/views/Order/cancelOrder.php:15
+#: app/views/Order/seeOrder.php:5 app/views/Order/seeOrder.php:13
+#: app/views/Product/catalog.php:5 app/views/Product/catalog.php:13
+#: app/views/Product/details.php:5 app/views/Product/details.php:49
+#: app/views/Profile/add_payment.php:6 app/views/Profile/add_payment.php:91
+#: app/views/Profile/create.php:5 app/views/Profile/delete.php:5
+#: app/views/Profile/delete.php:13 app/views/Profile/edit.php:5
+#: app/views/Profile/edit.php:13 app/views/Profile/edit_payment.php:6
+#: app/views/Profile/edit_payment.php:90 app/views/Profile/index.php:5
+#: app/views/Profile/index.php:14 app/views/User/login.php:5
+#: app/views/User/login.php:13 app/views/User/registration.php:5
+#: app/views/User/registration.php:13
+msgid "Cake Shop"
+msgstr "Cake Shop"
+
+#: app/views/Cart/checkout.php:16 app/views/Cart/index.php:16
+#: app/views/Order/cancelOrder.php:18 app/views/Order/seeOrder.php:16
+#: app/views/Product/catalog.php:16 app/views/Product/details.php:52
+#: app/views/Profile/add_payment.php:94 app/views/Profile/delete.php:16
+#: app/views/Profile/edit.php:16 app/views/Profile/edit_payment.php:93
+#: app/views/Profile/index.php:17 app/views/User/login.php:5
+msgid "Login"
+msgstr "Login"
+
+#: app/views/Cart/checkout.php:17 app/views/Cart/index.php:17
+#: app/views/Order/cancelOrder.php:19 app/views/Order/seeOrder.php:17
+#: app/views/Product/catalog.php:17 app/views/Product/details.php:53
+#: app/views/Profile/add_payment.php:95 app/views/Profile/delete.php:17
+#: app/views/Profile/edit.php:17 app/views/Profile/edit_payment.php:94
+#: app/views/Profile/index.php:18
+msgid "Logout"
+msgstr "Logout"
+
+#: app/views/Cart/checkout.php:18 app/views/Cart/index.php:18
+#: app/views/Order/cancelOrder.php:20 app/views/Order/seeOrder.php:18
+#: app/views/Product/catalog.php:18 app/views/Product/details.php:54
+#: app/views/Profile/add_payment.php:96 app/views/Profile/delete.php:18
+#: app/views/Profile/edit.php:18 app/views/Profile/edit_payment.php:95
+#: app/views/Profile/index.php:19
+msgid "View Cart"
+msgstr "View Cart"
+
+#: app/views/Cart/checkout.php:19 app/views/Cart/index.php:19
+#: app/views/Order/cancelOrder.php:21 app/views/Order/seeOrder.php:19
+#: app/views/Product/catalog.php:19 app/views/Product/details.php:55
+#: app/views/Profile/add_payment.php:97 app/views/Profile/delete.php:19
+#: app/views/Profile/edit.php:19 app/views/Profile/edit_payment.php:96
+#: app/views/Profile/index.php:20
+msgid "View Catalog"
+msgstr "View Catalog"
+
+#: app/views/Cart/checkout.php:20 app/views/Cart/index.php:20
+#: app/views/Order/cancelOrder.php:22 app/views/Order/seeOrder.php:20
+#: app/views/Product/catalog.php:20 app/views/Product/details.php:56
+#: app/views/Profile/add_payment.php:98 app/views/Profile/delete.php:20
+#: app/views/Profile/edit.php:20 app/views/Profile/edit_payment.php:97
+#: app/views/Profile/index.php:21
+msgid "View Profile"
+msgstr "View Profile"
+
+#: app/views/Cart/checkout.php:29 app/views/Order/seeOrder.php:27
+msgid "Your Order"
+msgstr "Your Order"
+
+#: app/views/Cart/checkout.php:33 app/views/Cart/index.php:34
+msgid "Quantity:"
+msgstr "Quantity:"
+
+#: app/views/Cart/checkout.php:38 app/views/Cart/index.php:42
+msgid "Total:"
+msgstr "Total:"
+
+#: app/views/Cart/checkout.php:45 app/views/Profile/index.php:38
 msgid "Billing Information"
 msgstr "Billing Information"
+
+#: app/views/Cart/checkout.php:46
+msgid "Full Name:"
+msgstr "Full Name:"
+
+#: app/views/Cart/checkout.php:49 app/views/Profile/create.php:25
+#: app/views/Profile/edit.php:38 app/views/Profile/index.php:39
+msgid "Address:"
+msgstr "Address:"
+
+#: app/views/Cart/checkout.php:55 app/views/Profile/index.php:43
 msgid "Payment Information"
 msgstr "Payment Information"
+
+#: app/views/Cart/checkout.php:57 app/views/Cart/checkout.php:67
+#: app/views/Profile/add_payment.php:110 app/views/Profile/edit_payment.php:109
+#: app/views/Profile/index.php:46 app/views/Profile/index.php:53
+msgid "Card Number:"
+msgstr "Card Number:"
+
+#: app/views/Cart/checkout.php:60 app/views/Cart/checkout.php:70
+#: app/views/Profile/add_payment.php:113 app/views/Profile/edit_payment.php:112
+msgid "Expiry Date:"
+msgstr "Expiry Date:"
+
+#: app/views/Cart/checkout.php:63 app/views/Cart/checkout.php:73
+#: app/views/User/login.php:25 app/views/User/registration.php:25
+msgid "Name:"
+msgstr "Name:"
+
+#: app/views/Cart/checkout.php:82
+msgid "Pick Up"
+msgstr "Pick Up"
+
+#: app/views/Cart/checkout.php:84
+msgid "Delivery"
+msgstr "Delivery"
+
+#: app/views/Cart/checkout.php:87
+msgid "Confirm Payment"
+msgstr "Confirm Payment"
+
+#: app/views/Cart/index.php:5
+msgid "Shopping Cart"
+msgstr "Shopping Cart"
+
+#: app/views/Cart/index.php:27
+msgid "Your Shopping Cart"
+msgstr "Your Shopping Cart"
+
+#: app/views/Cart/index.php:39
+msgid "Remove"
+msgstr "Remove"
+
+#: app/views/Cart/index.php:45
+msgid "Proceed to Checkout"
+msgstr "Proceed to Checkout"
+
+#: app/views/Order/cancelOrder.php:6 app/views/Order/seeOrder.php:5
+msgid "Order History"
+msgstr "Order History"
+
+#: app/views/Order/cancelOrder.php:28
+msgid "Orders"
+msgstr "Orders"
+
+#: app/views/Order/cancelOrder.php:30
+msgid "Are you sure you want to cancel Order"
+msgstr "Are you sure you want to cancel Order"
+
+#: app/views/Order/seeOrder.php:30
+msgid "Date:"
+msgstr "Date:"
+
+#: app/views/Order/seeOrder.php:34
+msgid "Status:"
+msgstr "Status:"
+
+#: app/views/Order/seeOrder.php:35
+msgid "Type:"
+msgstr "Type:"
+
+#: app/views/Order/seeOrder.php:39 app/views/Product/details.php:128
+#: app/views/Profile/add_payment.php:118 app/views/Profile/edit_payment.php:117
+msgid "Cancel"
+msgstr "Cancel"
+
+#: app/views/Product/catalog.php:5 app/views/Product/catalog.php:27
+msgid "Our Products"
+msgstr "Our Products"
+
+#: app/views/Product/catalog.php:30
+msgid "Filter by type:"
+msgstr "Filter by type:"
+
+#: app/views/Product/catalog.php:32
+msgid "All Types"
+msgstr "All Types"
+
+#: app/views/Product/catalog.php:33
+msgid "Birthday Cake"
+msgstr "Birthday Cake"
+
+#: app/views/Product/catalog.php:34
+msgid "Wedding Cake"
+msgstr "Wedding Cake"
+
+#: app/views/Product/catalog.php:35
+msgid "Custom Cake"
+msgstr "Custom Cake"
+
+#: app/views/Product/catalog.php:37
+msgid "Search:"
+msgstr "Search:"
+
+#: app/views/Product/catalog.php:50 app/views/Product/details.php:105
+msgid "Rating:"
+msgstr "Rating:"
+
+#: app/views/Product/catalog.php:55
+msgid "View Details"
+msgstr "View Details"
+
+#: app/views/Product/catalog.php:56 app/views/Product/details.php:72
+msgid "Add to Cart"
+msgstr "Add to Cart"
+
+#: app/views/Product/catalog.php:61
+msgid "No products found."
+msgstr "No products found."
+
+#: app/views/Product/details.php:5
+msgid "Product Details"
+msgstr "Product Details"
+
+#: app/views/Product/details.php:86 app/views/Profile/index.php:30
+msgid "Delete"
+msgstr "Delete"
+
+#: app/views/Product/details.php:91
+msgid "No reviews yet. Be the first to review!"
+msgstr "No reviews yet. Be the first to review!"
+
+#: app/views/Product/details.php:93 app/views/Product/details.php:101
+msgid "Write a Review"
+msgstr "Write a Review"
+
+#: app/views/Product/details.php:113
+msgid "Comment:"
+msgstr "Comment:"
+
+#: app/views/Product/details.php:115
+msgid "Submit"
+msgstr "Submit"
+
+#: app/views/Product/details.php:123
+msgid "Delete Review"
+msgstr "Delete Review"
+
+#: app/views/Product/details.php:124
+msgid "Are you sure you want to delete this review?"
+msgstr "Are you sure you want to delete this review?"
+
+#: app/views/Product/details.php:127
+msgid "Yes, Delete"
+msgstr "Yes, Delete"
+
+#: app/views/Profile/add_payment.php:6 app/views/Profile/add_payment.php:105
+msgid "Add Payment Information"
+msgstr "Add Payment Information"
+
+#: app/views/Profile/add_payment.php:107 app/views/Profile/edit_payment.php:106
+msgid "Card Holder Name:"
+msgstr "Card Holder Name:"
+
+#: app/views/Profile/add_payment.php:116 app/views/Profile/index.php:49
+msgid "Add Payment"
+msgstr "Add Payment"
+
+#: app/views/Profile/create.php:5 app/views/Profile/create.php:12
+#: app/views/Profile/create.php:38
+msgid "Create Profile"
+msgstr "Create Profile"
+
+#: app/views/Profile/create.php:17 app/views/Profile/edit.php:30
+#: app/views/Profile/index.php:34
+msgid "First Name:"
+msgstr "First Name:"
+
+#: app/views/Profile/create.php:21 app/views/Profile/edit.php:34
+#: app/views/Profile/index.php:35
+msgid "Last Name:"
+msgstr "Last Name:"
+
+#: app/views/Profile/create.php:29 app/views/Profile/edit.php:42
+#: app/views/Profile/index.php:40
+msgid "Phone Number:"
+msgstr "Phone Number:"
+
+#: app/views/Profile/create.php:33 app/views/Profile/edit.php:46
+msgid "Language Preference:"
+msgstr "Language Preference:"
+
+#: app/views/Profile/create.php:34 app/views/Profile/edit.php:47
+msgid "English"
+msgstr "English"
+
+#: app/views/Profile/create.php:35 app/views/Profile/edit.php:48
+msgid "French"
+msgstr "French"
+
+#: app/views/Profile/delete.php:5 app/views/Profile/delete.php:27
+#: app/views/Profile/delete.php:30
+msgid "Delete Profile"
+msgstr "Delete Profile"
+
+#: app/views/Profile/delete.php:28
+msgid ""
+"Are you sure you want to delete your profile? This action cannot be undone."
+msgstr ""
+"Are you sure you want to delete your profile? This action cannot be undone."
+
+#: app/views/Profile/edit.php:5 app/views/Profile/edit.php:27
+#: app/views/Profile/edit.php:51
+msgid "Update Profile"
+msgstr "Update Profile"
+
+#: app/views/Profile/edit_payment.php:6 app/views/Profile/edit_payment.php:104
+msgid "Edit Payment Information"
+msgstr "Edit Payment Information"
+
+#: app/views/Profile/edit_payment.php:115
+msgid "Update Payment"
+msgstr "Update Payment"
+
+#: app/views/Profile/index.php:5
+msgid "Your Profile"
+msgstr "Your Profile"
+
+#: app/views/Profile/index.php:28
+msgid "User Profile"
+msgstr "User Profile"
+
+#: app/views/Profile/index.php:29
+msgid "Edit"
+msgstr "Edit"
+
+#: app/views/Profile/index.php:36
+msgid "Language:"
+msgstr "Language:"
+
+#: app/views/Profile/index.php:45 app/views/Profile/index.php:52
 msgid "Card Holder:"
 msgstr "Card Holder:"
+
+#: app/views/Profile/index.php:54
+msgid "Expiry:"
+msgstr "Expiry:"
+
+#: app/views/Profile/index.php:56
 msgid "Modify Payment"
 msgstr "Modify Payment"
-#The above is for the profile view
+
+#: app/views/Profile/index.php:64
+msgid "Your Orders"
+msgstr "Your Orders"
+
+#: app/views/Profile/index.php:67
+msgid "Order"
+msgstr "Order"
+
+#: app/views/User/login.php:22
+msgid "Welcome Back!"
+msgstr "Welcome Back!"
+
+#: app/views/User/login.php:29 app/views/User/registration.php:33
+msgid "Password:"
+msgstr "Password:"
+
+#: app/views/User/login.php:32 app/views/User/registration.php:37
+msgid "Log In"
+msgstr "Log In"
+
+#: app/views/User/login.php:33
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+#: app/views/User/login.php:33
+msgid "Sign up"
+msgstr "Sign up"
+
+#: app/views/User/registration.php:5
+msgid "Register"
+msgstr "Register"
+
+#: app/views/User/registration.php:22
+msgid "Join Our Cake Community"
+msgstr "Join Our Cake Community"
+
+#: app/views/User/registration.php:29
+msgid "Email:"
+msgstr "Email:"
+
+#: app/views/User/registration.php:36
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: app/views/User/registration.php:37
+msgid "Already have an account?"
+msgstr "Already have an account?"
