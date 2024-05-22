@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Cake Shop</title>
+    <title><?__('Login')?> | <?__('Cake Shop')?></title>
     <link rel="stylesheet" href="\css\base.css">
     <link rel="stylesheet" href="\css\authentication.css">
     
@@ -10,11 +10,11 @@
 <body><div class="nav-bar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="" class="nav-logo-link">Cake Shop</a>
+                <a href="" class="nav-logo-link"><?__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
                 <a href="/User/login?lang=en">EN</a>
-                <a href="/User/logout?lang=fr">FR</a>
+                <a href="/User/login?lang=fr">FR</a>
             </div>
         </div>
     </div>
