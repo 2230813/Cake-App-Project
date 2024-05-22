@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="\css\authentication.css">
     
 </head>
-<body>
+<body><div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="" class="nav-logo-link">Cake Shop</a>
+            </div>
+            <div class="nav-links">
+                <a href="/User/login?lang=en">EN</a>
+                <a href="/User/logout?lang=fr">FR</a>
+            </div>
+        </div>
+    </div>
     <div class="auth-container">
         <h2><?=__('Welcome Back!') ?></h2>
         <form id="loginForm" method='post' action=''>
