@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=__('Product Details')?> | <?=__('Cake Shop')?></title>
+    <title><?= __('Product Details') ?> | <?= __('Cake Shop') ?></title>
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -73,8 +73,15 @@
         </div>
         <div class="reviews">
             <h3>Reviews</h3>
-            <?php if (isset($data['product']->reviews) && count($data['product']->reviews) > 0) { ?>
-                <?php foreach ($data['product']->reviews as $review) { ?>
+            <?php 
+            $userReviewExists = false;
+            if (isset($data['product']->reviews) && count($data['product']->reviews) > 0) { ?>
+                <?php 
+                foreach ($data['product']->reviews as $review) { 
+                    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']) {
+                        $userReviewExists = true;
+                    }
+                ?>
                     <div class="review">
                         <strong>User: <?= htmlspecialchars($review['username']) ?></strong>
                         <div class="rating">
@@ -90,7 +97,11 @@
             <?php } else { ?>
                 <p><?=__('No reviews yet. Be the first to review!')?></p>
             <?php } ?>
-            <button class="add-review-btn" data-product-id="<?= $data['product']->product_id ?>"><?=__('Write a Review')?></button>
+            <?php if (!isset($_SESSION['user_id'])) { ?>
+                <button class="add-review-btn" data-product-id="<?= $data['product']->product_id ?>"><?=__('Write a Review')?></button>
+            <?php } elseif (!$userReviewExists) { ?>
+                <button class="add-review-btn" data-product-id="<?= $data['product']->product_id ?>"><?=__('Write a Review')?></button>
+            <?php } ?>
         </div>
     </div>
 

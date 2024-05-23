@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 23, 2024 at 06:33 PM
+-- Generation Time: May 23, 2024 at 11:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -181,8 +181,7 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `product_id`, `user_id`, `rating`, `comment`) VALUES
-(7, 11, 9, 5, 'Nice'),
-(8, 11, 9, 2, 'Not so very nice');
+(7, 11, 9, 5, 'Nice');
 
 -- --------------------------------------------------------
 
@@ -257,6 +256,7 @@ ALTER TABLE `profile`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`review_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `review_to_product_FK` (`product_id`),
   ADD KEY `review_to_user_FK` (`user_id`);
 
