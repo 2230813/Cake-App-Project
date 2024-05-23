@@ -62,7 +62,7 @@
     <div class="container product-details">
         <h2><?= htmlspecialchars($data['product']->name) ?></h2>
         <div class="product-image">
-            <img src="<?= htmlspecialchars($data['product']->image_path) ?>" enctype="multipart/form-data">
+            <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="Product Image" class="product-image">
         </div>
         <div class="product-info">
             <p class="description"><?= htmlspecialchars($data['product']->details) ?></p>

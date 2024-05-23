@@ -5,6 +5,7 @@
     <title><?=__('Our Products')?> | <?=__('Cake Shop')?></title>
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/product.css">
+
 </head>
 <body>
 <div class="nav-bar">
@@ -44,6 +45,7 @@
                 <?php foreach ($products as $product) { ?>
                     <div class="product">
                         <div class="product-info">
+                            <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="Product Image" class="product-image">
                             <h3><?= htmlspecialchars($product->name) ?></h3>
                             <p class="product-price"><?= htmlspecialchars($product->price) ?></p>
                             <div class="product-rating">

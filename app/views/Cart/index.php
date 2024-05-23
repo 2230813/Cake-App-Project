@@ -5,6 +5,14 @@
     <title><?=__('Shopping Cart')?> | <?=__('Cake Shop')?></title>
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/order.css">
+
+    <style>
+        .product-image {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
 </head>
 <body>
 <div class="nav-bar">
@@ -30,6 +38,7 @@
             <div class="cart-item">
                 <img src="../../../common/images/cake-thumbnail.jpg" alt="Chocolate Cake" class="cart-item-image">
                 <div class="cart-item-details">
+                    <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="Product Image" class="product-image">
                     <h4><?= $product->name ?></h4>
                     <p><?=__('Quantity:')?> 1</p>
                     <p><?= $product->price ?></p>
