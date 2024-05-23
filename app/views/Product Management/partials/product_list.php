@@ -30,7 +30,7 @@
                 <td><?= htmlspecialchars($product->quantity) ?></td>
                 <td>
                     <?php if (!empty($product->image_path)): ?>
-                        <img src="/uploads/<?= htmlspecialchars($product->image_path) ?>" alt="<?= htmlspecialchars($product->name) ?>" style="width: 50px;">
+                        <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="<?= htmlspecialchars($product->name) ?>" style="width: 50px;">
                     <?php else: ?>
                         <p>No image available.</p>
                     <?php endif; ?>
