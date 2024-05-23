@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 23, 2024 at 11:43 PM
+-- Generation Time: May 24, 2024 at 12:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,7 +45,9 @@ INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
 (15, 12, 989.00, 'cart'),
 (16, 13, 889.00, 'ordered'),
 (17, 14, 0.00, 'cart'),
-(18, 13, 0.00, 'cart');
+(18, 13, 0.00, 'cart'),
+(19, 15, 0.00, 'cart'),
+(20, 16, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -159,7 +161,9 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`, `phone_number`) VALUES
 (13, 9, 'Manas', 'Patel', '123 Street, Montreal QC', '123-456-7890'),
-(14, 5, 'My', 'Admin', '123 Street, Montreal QC', '514-123-4567');
+(14, 5, 'My', 'Admin', '123 Street, Montreal QC', '514-123-4567'),
+(15, 10, 'Ayush', 'Patel', '8910', '5145492540'),
+(16, 12, 'Ayush', 'Patel', '8910', '5145492540');
 
 -- --------------------------------------------------------
 
@@ -181,7 +185,10 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `product_id`, `user_id`, `rating`, `comment`) VALUES
-(7, 11, 9, 5, 'Nice');
+(7, 11, 9, 5, 'Nice'),
+(19, 12, 10, 1, '12345'),
+(22, 12, 12, 3, '1234'),
+(24, 11, 12, 3, '123445');
 
 -- --------------------------------------------------------
 
@@ -204,7 +211,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
 (5, 'Admin', '$2y$10$7es7MLdObSx.OBVtGE.5CO1AYuDbAp3YFTMafFNjgeuJHF8m0mAPq', 'Admin@email.com', 1),
-(9, 'manas', '$2y$10$gIsOLqCxiGnwXpsu.lfmduJ5H8TCUYISw2QxiRESnn9qa0H/OB3WO', 'manas@vanier.com', 1);
+(9, 'manas', '$2y$10$gIsOLqCxiGnwXpsu.lfmduJ5H8TCUYISw2QxiRESnn9qa0H/OB3WO', 'manas@vanier.com', 1),
+(10, 'ayush', '$2y$10$AoOGDAnMfszc3/pZ/SMG3uTrFOSjn1Q1NRGdSq5Z26DwLR/x3BOKe', 'ayushp05@hotmail.com', 1),
+(11, 'ayush', '$2y$10$TOSZrksnED7HU7aIv/KXTuWcga8oCuJJr30F2NKdVv3d1PuaJSewC', 'ayushpp0055@gmail.com', 1),
+(12, 'ayushp05', '$2y$10$6D9k.uh/oFJ5XU93C3KRSOK2Dm.SKa58Kc21c7PVXMM7D4PlhOONu', 'ayushpp0055@gmail.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -256,7 +266,6 @@ ALTER TABLE `profile`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`review_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `review_to_product_FK` (`product_id`),
   ADD KEY `review_to_user_FK` (`user_id`);
 
@@ -274,7 +283,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -298,19 +307,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
