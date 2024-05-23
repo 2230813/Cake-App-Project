@@ -90,13 +90,13 @@
                 <a href="" class="nav-logo-link"><?=__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
-            <a href="/User/login"><?=__('Login')?></a>
-                <a href="/User/logout"><?=__('Logout')?></a>
                 <a href="/Cart/index"><?=__('View Cart')?></a>
                 <a href="/Cake/catalog"><?=__('View Catalog')?></a>
                 <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Profile/edit_payment?lang=en">EN</a>
                 <a href="/Profile/edit_payment?lang=fr">FR</a>
+                <a href="/User/login"><?=__('Login')?></a>
+                <a href="/User/logout"><?=__('Logout')?></a>
             </div>
         </div>
     </div>

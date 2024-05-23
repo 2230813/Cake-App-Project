@@ -10,13 +10,12 @@ class Profile extends \app\core\Model{
 	public $last_name;
     public $address;
     public $phone_number;
-    public $language_preference;
 
 	//CRUD
 
 	//create
 	public function insert(){
-		$SQL = 'INSERT INTO profile(profile_id,user_id,first_name,last_name,address,phone_number,language_preference) VALUE (:profile_id,:user_id,:first_name,:last_name,:address,:phone_number,:language_preference)';
+		$SQL = 'INSERT INTO profile(profile_id,user_id,first_name,last_name,address,phone_number) VALUE (:profile_id,:user_id,:first_name,:last_name,:address,:phone_number)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['profile_id'=>$this->profile_id,
@@ -24,8 +23,7 @@ class Profile extends \app\core\Model{
 			'first_name'=>$this->first_name,
 			'last_name'=>$this->last_name,
             'address'=>$this->address,
-            'phone_number'=>$this->phone_number,
-            'language_preference'=>$this->language_preference
+            'phone_number'=>$this->phone_number
             ]
 		);
 		//This is to get the latest inserted profile_id
@@ -71,15 +69,14 @@ class Profile extends \app\core\Model{
 	//update
 	//you can't change the user_id that's a business logic choice that gets implemented in the model
 	public function update(){
-		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name,address=:address,phone_number=:phone_number,language_preference=:language_preference WHERE profile_id = :profile_id';
+		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name,address=:address,phone_number=:phone_number WHERE profile_id = :profile_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['profile_id'=>$this->profile_id,
 			'first_name'=>$this->first_name,
 			'last_name'=>$this->last_name,
             'address'=>$this->address,
-            'phone_number'=>$this->phone_number,
-            'language_preference'=>$this->language_preference
+            'phone_number'=>$this->phone_number
             ]
 		);
 	}
