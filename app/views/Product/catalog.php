@@ -45,7 +45,7 @@
                 <?php foreach ($products as $product) { ?>
                     <div class="product">
                         <div class="product-info">
-                            <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="Product Image" class="product-image">
+                            <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="<?= htmlspecialchars($product->name) ?>">
                             <h3><?= htmlspecialchars($product->name) ?></h3>
                             <p class="product-price"><?= htmlspecialchars($product->price) ?></p>
                             <div class="product-rating">

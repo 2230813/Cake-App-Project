@@ -62,7 +62,7 @@
     <div class="container product-details">
         <h2><?= htmlspecialchars($data['product']->name) ?></h2>
         <div class="product-image">
-            <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="Product Image" class="product-image">
+            <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="<?= htmlspecialchars($product->name) ?>">
         </div>
         <div class="product-info">
             <p class="description"><?= htmlspecialchars($data['product']->details) ?></p>

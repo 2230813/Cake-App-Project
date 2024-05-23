@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="/css/order.css">
 
     <style>
-        .product-image {
-            width: 50px;
-            height: 50px;
+        img {
+            width: 100px;
+            height: 100px;
         }
     </style>
 
@@ -36,9 +36,8 @@
         <div class="cart">
         <?php foreach ($cartItems as $product) { ?>
             <div class="cart-item">
-                <img src="../../../common/images/cake-thumbnail.jpg" alt="Chocolate Cake" class="cart-item-image">
                 <div class="cart-item-details">
-                    <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="Product Image" class="product-image">
+                    <img src="/<?= htmlspecialchars($product->image_path) ?>" alt="<?= htmlspecialchars($product->name) ?>">
                     <h4><?= $product->name ?></h4>
                     <p><?=__('Quantity:')?> 1</p>
                     <p><?= $product->price ?></p>
