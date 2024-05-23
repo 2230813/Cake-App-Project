@@ -14,14 +14,18 @@
     </header>
     <nav>
         <ul>
-            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/Admin/dashboard">Dashboard</a></li>
             <li><a href="/Product/adminCreate">Manage Products</a></li>
             <li><a href="/Order/manage">Order Management</a></li>
-            <li><a href="/user/index">User Management</a></li>
+            <li><a href="/User/logout" class="btn btn-warning">Logout</a></li>
         </ul>
     </nav>
     <main>
-       
+        <div class="dashboard-overview">
+            <a href="/Admin/dashboard">Dashboard</a>
+            <a href="/Product/adminCreate">Manage Products</a>
+            <a href="/Order/manage">Order Management</a>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Cake Shop. All rights reserved.</p>

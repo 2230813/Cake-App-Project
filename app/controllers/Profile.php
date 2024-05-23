@@ -36,7 +36,6 @@ class Profile extends \app\core\Controller{
 			$profile->last_name = $_POST['last_name'];
             $profile->address = $_POST['address'];
             $profile->phone_number = $_POST['phone'];
-            $profile->language_preference = $_POST['language'];
 			//insert it
 			$profile->insert();
 			//redirect
@@ -59,7 +58,6 @@ class Profile extends \app\core\Controller{
 			$profile->last_name = $_POST['last_name'];
             $profile->address = $_POST['address'];
             $profile->phone_number = $_POST['phone'];
-            $profile->language_preference = $_POST['language'];
 			//update it
 			$profile->update();
 			//redirect

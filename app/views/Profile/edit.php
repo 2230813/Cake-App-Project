@@ -42,11 +42,6 @@
                 <label for="phone"><?= __('Phone Number:')?></label>
                 <input type="text" id="phone" name="phone" value="<?= $data->phone_number ?>" required>
             </div>
-            <div class="form-group">
-                <label for="language"><?= __('Language Preference:')?></label> <br>
-                <input type="radio" id="language" name="language" value="EN" required> <?= __('English')?><br>
-                <input type="radio" id="" name="language" value="FR" required> <?= __('French')?>
-            </div>
             
             <button type="submit" class="btn" name="action"><?= __('Update Profile')?></button>
         </form>

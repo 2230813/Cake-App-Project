@@ -3,7 +3,7 @@ namespace app\controllers;
 
 // Apply the Login condition to the whole class
 #[\app\filters\Login]
-#[\app\filters\HasProfile]
+// #[\app\filters\HasProfile]
 class Order extends \app\core\Controller {
 
     public function delete($cart_id){

@@ -23,11 +23,11 @@
         <form id="loginForm" method='post' action=''>
             <div class="form-control">
                 <label for="name"><?= __('Name:') ?></label>
-                <input type="text" id="name" name="username" >
+                <input type="text" id="name" name="username" placeholder="Admin">
             </div>
             <div class="form-control">
                 <label for="password"><?= __('Password:') ?></label>
-                <input type="password" id="password" name="password" >
+                <input type="password" id="password" name="password" placeholder="1234">
             </div>
             <input type="submit" class="btn" name="action" value="<?= __('Log In')?>"/>
             <p><?= __("Don't have an account?")?> <a href="/User/register"><?= __('Sign up')?></a></p>
