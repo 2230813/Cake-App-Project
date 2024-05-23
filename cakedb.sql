@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 23, 2024 at 06:07 PM
+-- Generation Time: May 23, 2024 at 06:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,7 +42,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `profile_id`, `total_price`, `status`) VALUES
-(15, 12, 989.00, 'cart');
+(15, 12, 989.00, 'cart'),
+(16, 13, 889.00, 'ordered'),
+(17, 14, 0.00, 'cart'),
+(18, 13, 0.00, 'cart');
 
 -- --------------------------------------------------------
 
@@ -61,7 +64,8 @@ CREATE TABLE `cartDetails` (
 --
 
 INSERT INTO `cartDetails` (`cart_id`, `product_id`) VALUES
-(15, 11);
+(15, 11),
+(16, 12);
 
 -- --------------------------------------------------------
 
@@ -75,8 +79,16 @@ CREATE TABLE `orders` (
   `cart_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered'
+  `status` enum('ordered','pending','delivery','completed') NOT NULL DEFAULT 'ordered',
+  `options` enum('pickup','delivery') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `cart_id`, `profile_id`, `date`, `status`, `options`) VALUES
+(7, 16, 13, '2024-05-23', 'completed', 'delivery');
 
 -- --------------------------------------------------------
 
@@ -92,6 +104,13 @@ CREATE TABLE `payment` (
   `card_number` varchar(30) NOT NULL,
   `expire_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `profile_id`, `name`, `card_number`, `expire_date`) VALUES
+(14, 13, 'Manas Patel', '1234 1234 1234 1234', '2060-11-21');
 
 -- --------------------------------------------------------
 
@@ -134,6 +153,14 @@ CREATE TABLE `profile` (
   `phone_number` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`, `phone_number`) VALUES
+(13, 9, 'Manas', 'Patel', '123 Street, Montreal QC', '123-456-7890'),
+(14, 5, 'My', 'Admin', '123 Street, Montreal QC', '514-123-4567');
+
 -- --------------------------------------------------------
 
 --
@@ -148,6 +175,14 @@ CREATE TABLE `review` (
   `rating` int(11) NOT NULL,
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `product_id`, `user_id`, `rating`, `comment`) VALUES
+(7, 11, 9, 5, 'Nice'),
+(8, 11, 9, 2, 'Not so very nice');
 
 -- --------------------------------------------------------
 
@@ -169,7 +204,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `email`, `active`) VALUES
-(5, 'Admin', '$2y$10$7es7MLdObSx.OBVtGE.5CO1AYuDbAp3YFTMafFNjgeuJHF8m0mAPq', 'Admin@email.com', 1);
+(5, 'Admin', '$2y$10$7es7MLdObSx.OBVtGE.5CO1AYuDbAp3YFTMafFNjgeuJHF8m0mAPq', 'Admin@email.com', 1),
+(9, 'manas', '$2y$10$gIsOLqCxiGnwXpsu.lfmduJ5H8TCUYISw2QxiRESnn9qa0H/OB3WO', 'manas@vanier.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -238,19 +274,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -262,19 +298,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
