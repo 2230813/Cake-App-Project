@@ -53,3 +53,7 @@ $this->addRoute('Admin/dashboard', 'Admin,dashboard');
 // Review routes
 $this->addRoute('Review/save', 'Review,save'); // Combined create and modify
 $this->addRoute('Review/delete', 'Review,delete'); // Delete review
+
+//Review in the admin
+$this->addRoute('Review/manage', 'Review,manage'); 
+$this->addRoute('Review/adminDelete/{review_id}', 'Review,adminDelete'); 

@@ -27,31 +27,28 @@
         <!-- views/Product Management/partials/product_list.php -->
 <?php if (isset($data) && is_array($data) && !empty($data)): ?>
 <section class="product-list">
-    <h2>Current Orders</h2>
+    <h2>Current Reviews</h2>
     <table>
         <thead>
             <tr>
-                <th>Order ID</th>
-                <th>Cart ID</th>
-                <th>Profile ID</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Options</th>
+                <th>Review ID</th>
+                <th>Product ID</th>
+                <th>User ID</th>
+                <th>Rating</th>
+                <th>Comment</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data as $order): ?>
+            <?php foreach ($data as $review): ?>
             <tr>
-                <td><?= htmlspecialchars($order->order_id) ?></td>
-                <td><?= htmlspecialchars($order->cart_id) ?></td>
-                <td><?= htmlspecialchars($order->profile_id) ?></td>
-                <td><?= htmlspecialchars($order->date) ?></td>
-                <td><?= htmlspecialchars($order->status) ?></td>
-                <td><?= htmlspecialchars($order->options) ?></td>
+                <td><?= htmlspecialchars($review->review_id) ?></td>
+                <td><?= htmlspecialchars($review->product_id) ?></td>
+                <td><?= htmlspecialchars($review->user_id) ?></td>
+                <td><?= htmlspecialchars($review->rating) ?></td>
+                <td><?= htmlspecialchars($review->comment) ?></td>
                 <td>
-                    <a href="/Order/adminView/<?= htmlspecialchars($order->cart_id) ?>" class="btn btn-primary">View</a>
-                    <a href="/Order/adminDelete/<?= htmlspecialchars($order->cart_id) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                    <a href="/Review/adminDelete/<?= $review->review_id ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -59,7 +56,7 @@
     </table>
 </section>
 <?php else: ?>
-<p>No orders found.</p>
+<p>No Reviews found.</p>
 <?php endif; ?>
 
     </main>
