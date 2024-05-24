@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="\css\profile.css">
 </head>
 <body>
+<div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="" class="nav-logo-link"><?=__('Cake Shop')?></a>
+            </div>
+            <div class="nav-links">
+                <a href="/User/logout"><?=__('Logout')?></a>
+            </div>
+        </div>
+    </div>
 
     <div class="form-container">
         <h2><?= __('Create Profile')?></h2>

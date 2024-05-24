@@ -96,7 +96,6 @@
                 <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Profile/add_payment?lang=en">EN</a>
                 <a href="/Profile/add_payment?lang=fr">FR</a>
-                 <a href="/User/login"><?=__('Login')?></a>
                 <a href="/User/logout"><?=__('Logout')?></a>
             </div>
         </div>

@@ -26,7 +26,6 @@
                 <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Cart/index?lang=en">EN</a>
                 <a href="/Cart/index?lang=fr">FR</a>
-                 <a href="/User/login"><?=__('Login')?></a>
                 <a href="/User/logout"><?=__('Logout')?></a>
             </div>
         </div>
