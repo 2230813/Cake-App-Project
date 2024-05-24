@@ -18,7 +18,6 @@
             <li><a href="/Admin/dashboard">Dashboard</a></li>
             <li><a href="/Product/adminCreate">Manage Products</a></li>
             <li><a href="/Order/manage">Order Management</a></li>
-            <li><a href="/Review/manage">Review Management</a></li>
             <li><a href="/User/logout" class="btn btn-warning">Logout</a></li>
         </ul>
     </nav>

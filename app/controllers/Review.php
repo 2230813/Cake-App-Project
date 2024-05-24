@@ -34,19 +34,4 @@ class Review extends \app\core\Controller {
             echo json_encode(['success' => true]);
         }
     }
-
-    public function manage() {
-        $review = new \app\models\Review();
-        $review = $review->getAllReviews();
-
-        $this->view('Product Management/adminReviewView', $review);
-    }
-
-    public function adminDelete($review_id) {
-        $review = new \app\models\Review();
-        $review = $review->getById($review_id);
-        $review->delete();
-        header('location:/Review/manage');
-    }
-
 }
