@@ -13,6 +13,8 @@
                 <a href="" class="nav-logo-link"><?=__('Cake Shop')?></a>
             </div>
             <div class="nav-links">
+                <a href="/Profile/create?lang=en">EN</a>
+                <a href="/Profile/create?lang=fr">FR</a>
                 <a href="/User/logout"><?=__('Logout')?></a>
             </div>
         </div>
@@ -20,8 +22,6 @@
 
     <div class="form-container">
         <h2><?= __('Create Profile')?></h2>
-        <a href="/Profile/create?lang=en">EN</a>
-        <a href="/Profile/create?lang=fr">FR</a>
         <form id="createProfileForm" method='post' action=''>
             <div class="form-group">
                 <label for="name"><?= __('First Name:')?></label>
