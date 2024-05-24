@@ -1,3 +1,4 @@
+/* # Styles specific to products and order pages */
 /* Product Page Specific Styles */
 .product-details .product-image {
     text-align: center;
@@ -34,7 +35,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    display: inline-block;
+    display: inline-block; /* or 'block' if you want it to take the full width */
 }
 
 .add-to-cart-btn:hover {
@@ -77,3 +78,5 @@
     color: #555;
     margin: 0.5rem 0;
 }
+
+/* More product-specific styles as needed */

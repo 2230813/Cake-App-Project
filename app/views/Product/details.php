@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="nav-bar">
@@ -20,11 +54,8 @@
                 <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Cake/details/<?= $product->product_id ?>?lang=en">EN</a>
                 <a href="/Cake/details/<?= $product->product_id ?>?lang=fr">FR</a>
-                <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="/User/logout"><?=__('Logout')?></a>
-                <?php else: ?>
-                    <a href="/User/login"><?=__('Login')?></a>
-                <?php endif; ?>
+                <a href="/User/login"><?=__('Login')?></a>
+                <a href="/User/logout"><?=__('Logout')?></a>
             </div>
         </div>
     </div>
