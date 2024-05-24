@@ -19,8 +19,11 @@
                 <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Cake/catalog?lang=en">EN</a>
                 <a href="/Cake/catalog?lang=fr">FR</a>
-                <a href="/User/login"><?=__('Login')?></a>
-                <a href="/User/logout"><?=__('Logout')?></a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="/User/logout"><?=__('Logout')?></a>
+                <?php else: ?>
+                    <a href="/User/login"><?=__('Login')?></a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -28,17 +31,24 @@
         <h2><?=__('Our Products')?></h2>
         
         <form method="get" action="/Cake/catalog">
-            <label for="type"><?=__('Filter by type:')?></label>
-            <select name="type" id="type">
-                <option value=""><?=__('All Types')?></option>
-                <option value="Birthday Cake" <?= isset($type) && $type == 'Birthday Cake' ? 'selected' : '' ?>><?=__('Birthday Cake')?></option>
-                <option value="Wedding Cake" <?= isset($type) && $type == 'Wedding Cake' ? 'selected' : '' ?>><?=__('Wedding Cake')?></option>
-                <option value="Custom Cake" <?= isset($type) && $type == 'Custom Cake' ? 'selected' : '' ?>><?=__('Custom Cake')?></option>
-            </select>
-            <label for="search"><?=__('Search:')?></label>
-            <input type="text" name="search" id="search" placeholder="Search products by name..." value="<?= htmlspecialchars($searchTerm ?? '') ?>">
-            <button type="submit">Filter</button>
+            <div class="form-group">
+                <label for="type"><?=__('Filter by type:')?></label>
+                <select name="type" id="type">
+                    <option value=""><?=__('All Types')?></option>
+                    <option value="Birthday Cake" <?= isset($type) && $type == 'Birthday Cake' ? 'selected' : '' ?>><?=__('Birthday Cake')?></option>
+                    <option value="Wedding Cake" <?= isset($type) && $type == 'Wedding Cake' ? 'selected' : '' ?>><?=__('Wedding Cake')?></option>
+                    <option value="Custom Cake" <?= isset($type) && $type == 'Custom Cake' ? 'selected' : '' ?>><?=__('Custom Cake')?></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="search"><?=__('Search:')?></label>
+                <input type="text" name="search" id="search" placeholder="Search products by name..." value="<?= htmlspecialchars($searchTerm ?? '') ?>">
+            </div>
+            <div class="form-group">
+                <button type="submit"><?=__('Filter')?></button>
+            </div>
         </form>
+
 
         <div class="product-grid">
             <?php if (isset($products) && is_array($products) && !empty($products)) { ?>

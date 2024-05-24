@@ -7,11 +7,24 @@
     <link rel="stylesheet" href="\css\profile.css">
 </head>
 <body>
-
+<div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="" class="nav-logo-link"><?=__('Cake Shop')?></a>
+            </div>
+            <div class="nav-links">
+                <a href="/Profile/create?lang=en">EN</a>
+                <a href="/Profile/create?lang=fr">FR</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="/User/logout"><?=__('Logout')?></a>
+                <?php else: ?>
+                    <a href="/User/login"><?=__('Login')?></a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
     <div class="form-container">
         <h2><?= __('Create Profile')?></h2>
-        <a href="/Profile/create?lang=en">EN</a>
-        <a href="/Profile/create?lang=fr">FR</a>
         <form id="createProfileForm" method='post' action=''>
             <div class="form-group">
                 <label for="name"><?= __('First Name:')?></label>

@@ -9,4 +9,9 @@
     max-width: 400px;
 }
 
+form label, form select, form input[type="text"], form button {
+    margin: 5px 0;
+    width: 100%;
+}
+
 /* Other styles specific to authentication pages */

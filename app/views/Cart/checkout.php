@@ -18,8 +18,11 @@
                 <a href="/Profile/index"><?=__('View Profile')?></a>
                 <a href="/Cart/checkout?lang=en">EN</a>
                 <a href="/Cart/checkout?lang=fr">FR</a>
-                <a href="/User/login"><?=__('Login')?></a>
-                <a href="/User/logout"><?=__('Logout')?></a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="/User/logout"><?=__('Logout')?></a>
+                <?php else: ?>
+                    <a href="/User/login"><?=__('Login')?></a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
