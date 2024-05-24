@@ -6,10 +6,6 @@ namespace app\controllers;
 #[\app\filters\HasProfile]
 class Cart extends \app\core\Controller {
 
-    // public function __construct() {
-    //     $this->cartModel = new \app\models\CartDetails();
-    // }
-
     public function addToCart($product_id) {
         $cart2 = new \app\models\Cart();
         $cart2 = $cart2->getByProfileId(($_SESSION['profile_id']));
@@ -18,12 +14,8 @@ class Cart extends \app\core\Controller {
         $product = new \app\models\Product();
         $product = $product->get($product_id);
         
-        // echo $_SESSION['profile_id'];
-        // var_dump($cart2);
-        
         $cart->cart_id = $cart2->cart_id;
         $cart->product_id = $product_id;
-        //var_dump($cart);
         $cart->insert();
         
         $cart2->total_price += $product->price;
@@ -49,10 +41,6 @@ class Cart extends \app\core\Controller {
         header('location:/Cart/index');
     }
 
-    // public function updateItemAmounts($productId, $newAmount) {
-    //     $this->cartModel->update($productId, $newAmount);
-    // }
-
     public function viewCart() {
         $cart = new \app\models\Cart();
         $cart = $cart->getByProfileId(($_SESSION['profile_id']));
@@ -60,7 +48,6 @@ class Cart extends \app\core\Controller {
         $cartModel = new \app\models\CartDetails();
         $cartModel->cart_id = $cart->cart_id;
         $cartItems = $cartModel->getCartItems();
-        //var_dump($cartItems);
         
         $this->view('Cart/index', [
             'cartItems' => $cartItems,

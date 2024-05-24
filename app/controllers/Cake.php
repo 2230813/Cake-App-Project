@@ -21,18 +21,6 @@ class Cake extends \app\core\Controller {
         }
     }
 
-    // // Display all products with filtering by type
-    // public function catalog() {
-    //     $productModel = new \app\models\Product();
-    //     $type = isset($_GET['type']) ? $_GET['type'] : '';
-    //     if ($type) {
-    //         $products = $productModel->getByTypeWithRatings($type);
-    //     } else {
-    //         $products = $productModel->getAllWithRatings();
-    //     }
-    //     $this->view('Product/catalog', ['products' => $products, 'type' => $type]);
-    // }
-
     // Display all products with filtering by type and search
     public function catalog() {
         $productModel = new \app\models\Product();

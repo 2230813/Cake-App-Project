@@ -6,13 +6,6 @@ namespace app\controllers;
 #[\app\filters\Login]
 class Product extends \app\core\Controller {
 
-    // Display all products
-    // public function index() {
-    //     $product = new \app\models\Product();
-    //     $products = $product->getAll();
-    //     $this->view('Product/index', $products);
-    // }
-
     // Display all products with ratings
     public function index() {
         $productModel = new \app\models\Product();
@@ -36,17 +29,6 @@ class Product extends \app\core\Controller {
 
         $this->view('Product Management/adminCreate', ['products' => $products]);
     }
-    
-    // public function adminEdit($product_id = null) {
-    //     $productModel = new \app\models\Product();
-    //     if ($product_id) {
-    //         $product = $productModel->get($product_id);
-    //         $this->view('Product Management/adminEdit', ['product' => $product]);
-    //     } else {
-    //         $products = $productModel->getAll();
-    //         $this->view('Product Management/adminEdit', ['products' => $products]);
-    //     }
-    // }
     
     public function adminEdit($product_id = null) {
         $productModel = new \app\models\Product();

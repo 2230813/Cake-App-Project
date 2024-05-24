@@ -5,14 +5,6 @@ namespace app\controllers;
 //#[\app\filters\Login]
 class Payment extends \app\core\Controller {
 
-    //#[\app\filters\Login]
-
-    //public function get($profile_id){
-       // $payment = new \app\models\Payment();
-		//$payment = $payment->get($_SESSION['user_id']);
-
-   // }
-
         public function add() {
             $payment = new \app\models\Payment();
 
