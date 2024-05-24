@@ -39,6 +39,13 @@ class Review extends \app\core\Model {
         return $STMT->fetch();
     }
 
+    public function getAllReviews() {
+        $SQL = 'SELECT * FROM review';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute();
+        return $STMT->fetchAll(PDO::FETCH_CLASS,'app\models\Review');
+    }
+
     // Update a review
     public function update() {
         $SQL = 'UPDATE review SET rating = :rating, comment = :comment WHERE review_id = :review_id AND user_id = :user_id';
