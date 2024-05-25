@@ -60,5 +60,13 @@ class CartDetails extends \app\core\Model{
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\models\Product');
         return $STMT->fetchAll();
     }
+
+    //Checking if the product exists in a cart
+    public function isProductInAnyCart($product_id) {
+        $SQL = 'SELECT COUNT(*) FROM cartDetails WHERE product_id = :product_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['product_id' => $product_id]);
+        return $STMT->fetchColumn() > 0;
+    }
     
 }

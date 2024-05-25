@@ -1,7 +1,16 @@
 <!-- views/Product Management/partials/product_list.php -->
+
 <?php if (isset($products) && is_array($products) && !empty($products)): ?>
 <section class="product-list">
     <h2>Current Products</h2>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger">
+            <?= htmlspecialchars($_SESSION['error']) ?>
+        </div>
+        <?php unset($_SESSION['error']); // Clear the error message ?>
+    <?php endif; ?>
+
     <form method="get" action="/Product/adminCreate">
         <input type="text" name="search" placeholder="Search products by name..." />
         <button type="submit">Search</button>

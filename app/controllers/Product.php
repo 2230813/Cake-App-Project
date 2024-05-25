@@ -161,24 +161,34 @@ class Product extends \app\core\Controller {
 
     // Delete a product
     public function delete($product_id) {
-        $product = new \app\models\Product();
-        $existingProduct = $product->get($product_id);
-    
-            if ($existingProduct) {
-                // If an image path exists and the file exists, delete the image file
-                if ($existingProduct->image_path && file_exists($existingProduct->image_path)) {
-                    unlink($existingProduct->image_path);
-                }
-    
-                // Continue to delete the product from the database regardless of whether there was an image
-                $existingProduct->delete();
-                header('location:/Product/adminCreate');
-                exit;
-            } else {
-                // If the product doesn't exist, handle the error
-                header('location:/Product/adminCreate?error=ProductNotFound');
-                exit;
-            }
+        $productModel = new \app\models\Product();
+        $cartDetailsModel = new \app\models\CartDetails();
+
+        $existingProduct = $productModel->get($product_id);
+
+        if (!$existingProduct) {
+            $_SESSION['error'] = "Product not found.";
+            header('Location: /Product/adminCreate');
+            exit;
+        }
+
+        // Check if the product is in any cart
+        if ($cartDetailsModel->isProductInAnyCart($product_id)) {
+            $_SESSION['error'] = "Cannot delete the product as it is present in a shopping cart.";
+            header('Location: /Product/adminCreate');
+            exit;
+        }
+
+        // If an image path exists and the file exists, delete the image file
+        if ($existingProduct->image_path && file_exists($existingProduct->image_path)) {
+            unlink($existingProduct->image_path);
+        }
+
+        // Continue to delete the product from the database
+        $existingProduct->delete();
+        $_SESSION['success'] = "Product deleted successfully.";
+        header('Location: /Product/adminCreate');
+        exit;
     }
     
     public function details($product_id) {
